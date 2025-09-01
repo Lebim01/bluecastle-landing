@@ -12,6 +12,7 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { Langs } from '@/utilities/locales'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -40,18 +41,20 @@ export async function generateStaticParams() {
 type Args = {
   params: Promise<{
     slug?: string
+    lang: Langs
   }>
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
-  const { slug = 'home' } = await paramsPromise
+  const { slug = 'home', lang = 'en' } = await paramsPromise
   const url = '/' + slug
 
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
   page = await queryPageBySlug({
     slug,
+    lang,
   })
 
   // Remove this code once your website is seeded
@@ -64,6 +67,8 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
+
+  console.log(layout)
 
   return (
     <article className="pt-16 pb-24">
@@ -80,15 +85,16 @@ export default async function Page({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
-  const { slug = 'home' } = await paramsPromise
+  const { slug = 'home', lang = 'en' } = await paramsPromise
   const page = await queryPageBySlug({
     slug,
+    lang,
   })
 
   return generateMeta({ doc: page })
 }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+const queryPageBySlug = cache(async ({ slug, lang }: { slug: string; lang: Langs }) => {
   const { isEnabled: draft } = await draftMode()
 
   const payload = await getPayload({ config: configPromise })
@@ -99,6 +105,7 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
     limit: 1,
     pagination: false,
     overrideAccess: draft,
+    locale: lang,
     where: {
       slug: {
         equals: slug,

@@ -15,6 +15,7 @@ export const linkField = (opts?: { label?: string }): Field => ({
           type: 'text',
           required: true,
           admin: { width: '50%' },
+          localized: true,
         },
         {
           name: 'type',

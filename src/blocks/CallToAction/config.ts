@@ -16,6 +16,7 @@ export const CallToAction: Block = {
     {
       name: 'richText',
       type: 'richText',
+      label: 'Texto',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [
@@ -26,7 +27,6 @@ export const CallToAction: Block = {
           ]
         },
       }),
-      label: false,
     },
     linkGroup({
       appearances: ['default', 'outline'],

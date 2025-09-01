@@ -17,6 +17,10 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 
+import { en } from '@payloadcms/translations/languages/en'
+import { es } from '@payloadcms/translations/languages/es'
+import { pt } from '@payloadcms/translations/languages/pt'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -33,6 +37,7 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+
     user: Users.slug,
     livePreview: {
       breakpoints: [
@@ -56,6 +61,15 @@ export default buildConfig({
         },
       ],
     },
+  },
+  i18n: {
+    fallbackLanguage: 'en', // default
+    supportedLanguages: { en, es, pt },
+  },
+  localization: {
+    locales: ['es', 'en', 'pt'],
+    defaultLocale: 'en',
+    fallback: true,
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
