@@ -5,7 +5,6 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -81,11 +80,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 const isDefault =
                   req.locale ===
                   (req.payload.config.localization as LocalizationConfig)?.defaultLocale
-
                 if (isDefault && !val) return 'Requerido en el idioma por defecto'
                 return true
               },
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive],
               required: true,
               admin: {
                 initCollapsed: true,
