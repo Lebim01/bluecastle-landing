@@ -1,4 +1,4 @@
-import type { Field } from 'payload';
+import type { Field } from 'payload'
 
 export const sectionStyleFields: Field[] = [
   {
@@ -29,4 +29,4 @@ export const sectionStyleFields: Field[] = [
     admin: { condition: (_, s) => s?.background === 'image' },
   },
   { name: 'id', type: 'text', label: 'Anchor ID (#seccion)' },
-];
+]
