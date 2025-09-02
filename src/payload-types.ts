@@ -192,7 +192,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | SectionBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -537,6 +537,20 @@ export interface ArchiveBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlock".
+ */
+export interface SectionBlock {
+  container?: ('sm' | 'md' | 'lg' | 'xl' | 'full') | null;
+  paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  background?: ('default' | 'muted' | 'brand' | 'dark' | 'image') | null;
+  bgImage?: (number | null) | Media;
+  id?: string | null;
+  content: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock)[];
+  blockName?: string | null;
+  blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -800,6 +814,7 @@ export interface PagesSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
+        section?: T | SectionBlockSelect<T>;
       };
   meta?:
     | T
@@ -886,6 +901,26 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   limit?: T;
   selectedDocs?: T;
   id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionBlock_select".
+ */
+export interface SectionBlockSelect<T extends boolean = true> {
+  container?: T;
+  paddingY?: T;
+  background?: T;
+  bgImage?: T;
+  id?: T;
+  content?:
+    | T
+    | {
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+        archive?: T | ArchiveBlockSelect<T>;
+      };
   blockName?: T;
 }
 /**

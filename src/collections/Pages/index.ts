@@ -19,6 +19,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { Section } from '@/blocks/Section/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -83,7 +84,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 if (isDefault && !val) return 'Requerido en el idioma por defecto'
                 return true
               },
-              blocks: [CallToAction, Content, MediaBlock, Archive],
+              blocks: [CallToAction, Content, MediaBlock, Archive, Section],
               required: true,
               admin: {
                 initCollapsed: true,
