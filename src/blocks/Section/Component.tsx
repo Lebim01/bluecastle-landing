@@ -1,8 +1,8 @@
 import React from 'react'
 import type { Media, SectionBlock } from '@/payload-types'
-import { RenderBlocks } from '@/blocks/RenderBlocks' // usamos render recursivo
+import { RenderBlocks } from '@/blocks/RenderBlocks'
 
-function cx(...classes: Array<string | undefined | false>) {
+function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -10,13 +10,12 @@ const containerClass = (c?: string) =>
   c === 'full'
     ? 'w-full'
     : cx(
-        'mx-auto',
-        c === 'sm' && 'max-w-screen-sm px-4',
-        c === 'md' && 'max-w-screen-md px-4',
-        c === 'lg' && 'max-w-screen-lg px-6',
-        c === 'xl' && 'max-w-screen-xl px-6',
-        (!c || c === 'lg') && 'max-w-screen-lg px-6',
-      )
+      'mx-auto',
+      c === 'sm' && 'max-w-screen-sm px-4',
+      c === 'md' && 'max-w-screen-md px-4',
+      (c === 'lg' || !c) && 'max-w-screen-lg px-6',
+      c === 'xl' && 'max-w-screen-xl px-6',
+    )
 
 const paddingYClass = (p?: string) =>
   (p === 'none' && 'py-0') ||
@@ -26,11 +25,17 @@ const paddingYClass = (p?: string) =>
   (p === 'xl' && 'py-24') ||
   'py-16'
 
+const heightClass = (h?: string) =>
+  (h === 'half' && 'min-h-[50vh]') ||
+  (h === 'screen' && 'min-h-screen') ||
+  (h === 'custom' && '') ||
+  ''
+
 const backgroundClass = (b?: string) =>
   (b === 'muted' && 'bg-neutral-50') ||
   (b === 'brand' && 'bg-blue-600 text-white') ||
   (b === 'dark' && 'bg-neutral-900 text-white') ||
-  '' // default
+  ''
 
 const mediaUrl = (m?: string | number | Media | null) => {
   if (!m || typeof m === 'string' || typeof m === 'number') return undefined
@@ -38,20 +43,99 @@ const mediaUrl = (m?: string | number | Media | null) => {
 }
 
 export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
-  const { id, container, paddingY, background, bgImage, content } = props
-  const url = mediaUrl(bgImage as any)
+  const {
+    id,
+    container,
+    paddingY,
+    height,
+    customHeight,
+    background,
+    bgImage,
+    video,
+    content,
+  } = props as SectionBlock & {
+    video?: any
+  }
+
+  const posterUrl =
+    (video?.poster && mediaUrl(video.poster as any)) || (bgImage && mediaUrl(bgImage as any))
+
+
+  const isMediaBg = background === 'image' || background === 'video'
 
   return (
     <section
       id={props.id || id || undefined}
-      className={cx(paddingYClass(paddingY || "sm"), backgroundClass(background || "default"))}
+      className={cx(
+        paddingYClass(paddingY!),
+        heightClass(height!),
+        isMediaBg ? 'relative overflow-hidden' : backgroundClass(background!),
+      )}
       style={
-        background === 'image' && url
-          ? { backgroundImage: `url(${url})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+        height === 'custom' && customHeight
+          ? { minHeight: `${customHeight}px` }
           : undefined
       }
     >
-      <div className={containerClass(container || "full")}>
+      {background === 'image' && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-cover bg-center"
+          style={{
+            backgroundImage: bgImage ? `url(${mediaUrl(bgImage as any)})` : undefined,
+          }}
+        />
+      )}
+
+      {background === 'video' && (
+        <>
+
+          <video
+            className={cx(
+              'absolute inset-0 -z-10 h-full w-full',
+              video?.fit === 'contain' ? 'object-contain' : 'object-cover',
+              video?.disableOnMobile ? 'hidden md:block' : 'block',
+            )}
+            autoPlay={!!video?.autoplay}
+            muted={video?.muted !== false}
+            loop={!!video?.loop}
+            playsInline={!!video?.playsInline}
+            preload="auto"
+            poster={posterUrl}
+          >
+            {video?.sourceType === 'external' ? (
+              <source src={video?.url || ''} />
+            ) : (
+              <source src={mediaUrl(video?.file as any)} />
+            )}
+          </video>
+          {(video?.disableOnMobile || posterUrl) && (
+            <div
+              aria-hidden
+              className={cx(
+                'absolute inset-0 -z-10 bg-center bg-cover',
+                video?.disableOnMobile ? 'block md:hidden' : 'hidden',
+              )}
+              style={posterUrl ? { backgroundImage: `url(${posterUrl})` } : undefined}
+            />
+          )}
+          {video?.overlay?.show && (
+            <div
+              aria-hidden
+              className="absolute inset-0 -z-10"
+              style={{
+                backgroundColor: video?.overlay?.color || '#000',
+                opacity:
+                  typeof video?.overlay?.opacity === 'number'
+                    ? video.overlay.opacity
+                    : 0.35,
+              }}
+            />
+          )}
+        </>
+      )}
+
+      <div className={containerClass(container!)}>
         <RenderBlocks blocks={content || []} />
       </div>
     </section>

@@ -542,8 +542,27 @@ export interface ArchiveBlock {
 export interface SectionBlock {
   container?: ('sm' | 'md' | 'lg' | 'xl' | 'full') | null;
   paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
-  background?: ('default' | 'muted' | 'brand' | 'dark' | 'image') | null;
+  height?: ('auto' | 'half' | 'screen' | 'custom') | null;
+  customHeight?: number | null;
+  background?: ('default' | 'muted' | 'brand' | 'dark' | 'image' | 'video') | null;
   bgImage?: (number | null) | Media;
+  video?: {
+    sourceType?: ('upload' | 'external') | null;
+    file?: (number | null) | Media;
+    url?: string | null;
+    poster?: (number | null) | Media;
+    fit?: ('cover' | 'contain') | null;
+    autoplay?: boolean | null;
+    muted?: boolean | null;
+    loop?: boolean | null;
+    playsInline?: boolean | null;
+    disableOnMobile?: boolean | null;
+    overlay?: {
+      show?: boolean | null;
+      color?: string | null;
+      opacity?: number | null;
+    };
+  };
   id?: string | null;
   content: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock)[];
   blockName?: string | null;
@@ -910,8 +929,31 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
 export interface SectionBlockSelect<T extends boolean = true> {
   container?: T;
   paddingY?: T;
+  height?: T;
+  customHeight?: T;
   background?: T;
   bgImage?: T;
+  video?:
+    | T
+    | {
+        sourceType?: T;
+        file?: T;
+        url?: T;
+        poster?: T;
+        fit?: T;
+        autoplay?: T;
+        muted?: T;
+        loop?: T;
+        playsInline?: T;
+        disableOnMobile?: T;
+        overlay?:
+          | T
+          | {
+              show?: T;
+              color?: T;
+              opacity?: T;
+            };
+      };
   id?: T;
   content?:
     | T
