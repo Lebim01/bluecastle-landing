@@ -6,6 +6,9 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { Section } from './Section/Component'
+import CarouselBlockComponent from '@/blocks/Carousel/Component'
+import HeroBlockComponent from '@/blocks/HeroBlock/Component'
+
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -13,6 +16,8 @@ const blockComponents = {
   cta: CallToActionBlock,
   mediaBlock: MediaBlock,
   section: Section,
+  carousel: CarouselBlockComponent,
+  heroBlock: HeroBlockComponent
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
@@ -21,29 +26,28 @@ const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
     case 'md': return 'my-8'
     case 'lg': return 'my-16'
     case 'xl': return 'my-24'
-    default: return '' // 'none'
+    default: return ''
   }
 }
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
-  gapY?: 'none' | 'sm' | 'md' | 'lg' | 'xl' // opcional por página
+  gapY?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 }> = ({ blocks, gapY = 'none' }) => {
   const hasBlocks = Array.isArray(blocks) && blocks.length > 0
   if (!hasBlocks) return null
 
   return (
     <Fragment>
-      {blocks.map((block, index) => {
+      {blocks.filter(Boolean).map((block, index) => {
         const { blockType } = block
         if (blockType && blockType in blockComponents) {
           const Block = blockComponents[blockType as keyof typeof blockComponents]
-          // No agregues gap extra a Section: ya controla su propio padding
           const wrapClass = blockType === 'section' ? '' : gapYClass(gapY)
 
           return (
             <div key={index} className={wrapClass}>
-              {/* @ts-expect-error props entre tipos */}
+              {/* @ts-expect-error  */}
               <Block {...block} disableInnerContainer />
             </div>
           )

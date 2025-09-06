@@ -20,6 +20,8 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { Section } from '@/blocks/Section/config'
+import Carousel from '@/blocks/Carousel/config'
+import HeroBlock from '@/blocks/HeroBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -84,7 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 if (isDefault && !val) return 'Requerido en el idioma por defecto'
                 return true
               },
-              blocks: [CallToAction, Content, MediaBlock, Archive, Section],
+              blocks: [CallToAction, Content, MediaBlock, Archive, Section, Carousel, HeroBlock],
               required: true,
               admin: {
                 initCollapsed: true,

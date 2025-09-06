@@ -1,8 +1,5 @@
-// blocks/Section/config.ts
 import type { Block } from 'payload'
 import { sectionStyleFields } from '@/fields/sectionStyle'
-
-// Reusa tus bloques como hijos
 import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'

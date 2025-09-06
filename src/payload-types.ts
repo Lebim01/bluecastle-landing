@@ -192,7 +192,82 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | SectionBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | SectionBlock
+    | {
+        /**
+         * Agrega, elimina o reordena logos libremente
+         */
+        items?:
+          | {
+              media: number | Media;
+              alt: string;
+              /**
+               * Link del logo (opcional)
+               */
+              href?: string | null;
+              newTab?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Altura en px del carrusel
+         */
+        height?: number | null;
+        /**
+         * Cuántos logos por breakpoint
+         */
+        perView?: {
+          base?: number | null;
+          sm?: number | null;
+          md?: number | null;
+          lg?: number | null;
+          xl?: number | null;
+        };
+        autoScroll?: {
+          playOnInit?: boolean | null;
+          speed?: number | null;
+          stopOnMouseEnter?: boolean | null;
+          stopOnInteraction?: boolean | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'carousel';
+      }
+    | {
+        variant: 'waves' | 'aurora';
+        title: string;
+        subcopy?: string | null;
+        cta?: {
+          label?: string | null;
+          href?: string | null;
+        };
+        disclaimer?: string | null;
+        logo?: (number | null) | Media;
+        waves?: {
+          gradientStart?: string | null;
+          gradientEnd?: string | null;
+          heightVH?: number | null;
+        };
+        aurora?: {
+          colors?:
+            | {
+                color?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          starsCount?: number | null;
+          starsSpeed?: number | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroBlock';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -834,6 +909,75 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         section?: T | SectionBlockSelect<T>;
+        carousel?:
+          | T
+          | {
+              items?:
+                | T
+                | {
+                    media?: T;
+                    alt?: T;
+                    href?: T;
+                    newTab?: T;
+                    id?: T;
+                  };
+              height?: T;
+              perView?:
+                | T
+                | {
+                    base?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                  };
+              autoScroll?:
+                | T
+                | {
+                    playOnInit?: T;
+                    speed?: T;
+                    stopOnMouseEnter?: T;
+                    stopOnInteraction?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        heroBlock?:
+          | T
+          | {
+              variant?: T;
+              title?: T;
+              subcopy?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              disclaimer?: T;
+              logo?: T;
+              waves?:
+                | T
+                | {
+                    gradientStart?: T;
+                    gradientEnd?: T;
+                    heightVH?: T;
+                  };
+              aurora?:
+                | T
+                | {
+                    colors?:
+                      | T
+                      | {
+                          color?: T;
+                          id?: T;
+                        };
+                    starsCount?: T;
+                    starsSpeed?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
