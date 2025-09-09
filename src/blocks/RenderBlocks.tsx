@@ -8,6 +8,8 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { Section } from './Section/Component'
 import CarouselBlockComponent from '@/blocks/Carousel/Component'
 import HeroBlockComponent from '@/blocks/HeroBlock/Component'
+import { FAQBlock } from './Faq/Component'
+import { TestimonialsBlock } from './TestimonialsBlock/Component'
 
 
 const blockComponents = {
@@ -17,7 +19,9 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   section: Section,
   carousel: CarouselBlockComponent,
-  heroBlock: HeroBlockComponent
+  heroBlock: HeroBlockComponent,
+  faq: FAQBlock,
+  testimonials: TestimonialsBlock
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

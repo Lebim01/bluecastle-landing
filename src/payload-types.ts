@@ -267,6 +267,45 @@ export interface Page {
         blockName?: string | null;
         blockType: 'heroBlock';
       }
+    | {
+        title?: string | null;
+        items?:
+          | {
+              question: string;
+              answer: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'faq';
+      }
+    | {
+        title?: string | null;
+        displayStyle: 'grid' | 'circle' | 'carousel';
+        /**
+         * Número de columnas en pantallas grandes para grid/circles.
+         */
+        columns?: number | null;
+        showDots?: boolean | null;
+        showArrows?: boolean | null;
+        items?:
+          | {
+              name: string;
+              country?: string | null;
+              /**
+               * Ej: https://player.vimeo.com/video/954222713?...
+               */
+              videoUrl?: string | null;
+              quote?: string | null;
+              avatarUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'testimonials';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -974,6 +1013,41 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     starsCount?: T;
                     starsSpeed?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              title?: T;
+              displayStyle?: T;
+              columns?: T;
+              showDots?: T;
+              showArrows?: T;
+              items?:
+                | T
+                | {
+                    name?: T;
+                    country?: T;
+                    videoUrl?: T;
+                    quote?: T;
+                    avatarUrl?: T;
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
