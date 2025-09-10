@@ -81,7 +81,7 @@ const columnFields: Field[] = [
           {
             name: 'media',
             type: 'upload',
-            relationTo: 'media', // ajusta al slug de tu colección de Media
+            relationTo: 'media',
             required: false,
           },
           {

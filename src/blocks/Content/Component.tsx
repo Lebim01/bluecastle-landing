@@ -54,7 +54,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
             return (
               <div key={i} className={`col-span-12 ${span} space-y-6`}>
                 {col?.richText?.root && (
-                  <div className="prose prose-neutral max-w-none">
+                  <div className="prose max-w-none data-[surface=dark]:prose-invert">
                     <RichText data={col.richText} />
                   </div>
                 )}
@@ -76,7 +76,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                             ? 'text-right'
                             : 'text-left'
                       return (
-                        <div key={idx} className={`prose prose-neutral max-w-none ${align}`}>
+                        <div key={idx} className={`prose max-w-none ${align} data-[surface=dark]:prose-invert`}>
                           <RichText data={el.content} />
                         </div>
                       )

@@ -62,10 +62,12 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
 
 
   const isMediaBg = background === 'image' || background === 'video'
-
+  const surface =
+    background === 'dark' || background === 'brand' ? 'dark' : 'light'
   return (
     <section
       id={props.id || id || undefined}
+      data-surface={surface}
       className={cx(
         paddingYClass(paddingY!),
         heightClass(height!),
