@@ -598,6 +598,83 @@ export interface ContentBlock {
            */
           appearance?: ('default' | 'outline') | null;
         };
+        elements?:
+          | (
+              | {
+                  content: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  align?: ('start' | 'center' | 'end') | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'text';
+                }
+              | {
+                  media?: (number | null) | Media;
+                  /**
+                   * URL directa de imagen o video (opcional)
+                   */
+                  externalUrl?: string | null;
+                  rounded?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
+                  aspect?: ('auto' | '16/9' | '4/3' | '1/1') | null;
+                  objectFit?: ('cover' | 'contain') | null;
+                  shadow?: boolean | null;
+                  /**
+                   * Opciones solo para video
+                   */
+                  videoOptions?: {
+                    showOverlayControl?: boolean | null;
+                    autoplay?: boolean | null;
+                    muted?: boolean | null;
+                    loop?: boolean | null;
+                    poster?: string | null;
+                  };
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'media';
+                }
+              | {
+                  label: string;
+                  link: {
+                    type?: ('reference' | 'custom') | null;
+                    newTab?: boolean | null;
+                    reference?:
+                      | ({
+                          relationTo: 'pages';
+                          value: number | Page;
+                        } | null)
+                      | ({
+                          relationTo: 'posts';
+                          value: number | Post;
+                        } | null);
+                    url?: string | null;
+                    label: string;
+                    /**
+                     * Choose how the link should be rendered.
+                     */
+                    appearance?: ('default' | 'outline') | null;
+                  };
+                  variant?: ('primary' | 'secondary' | 'link') | null;
+                  align?: ('start' | 'center' | 'end') | null;
+                  fullWidth?: boolean | null;
+                  id?: string | null;
+                  blockName?: string | null;
+                  blockType: 'cta';
+                }
+            )[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1111,6 +1188,59 @@ export interface ContentBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+            };
+        elements?:
+          | T
+          | {
+              text?:
+                | T
+                | {
+                    content?: T;
+                    align?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              media?:
+                | T
+                | {
+                    media?: T;
+                    externalUrl?: T;
+                    rounded?: T;
+                    aspect?: T;
+                    objectFit?: T;
+                    shadow?: T;
+                    videoOptions?:
+                      | T
+                      | {
+                          showOverlayControl?: T;
+                          autoplay?: T;
+                          muted?: T;
+                          loop?: T;
+                          poster?: T;
+                        };
+                    id?: T;
+                    blockName?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    variant?: T;
+                    align?: T;
+                    fullWidth?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
             };
         id?: T;
       };

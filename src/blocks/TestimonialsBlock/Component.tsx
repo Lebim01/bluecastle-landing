@@ -4,6 +4,8 @@ import type { Page } from '@/payload-types'
 import useEmblaCarousel from 'embla-carousel-react'
 import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { EmblaCarousel } from '@/components/EmblaCarousel/EmblaCarousel'
+
 
 export type TestimonialsLayoutBlock = Extract<
     NonNullable<Page['layout']>[number],
@@ -12,7 +14,7 @@ export type TestimonialsLayoutBlock = Extract<
 
 type Props = TestimonialsLayoutBlock & { className?: string }
 
-const DEFAULT_EMBLA_OPTS: EmblaOptionsType = { align: 'start', loop: true }
+export const DEFAULT_EMBLA_OPTS: EmblaOptionsType = { align: 'start', loop: true }
 
 type CleanItem = {
     name?: string
@@ -22,6 +24,14 @@ type CleanItem = {
     avatarUrl?: string
     id?: string
 }
+
+export type EmblaSlide = {
+    name: string
+    country?: string
+    src?: string
+    quote?: string
+}
+
 
 export const TestimonialsBlock: React.FC<Props> = ({
     title,
@@ -55,12 +65,28 @@ export const TestimonialsBlock: React.FC<Props> = ({
         [items]
     )
 
+    const emblaSlides: EmblaSlide[] = React.useMemo(
+        () =>
+            normalized.map((it) => ({
+                name: it.name ?? "",
+                country: it.country ?? undefined,
+                src: it.videoUrl ?? undefined, // ← tu iframe usa `src`
+                quote: it.quote ?? undefined,  // ← por si quieres mostrar texto en carousel
+            })),
+        [normalized]
+    )
+
     return (
         <section className={`w-full py-16 flex flex-col items-center ${className ?? ''}`}>
             {title && <h2 className="text-3xl font-semibold tracking-tight mb-8 text-center">{title}</h2>}
 
             {displayStyle === 'carousel' ? (
-                <Carousel items={normalized} showDots={showDots || false} showArrows={showArrows || false} />
+                <EmblaCarousel
+                    slides={emblaSlides}
+                    options={DEFAULT_EMBLA_OPTS}
+                    showDots={!!showDots}
+                    showArrows={!!showArrows}
+                />
             ) : (
                 <div className="w-full max-w-6xl">
                     <div className={colClass}>
@@ -83,6 +109,7 @@ export const TestimonialsBlock: React.FC<Props> = ({
         </section>
     )
 }
+
 
 function TestimonialCard({
     item,

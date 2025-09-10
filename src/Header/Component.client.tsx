@@ -52,7 +52,7 @@ export default function HeaderClient({ data }: { data: Header }) {
                   )
                 }
 
-                // mega menú
+
                 return (
                   <div key={i} className="relative group">
                     <button className="px-3 py-2">{item.link?.label}</button>
@@ -106,7 +106,7 @@ export default function HeaderClient({ data }: { data: Header }) {
             </nav>
           </div>
 
-          <div className='border border-primary rounded-full p-6 py-3 hover:bg-primary hover:text-white'>
+          <div className='border border-primary rounded-full p-6 py-3 hover:bg-primary hover:text-white bg-white'>
             <Link href="#">Log in</Link>
           </div>
 
