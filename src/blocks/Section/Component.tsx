@@ -8,13 +8,14 @@ function cx(...classes: Array<string | false | undefined>) {
 
 const containerClass = (c?: string) =>
   c === 'full'
-    ? 'w-full'
+    ? 'w-full mx-auto flex items-center justify-center px-6'
     : cx(
       'mx-auto',
       c === 'sm' && 'max-w-screen-sm px-4',
       c === 'md' && 'max-w-screen-md px-4',
       (c === 'lg' || !c) && 'max-w-screen-lg px-6',
       c === 'xl' && 'max-w-screen-xl px-6',
+      c === '2xl' && 'max-w-screen-2xl px-6'
     )
 
 const paddingYClass = (p?: string) =>

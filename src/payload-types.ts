@@ -598,6 +598,43 @@ export interface ContentBlock {
            */
           appearance?: ('default' | 'outline') | null;
         };
+        surface?: {
+          bgColor?: ('transparent' | 'white' | 'black' | 'slate-50' | 'slate-100' | 'slate-900') | null;
+          rounded?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
+          shadow?: boolean | null;
+        };
+        bgImage?: {
+          enabled?: boolean | null;
+          image?: (number | null) | Media;
+          /**
+           * Prioridad sobre "image" (opcional)
+           */
+          externalUrl?: string | null;
+          size?: ('cover' | 'contain' | 'original') | null;
+          position?:
+            | (
+                | 'top'
+                | 'center'
+                | 'bottom'
+                | 'left'
+                | 'right'
+                | 'top-left'
+                | 'top-right'
+                | 'bottom-left'
+                | 'bottom-right'
+              )
+            | null;
+          /**
+           * 0–100 (porcentaje)
+           */
+          opacity?: number | null;
+        };
+        height?: ('auto' | 'sm' | 'md' | 'lg' | 'xl' | 'screen' | 'custom') | null;
+        /**
+         * Aplica cuando Height = Personalizada
+         */
+        customHeightPx?: number | null;
+        paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
         elements?:
           | (
               | {
@@ -731,7 +768,7 @@ export interface ArchiveBlock {
  * via the `definition` "SectionBlock".
  */
 export interface SectionBlock {
-  container?: ('sm' | 'md' | 'lg' | 'xl' | 'full') | null;
+  container?: ('sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
   paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
   height?: ('auto' | 'half' | 'screen' | 'custom') | null;
   customHeight?: number | null;
@@ -1189,6 +1226,26 @@ export interface ContentBlockSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        surface?:
+          | T
+          | {
+              bgColor?: T;
+              rounded?: T;
+              shadow?: T;
+            };
+        bgImage?:
+          | T
+          | {
+              enabled?: T;
+              image?: T;
+              externalUrl?: T;
+              size?: T;
+              position?: T;
+              opacity?: T;
+            };
+        height?: T;
+        customHeightPx?: T;
+        paddingY?: T;
         elements?:
           | T
           | {

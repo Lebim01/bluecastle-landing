@@ -17,6 +17,12 @@ const RT = () =>
     ],
   })
 
+const when =
+  (pred: (p: any) => boolean) =>
+    (_data: any, _sibling: any, parent: any) =>
+      pred(parent)
+
+
 const columnFields: Field[] = [
   {
     name: 'size',
@@ -47,7 +53,134 @@ const columnFields: Field[] = [
       },
     },
   }),
+  {
+    name: 'surface',
+    type: 'group',
+    fields: [
+      {
+        name: 'bgColor',
+        type: 'select',
+        defaultValue: 'transparent',
+        options: [
+          { label: 'Transparente', value: 'transparent' },
+          { label: 'Blanco', value: 'white' },
+          { label: 'Negro', value: 'black' },
+          { label: 'Slate 50', value: 'slate-50' },
+          { label: 'Slate 100', value: 'slate-100' },
+          { label: 'Slate 900', value: 'slate-900' },
+        ],
+      },
+      {
+        name: 'rounded',
+        type: 'select',
+        defaultValue: '2xl',
+        options: [
+          { label: 'None', value: 'none' },
+          { label: 'md', value: 'md' },
+          { label: 'lg', value: 'lg' },
+          { label: 'xl', value: 'xl' },
+          { label: '2xl', value: '2xl' },
+          { label: 'full', value: 'full' },
+        ],
+      },
+      { name: 'shadow', type: 'checkbox', defaultValue: true },
+    ],
+  },
+  {
+    name: 'bgImage',
+    type: 'group',
+    fields: [
+      { name: 'enabled', type: 'checkbox', defaultValue: false },
 
+      {
+        name: 'image',
+        type: 'upload',
+        relationTo: 'media',
+        admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
+      },
+      {
+        name: 'externalUrl',
+        type: 'text',
+        admin: {
+          description: 'Prioridad sobre "image" (opcional)',
+          condition: (_data, siblingData) => !!siblingData?.enabled,
+        },
+      },
+      {
+        name: 'size',
+        type: 'select',
+        defaultValue: 'cover',
+        options: [
+          { label: 'Cover (llena)', value: 'cover' },
+          { label: 'Contain', value: 'contain' },
+          { label: 'Original', value: 'original' },
+        ],
+        admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
+      },
+      {
+        name: 'position',
+        type: 'select',
+        defaultValue: 'bottom',
+        options: [
+          { label: 'Top', value: 'top' },
+          { label: 'Center', value: 'center' },
+          { label: 'Bottom', value: 'bottom' },
+          { label: 'Left', value: 'left' },
+          { label: 'Right', value: 'right' },
+          { label: 'Top Left', value: 'top-left' },
+          { label: 'Top Right', value: 'top-right' },
+          { label: 'Bottom Left', value: 'bottom-left' },
+          { label: 'Bottom Right', value: 'bottom-right' },
+        ],
+        admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
+      },
+      {
+        name: 'opacity',
+        type: 'number',
+        defaultValue: 100,
+        admin: {
+          description: '0–100 (porcentaje)',
+          condition: (_data, siblingData) => !!siblingData?.enabled,
+        },
+      },
+    ],
+  },
+  {
+    name: 'height',
+    type: 'select',
+    defaultValue: 'auto',
+    options: [
+      { label: 'Auto', value: 'auto' },
+      { label: 'Chica (~260px)', value: 'sm' },
+      { label: 'Media (~360px)', value: 'md' },
+      { label: 'Grande (~480px)', value: 'lg' },
+      { label: 'XL (~600px)', value: 'xl' },
+      { label: 'Pantalla (100vh)', value: 'screen' },
+      { label: 'Personalizada (px)', value: 'custom' },
+    ],
+  },
+  {
+    name: 'customHeightPx',
+    type: 'number',
+    admin: {
+      description: 'Aplica cuando Height = Personalizada',
+      condition: when((p) => p?.height === 'custom'),
+    },
+  },
+
+  // — PADDING Y —
+  {
+    name: 'paddingY',
+    type: 'select',
+    defaultValue: 'md',
+    options: [
+      { label: 'None', value: 'none' },
+      { label: 'Sm', value: 'sm' },
+      { label: 'Md', value: 'md' },
+      { label: 'Lg', value: 'lg' },
+      { label: 'Xl', value: 'xl' },
+    ],
+  },
   {
     name: 'elements',
     type: 'blocks',
