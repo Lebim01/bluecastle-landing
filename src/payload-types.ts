@@ -629,7 +629,7 @@ export interface ContentBlock {
            */
           opacity?: number | null;
         };
-        height?: ('auto' | 'sm' | 'md' | 'lg' | 'xl' | 'screen' | 'custom') | null;
+        height?: ('auto' | 'sm' | 'md' | 'lg' | 'xl' | 'screen' | 'full' | 'custom') | null;
         /**
          * Aplica cuando Height = Personalizada
          */

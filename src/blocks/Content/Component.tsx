@@ -86,7 +86,9 @@ const heightPreset = (h?: string) =>
           ? 'min-h-[600px]'
           : h === 'screen'
             ? 'min-h-screen'
-            : '' // auto
+            : h === 'full'
+              ? 'h-full'
+              : '' // auto
 
 
 export const ContentBlock: React.FC<Props> = ({ columns, className }) => {

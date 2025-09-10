@@ -156,6 +156,7 @@ const columnFields: Field[] = [
       { label: 'Grande (~480px)', value: 'lg' },
       { label: 'XL (~600px)', value: 'xl' },
       { label: 'Pantalla (100vh)', value: 'screen' },
+      { label: 'Pantalla Full', value: 'full' },
       { label: 'Personalizada (px)', value: 'custom' },
     ],
   },
