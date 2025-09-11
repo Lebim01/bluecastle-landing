@@ -250,9 +250,6 @@ export interface Page {
           | {
               name: string;
               country?: string | null;
-              /**
-               * Ej: https://player.vimeo.com/video/954222713?...
-               */
               videoUrl?: string | null;
               quote?: string | null;
               avatarUrl?: string | null;

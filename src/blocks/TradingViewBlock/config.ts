@@ -13,6 +13,7 @@ export const TradingViewBlock: Block = {
                 description:
                     'Pega el bloque completo que te da TradingView (incluye <script> y el contenedor).',
             },
+            localized: true,
         },
         {
             name: 'height',

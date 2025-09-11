@@ -12,7 +12,7 @@ export const Carousel: Block = {
       admin: { description: "Agrega, elimina o reordena logos libremente" },
       fields: [
         { name: "media", type: "upload", relationTo: "media", required: true },
-        { name: "alt", type: "text", required: true },
+        { name: "alt", type: "text", required: true, localized: true },
         { name: "href", type: "text", admin: { description: "Link del logo (opcional)" } },
         { name: "newTab", type: "checkbox", defaultValue: true },
       ],

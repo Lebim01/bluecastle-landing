@@ -14,6 +14,7 @@ export const FAQBlock: Block = {
             label: 'Título',
             required: false,
             admin: { placeholder: 'FAQ' },
+            localized: true,
         },
         {
             name: 'items',
@@ -26,12 +27,14 @@ export const FAQBlock: Block = {
                     type: 'text',
                     label: 'Pregunta',
                     required: true,
+                    localized: true,
                 },
                 {
                     name: 'answer',
                     type: 'textarea',
                     label: 'Respuesta',
                     required: true,
+                    localized: true,
                 },
             ],
         },

@@ -14,6 +14,7 @@ export const TestimonialsBlock: Block = {
             label: 'Título',
             required: false,
             admin: { placeholder: 'Lo que dicen nuestros alumnos' },
+            localized: true,
         },
         {
             name: 'displayStyle',
@@ -67,27 +68,27 @@ export const TestimonialsBlock: Block = {
                     type: 'text',
                     label: 'Nombre',
                     required: true,
+                    localized: true,
                 },
                 {
                     name: 'country',
                     type: 'text',
                     label: 'País',
                     required: false,
+                    localized: true,
                 },
                 {
                     name: 'videoUrl',
                     type: 'text',
                     label: 'URL de Video (Vimeo/YouTube embed)',
                     required: false,
-                    admin: {
-                        description: 'Ej: https://player.vimeo.com/video/954222713?...',
-                    },
                 },
                 {
                     name: 'quote',
                     type: 'textarea',
                     label: 'Testimonio (texto)',
                     required: false,
+                    localized: true,
                 },
                 {
                     name: 'avatarUrl',

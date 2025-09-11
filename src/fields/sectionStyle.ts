@@ -59,6 +59,7 @@ export const sectionStyleFields: Field[] = [
     type: 'text',
     label: 'URL de imagen (PNG/JPG/WebP)',
     admin: { condition: (_, s) => s?.background === 'imageUrl' },
+    localized: true,
   },
   {
     name: 'imageOverlay',
@@ -105,6 +106,7 @@ export const sectionStyleFields: Field[] = [
         label: 'URL (mp4/webm)',
         type: 'text',
         admin: { condition: (_, s) => s?.sourceType === 'external' },
+        localized: true,
       },
       {
         name: 'poster',
@@ -150,6 +152,5 @@ export const sectionStyleFields: Field[] = [
       },
     ],
   },
-
   { name: 'id', type: 'text', label: 'Anchor ID (#seccion)' },
 ];
