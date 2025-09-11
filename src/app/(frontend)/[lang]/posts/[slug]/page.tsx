@@ -42,7 +42,6 @@ type Args = {
 }
 
 export default async function Post({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
   const url = '/posts/' + slug
   const post = await queryPostBySlug({ slug })
@@ -51,12 +50,8 @@ export default async function Post({ params: paramsPromise }: Args) {
 
   return (
     <article className="pt-16 pb-16">
-      <PageClient />
-
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
-
-      {draft && <LivePreviewListener />}
 
       <PostHero post={post} />
 

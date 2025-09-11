@@ -333,7 +333,7 @@ export interface FooterNavItem {
       } | null)
     | ({
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       } | null);
   url?: string | null;
   label: string;
@@ -347,7 +347,7 @@ export interface FooterNavItem {
  * via the `definition` "posts".
  */
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   heroImage?: (number | null) | Media;
   content: {
@@ -365,7 +365,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (number | Post)[] | null;
+  relatedPosts?: (string | Post)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -692,7 +692,7 @@ export interface ArchiveBlock {
   selectedDocs?:
     | {
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       }[]
     | null;
   id?: string | null;
@@ -757,7 +757,7 @@ export interface Redirect {
         } | null)
       | ({
           relationTo: 'posts';
-          value: number | Post;
+          value: string | Post;
         } | null);
     url?: string | null;
   };
@@ -777,7 +777,7 @@ export interface Search {
   doc:
     | {
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       }
     | {
         relationTo: 'pages';
@@ -905,7 +905,7 @@ export interface PayloadLockedDocument {
       } | null)
     | ({
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       } | null)
     | ({
         relationTo: 'media';
@@ -1293,6 +1293,7 @@ export interface SectionBlockSelect<T extends boolean = true> {
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
+  id?: T;
   title?: T;
   heroImage?: T;
   content?: T;
@@ -1644,7 +1645,7 @@ export interface LinkField {
       } | null)
     | ({
         relationTo: 'posts';
-        value: number | Post;
+        value: string | Post;
       } | null);
   url?: string | null;
   newTab?: boolean | null;
@@ -1772,7 +1773,7 @@ export interface TaskSchedulePublish {
         } | null)
       | ({
           relationTo: 'posts';
-          value: number | Post;
+          value: string | Post;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

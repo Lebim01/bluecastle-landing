@@ -62,7 +62,7 @@ export const linkField = (opts?: { label?: string }): Field => ({
       name: 'utm',
       label: 'UTM (opcional)',
       type: 'text',
-      admin: { placeholder: 'utm_source=nav&utm_medium=header' },
+      admin: { placeholder: 'utm_source=nav&utm_medium=header', hidden: true },
     },
   ],
 })

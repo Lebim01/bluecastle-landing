@@ -4,6 +4,7 @@ import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   MetaDescriptionField,
@@ -56,6 +57,16 @@ export const Posts: CollectionConfig<'posts'> = {
     useAsTitle: 'title',
   },
   fields: [
+    {
+      name: 'id',
+      type: 'text',
+      defaultValue: () => uuidv4(),
+      admin: {
+        components: {
+          Field: undefined,
+        },
+      },
+    },
     {
       name: 'title',
       type: 'text',
