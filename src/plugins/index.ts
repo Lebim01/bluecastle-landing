@@ -71,7 +71,6 @@ export const plugins: Plugin[] = [
     },
     bucket: process.env.GCS_BUCKET!,
     options: {
-      apiEndpoint: process.env.GCS_ENDPOINT!,
       projectId: process.env.GCS_PROJECT_ID!,
       credentials: {
         client_email: process.env.GCS_CLIENT_EMAIL!,
