@@ -32,26 +32,6 @@ export default function HeaderClient({ data }: { data: Header }) {
                   )
                 }
 
-                /**
-                 * <div key={i} className="relative group">
-                      <button className="px-3 py-2">{item.link?.label}</button>
-                      <div className="absolute left-0 mt-2 hidden group-hover:block min-w-56 rounded-md border bg-white shadow">
-                        <ul className="py-2">
-                          {(item.children ?? []).map((c, j) => (
-                            <li key={j}>
-                              <Link
-                                href={resolveHref(c.link)}
-                                className="block px-4 py-2 hover:bg-gray-50"
-                              >
-                                {c.link?.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                 */
-
                 if (item.style === 'dropdown') {
                   return (
                     <Menu as="div" className="relative inline-block" key={i}>

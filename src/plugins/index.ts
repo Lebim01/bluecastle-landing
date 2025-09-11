@@ -55,7 +55,7 @@ export const plugins: Plugin[] = [
     generateURL,
   }),
   searchPlugin({
-    collections: ['posts'],
+    collections: ['posts', 'pages'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       fields: ({ defaultFields }) => {
