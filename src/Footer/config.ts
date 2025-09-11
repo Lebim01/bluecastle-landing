@@ -9,14 +9,27 @@ export const Footer: GlobalConfig = {
     {
       name: 'brand',
       type: 'group',
+
       label: 'Brand',
       fields: [
         {
           name: 'name',
           type: 'text',
           label: 'Brand name',
-          required: true,
+          required: false,
           defaultValue: 'BLUE CASTLE',
+        },
+        {
+          name: 'logo',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Logo (optional)',
+        },
+        {
+          name: 'logoAlt',
+          type: 'text',
+          label: 'Logo alt text',
+          defaultValue: 'Brand logo',
         },
         {
           name: 'social',

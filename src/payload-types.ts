@@ -1646,8 +1646,10 @@ export interface LinkField {
  */
 export interface Footer {
   id: number;
-  brand: {
-    name: string;
+  brand?: {
+    name?: string | null;
+    logo?: (number | null) | Media;
+    logoAlt?: string | null;
     social?: {
       facebook?: string | null;
       twitter?: string | null;
@@ -1772,6 +1774,8 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         name?: T;
+        logo?: T;
+        logoAlt?: T;
         social?:
           | T
           | {
