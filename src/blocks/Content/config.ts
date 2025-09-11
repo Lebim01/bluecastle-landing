@@ -1,21 +1,8 @@
 import type { Block, Field } from 'payload'
 import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
-
-const RT = () =>
-  lexicalEditor({
-    features: ({ rootFeatures }) => [
-      ...rootFeatures,
-      HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-      FixedToolbarFeature(),
-      InlineToolbarFeature(),
-    ],
-  })
 
 const when =
   (pred: (p: any) => boolean) =>
@@ -39,8 +26,8 @@ const columnFields: Field[] = [
   {
     name: 'richText',
     type: 'richText',
-    editor: RT(),
-    label: false,
+    label: 'Content',
+    localized: true,
   },
   {
     name: 'enableLink',
@@ -193,8 +180,9 @@ const columnFields: Field[] = [
           {
             name: 'content',
             type: 'richText',
-            editor: RT(),
+            label: 'Content',
             required: true,
+            localized: true,
           },
           {
             name: 'align',
