@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import RichText from '@/components/RichText'
 import type { Page } from '@/payload-types'
 import { getHrefFromLink } from '@/components/ui/link-utils'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 type ContentLayoutBlock = Extract<
   NonNullable<Page['layout']>[number],
@@ -132,9 +133,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                       : undefined;
 
                   // src de la bg image
-                  const urlFromUpload =
-                    typeof bgImage?.image === 'object' && bgImage?.image?.url ? bgImage.image.url : undefined
-                  const bgSrc = bgImage?.externalUrl || urlFromUpload
+                  const bgSrc = getMediaUrl(bgImage)
                   const imgOpacity =
                     typeof bgImage?.opacity === 'number'
                       ? Math.max(0, Math.min(100, bgImage.opacity)) / 100
@@ -196,9 +195,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                               const aspect = aspectMap[el?.aspect ?? '16/9']
                               const fit = fitMap[el?.objectFit ?? 'cover']
                               const shadow = el?.shadow ? 'shadow-md' : ''
-                              const urlFromUpload =
-                                typeof el?.media === 'object' && el?.media?.url ? el.media.url : undefined
-                              const src = el?.externalUrl || urlFromUpload
+                              const src = getMediaUrl(el?.media)
                               const isVideo =
                                 el?.media?.mimeType?.startsWith?.('video') ||
                                 (typeof src === 'string' && /\.(mp4|webm|ogg)(\?|#|$)/i.test(src))

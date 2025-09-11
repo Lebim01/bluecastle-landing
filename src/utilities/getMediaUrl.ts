@@ -1,3 +1,4 @@
+import { Media } from '@/payload-types'
 import { getClientSideURL } from '@/utilities/getURL'
 
 /**
@@ -6,15 +7,16 @@ import { getClientSideURL } from '@/utilities/getURL'
  * @param cacheTag Optional cache tag to append to the URL
  * @returns Properly formatted URL with cache tag if provided
  */
-export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | null): string => {
-  if (!url) return ''
+export const getMediaUrl = (media: Media, cacheTag?: string | null, fromDirectStorage = true): string => {
+  if (!media.url) return ''
 
-  // Check if URL already has http/https protocol
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    return cacheTag ? `${url}?${cacheTag}` : url
+  if (fromDirectStorage) {
+    return cacheTag
+      ? `${process.env.NEXT_PUBLIC_STORAGE_URL}${media.filename}?${cacheTag}`
+      : `${process.env.NEXT_PUBLIC_STORAGE_URL}${media.filename}`
   }
 
   // Otherwise prepend client-side URL
   const baseUrl = getClientSideURL()
-  return cacheTag ? `${baseUrl}${url}?${cacheTag}` : `${baseUrl}${url}`
+  return cacheTag ? `${baseUrl}${media.url}?${cacheTag}` : `${baseUrl}${media.url}`
 }

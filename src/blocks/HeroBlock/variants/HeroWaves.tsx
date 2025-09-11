@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { Media, Page } from "@/payload-types";
 import MovingWaves from "@/components/Waves/Waves";
+import { getMediaUrl } from "@/utilities/getMediaUrl";
 
 
 export type WavesProps = Extract<Page["layout"][number], { blockType: "heroBlock" }> & {
@@ -12,14 +13,6 @@ export type WavesProps = Extract<Page["layout"][number], { blockType: "heroBlock
         heightVH?: number | null;
     } | null;
 };
-
-function mediaUrl(m: number | Media | null | undefined): string {
-    console.log(m)
-    if (!m) return "";
-    if (typeof m === "number") return "";
-    if (m.filename) return `${process.env.NEXT_PUBLIC_STORAGE_URL}${m.filename}`
-    return m.url ?? m?.sizes?.thumbnail?.url ?? "";
-}
 
 const HeroWaves: React.FC<WavesProps> = (props) => {
     const { title, subcopy, cta, disclaimer, logo, waves } = props as any;
@@ -48,7 +41,7 @@ const HeroWaves: React.FC<WavesProps> = (props) => {
 
                 <div className="relative z-10 flex flex-col items-center gap-4 px-4 text-white text-center">
                     {logo ? (
-                        <img src={mediaUrl(logo as any)} alt="logo" className="w-full max-w-xs md:max-w-md opacity-90" />
+                        <img src={getMediaUrl(logo as any)} alt="logo" className="w-full max-w-xs md:max-w-md opacity-90" />
                     ) : null}
 
                     {title ? (

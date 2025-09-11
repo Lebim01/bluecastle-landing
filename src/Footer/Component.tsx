@@ -3,6 +3,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CMSLink } from '@/components/LinkFooter'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export default async function Footer() {
   const fetchFooter = getCachedGlobal('footer', 1)
@@ -38,8 +39,8 @@ export default async function Footer() {
             {(showLogo || showBrand) ? (
               <Link href="/" className="flex items-center gap-2">
                 {showLogo && logo?.url && (
-                  <Image
-                    src={logo!.url}
+                  <img
+                    src={getMediaUrl(logo)}
                     alt={logoAlt}
                     width={logo?.width ?? 120}
                     height={logo?.height ?? 40}

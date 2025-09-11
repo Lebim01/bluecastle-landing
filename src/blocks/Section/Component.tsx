@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Media, SectionBlock } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ')
@@ -38,12 +39,6 @@ const backgroundClass = (b?: string) =>
   (b === 'dark' && 'bg-neutral-900 text-white') ||
   ''
 
-const mediaUrl = (m?: string | number | Media | null) => {
-  if (!m || typeof m === 'string' || typeof m === 'number') return undefined
-  if (m.filename) return `${process.env.NEXT_PUBLIC_STORAGE_URL}${m.filename}`
-  return m.url ?? undefined
-}
-
 export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
   const {
     id,
@@ -57,12 +52,10 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
     imageOverlay,
     video,
     content,
-  } = props as SectionBlock & {
-    video?: any
-  }
+  } = props as SectionBlock
 
   const posterUrl =
-    (video?.poster && mediaUrl(video.poster as any)) || (bgImage && mediaUrl(bgImage as any))
+    (video?.poster && getMediaUrl(video.poster as any)) || (bgImage && getMediaUrl(bgImage as any))
 
 
   const isMediaBg = background === 'image' || background === 'video'
@@ -88,7 +81,7 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
           aria-hidden
           className="absolute inset-0 -z-10 bg-cover bg-center"
           style={{
-            backgroundImage: bgImage ? `url(${mediaUrl(bgImage as any)})` : undefined,
+            backgroundImage: bgImage ? `url(${getMediaUrl(bgImage as any)})` : undefined,
           }}
         />
       )}
@@ -114,7 +107,6 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
 
       {background === 'video' && (
         <>
-
           <video
             className={cx(
               'absolute inset-0 -z-10 h-full w-full',
@@ -126,12 +118,12 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
             loop={!!video?.loop}
             playsInline={!!video?.playsInline}
             preload="auto"
-            poster={posterUrl}
+            poster={posterUrl as string}
           >
             {video?.sourceType === 'external' ? (
               <source src={video?.url || ''} />
             ) : (
-              <source src={mediaUrl(video?.file as any)} />
+              <source src={getMediaUrl(video?.file as Media)} />
             )}
           </video>
           {(video?.disableOnMobile || posterUrl) && (
