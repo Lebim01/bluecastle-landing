@@ -91,18 +91,6 @@ export default function HeaderClient({ data }: { data: Header }) {
                   </div>
                 )
               })}
-
-              {data?.cta?.show && (
-                <Link
-                  href={resolveHref((data.cta as any)?.link ?? { type: 'external', url: '#' })}
-                  className={`ml-2 inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm ${data.cta.variant === 'outline' ? 'border' : 'bg-black text-white hover:opacity-90'
-                    }`}
-                >
-                  {data.cta.badge && (
-                    <span className="rounded bg-gray-900/10 px-2">{data.cta.badge}</span>
-                  )}
-                </Link>
-              )}
             </nav>
           </div>
 
