@@ -11,6 +11,7 @@ type CarouselProps = Extract<Page["layout"][number], { blockType: "carousel" }> 
 function mediaUrl(m: number | Media | null | undefined): string {
     if (!m) return "";
     if (typeof m === "number") return "";
+    if (m.filename) return `${process.env.NEXT_PUBLIC_STORAGE_URL}${m.filename}`
     return m.url ?? m?.sizes?.thumbnail?.url ?? "";
 }
 

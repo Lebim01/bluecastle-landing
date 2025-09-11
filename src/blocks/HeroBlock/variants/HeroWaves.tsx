@@ -14,8 +14,10 @@ export type WavesProps = Extract<Page["layout"][number], { blockType: "heroBlock
 };
 
 function mediaUrl(m: number | Media | null | undefined): string {
+    console.log(m)
     if (!m) return "";
     if (typeof m === "number") return "";
+    if (m.filename) return `${process.env.NEXT_PUBLIC_STORAGE_URL}${m.filename}`
     return m.url ?? m?.sizes?.thumbnail?.url ?? "";
 }
 

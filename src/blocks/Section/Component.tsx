@@ -40,6 +40,7 @@ const backgroundClass = (b?: string) =>
 
 const mediaUrl = (m?: string | number | Media | null) => {
   if (!m || typeof m === 'string' || typeof m === 'number') return undefined
+  if (m.filename) return `${process.env.NEXT_PUBLIC_STORAGE_URL}${m.filename}`
   return m.url ?? undefined
 }
 
