@@ -6,17 +6,28 @@ import {
   lexicalEditor,
   type LinkFields,
 } from '@payloadcms/richtext-lexical'
-import { BgColorFeature, HighlightColorFeature, TextColorFeature } from 'payloadcms-lexical-ext';
+import { BgColorFeature, HighlightColorFeature, } from 'payloadcms-lexical-ext';
+import {
+  TextColorFeature,
+  TextSizeFeature,
+  TextLetterSpacingFeature,
+  TextLineHeightFeature,
+  TextFontFamilyFeature,
+} from "payload-lexical-typography";
 
 export const defaultLexical = lexicalEditor({
   features: ({ defaultFeatures }) => [
     ...defaultFeatures,
-    BgColorFeature(),
-    HighlightColorFeature(),
+    //BgColorFeature(),
+    //HighlightColorFeature(),
     TextColorFeature(),
     FixedToolbarFeature(),
     InlineToolbarFeature(),
-    LinkFeature({
+    TextFontFamilyFeature(),
+    TextLineHeightFeature(),
+    TextLetterSpacingFeature(),
+    TextSizeFeature(),
+    /*LinkFeature({
       enabledCollections: ['pages', 'posts'],
       fields: ({ defaultFields }) => {
         const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
@@ -43,6 +54,6 @@ export const defaultLexical = lexicalEditor({
           },
         ]
       },
-    }),
+    }),*/
   ],
 })

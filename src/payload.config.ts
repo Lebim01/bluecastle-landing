@@ -83,7 +83,6 @@ export default buildConfig({
   globals: [Header, Footer],
   plugins: [
     ...plugins,
-    // storage-adapter-placeholder
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
