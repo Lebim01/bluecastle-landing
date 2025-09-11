@@ -12,6 +12,16 @@
  */
 export type HeaderLogoSize = ('sm' | 'md' | 'lg' | 'xl') | null;
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterNavItems".
+ */
+export type FooterNavItems =
+  | {
+      link: FooterNavItem;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -168,25 +178,7 @@ export interface Page {
     } | null;
     links?:
       | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
-          };
+          link: FooterNavItem;
           id?: string | null;
         }[]
       | null;
@@ -321,6 +313,29 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterNavItem".
+ */
+export interface FooterNavItem {
+  type?: ('reference' | 'custom') | null;
+  newTab?: boolean | null;
+  reference?:
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null);
+  url?: string | null;
+  label: string;
+  /**
+   * Choose how the link should be rendered.
+   */
+  appearance?: ('default' | 'outline') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -529,25 +544,7 @@ export interface CallToActionBlock {
   } | null;
   links?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
+        link: FooterNavItem;
         id?: string | null;
       }[]
     | null;
@@ -579,25 +576,7 @@ export interface ContentBlock {
           [k: string]: unknown;
         } | null;
         enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
+        link?: FooterNavItem;
         surface?: {
           bgColor?: ('transparent' | 'white' | 'black' | 'slate-50' | 'slate-100' | 'slate-900') | null;
           rounded?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
@@ -684,25 +663,7 @@ export interface ContentBlock {
                 }
               | {
                   label: string;
-                  link: {
-                    type?: ('reference' | 'custom') | null;
-                    newTab?: boolean | null;
-                    reference?:
-                      | ({
-                          relationTo: 'pages';
-                          value: number | Page;
-                        } | null)
-                      | ({
-                          relationTo: 'posts';
-                          value: number | Post;
-                        } | null);
-                    url?: string | null;
-                    label: string;
-                    /**
-                     * Choose how the link should be rendered.
-                     */
-                    appearance?: ('default' | 'outline') | null;
-                  };
+                  link: FooterNavItem;
                   variant?: ('primary' | 'secondary' | 'link') | null;
                   align?: ('start' | 'center' | 'end') | null;
                   fullWidth?: boolean | null;
@@ -1046,16 +1007,7 @@ export interface PagesSelect<T extends boolean = true> {
         links?:
           | T
           | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                    appearance?: T;
-                  };
+              link?: T | FooterNavItemSelect<T>;
               id?: T;
             };
         media?: T;
@@ -1189,6 +1141,18 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterNavItem_select".
+ */
+export interface FooterNavItemSelect<T extends boolean = true> {
+  type?: T;
+  newTab?: T;
+  reference?: T;
+  url?: T;
+  label?: T;
+  appearance?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
@@ -1196,16 +1160,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        link?: T | FooterNavItemSelect<T>;
         id?: T;
       };
   id?: T;
@@ -1222,16 +1177,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         size?: T;
         richText?: T;
         enableLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        link?: T | FooterNavItemSelect<T>;
         surface?:
           | T
           | {
@@ -1288,16 +1234,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
                 | T
                 | {
                     label?: T;
-                    link?:
-                      | T
-                      | {
-                          type?: T;
-                          newTab?: T;
-                          reference?: T;
-                          url?: T;
-                          label?: T;
-                          appearance?: T;
-                        };
+                    link?: T | FooterNavItemSelect<T>;
                     variant?: T;
                     align?: T;
                     fullWidth?: T;
@@ -1682,11 +1619,6 @@ export interface Header {
    * Agrega ítems de navegación. Usa "Dropdown" o "Mega menú" para menús anidados.
    */
   nav?: HeaderNavItem[] | null;
-  cta?: {
-    show?: boolean | null;
-    variant?: ('solid' | 'outline') | null;
-    badge?: string | null;
-  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1696,7 +1628,7 @@ export interface Header {
  */
 export interface HeaderNavItem {
   idKey?: string | null;
-  style?: ('link' | 'dropdown' | 'mega') | null;
+  style?: ('link' | 'dropdown') | null;
   visible?: boolean | null;
   link: LinkField;
   children?:
@@ -1725,7 +1657,6 @@ export interface HeaderNavItem {
       link: LinkField;
     };
   };
-  audience?: ('all' | 'guest' | 'user' | 'admin')[] | null;
   order?: number | null;
   id?: string | null;
   blockName?: string | null;
@@ -1759,26 +1690,7 @@ export interface LinkField {
  */
 export interface Footer {
   id: number;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  navItems?: FooterNavItems;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1802,13 +1714,6 @@ export interface HeaderSelect<T extends boolean = true> {
     | T
     | {
         navItem?: T | HeaderNavItemSelect<T>;
-      };
-  cta?:
-    | T
-    | {
-        show?: T;
-        variant?: T;
-        badge?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1853,7 +1758,6 @@ export interface HeaderNavItemSelect<T extends boolean = true> {
               link?: T | LinkFieldSelect<T>;
             };
       };
-  audience?: T;
   order?: T;
   id?: T;
   blockName?: T;
@@ -1875,23 +1779,18 @@ export interface LinkFieldSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
+  navItems?: T | FooterNavItemsSelect<T>;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterNavItems_select".
+ */
+export interface FooterNavItemsSelect<T extends boolean = true> {
+  link?: T | FooterNavItemSelect<T>;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -23,7 +23,7 @@ export const NavItem: Block = {
           options: [
             { label: 'Enlace simple', value: 'link' },
             { label: 'Dropdown', value: 'dropdown' },
-            { label: 'Mega menú', value: 'mega' },
+            //{ label: 'Mega menú', value: 'mega' },
           ],
           admin: { width: '33%' },
         },
@@ -90,21 +90,6 @@ export const NavItem: Block = {
           ],
         },
       ],
-    },
-
-    // Control de visibilidad por rol / etiqueta
-    {
-      name: 'audience',
-      label: 'Público objetivo (opcional)',
-      type: 'select',
-      hasMany: true,
-      options: [
-        { label: 'Todos', value: 'all' },
-        { label: 'Guests', value: 'guest' },
-        { label: 'Usuarios logueados', value: 'user' },
-        { label: 'Admins', value: 'admin' },
-      ],
-      defaultValue: ['all'],
     },
 
     // Orden

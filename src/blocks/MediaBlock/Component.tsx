@@ -14,7 +14,7 @@ type Props = MediaBlockProps & {
   className?: string
   enableGutter?: boolean
   imgClassName?: string
-  staticImage?: StaticImageData
+  staticImage?: string
   disableInnerContainer?: boolean
 }
 

@@ -3,21 +3,13 @@ import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Page, Post } from '@/payload-types'
+import type { FooterNavItem } from '@/payload-types'
 
-type CMSLinkType = {
-  appearance?: 'inline' | ButtonProps['variant']
+interface CMSLinkType extends FooterNavItem {
+
   children?: React.ReactNode
   className?: string
-  label?: string | null
-  newTab?: boolean | null
-  reference?: {
-    relationTo: 'pages' | 'posts'
-    value: Page | Post | string | number
-  } | null
   size?: ButtonProps['size'] | null
-  type?: 'custom' | 'reference' | null
-  url?: string | null
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -29,7 +21,6 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     label,
     newTab,
     reference,
-    size: sizeFromProps,
     url,
   } = props
 
@@ -41,7 +32,6 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   if (!href) return null
 
-  const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
   /* Ensure we don't break any styles set by richText */
@@ -55,7 +45,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   }
 
   return (
-    <Button asChild className={className} size={size} variant={appearance}>
+    <Button asChild className={className} size={"default"} variant={appearance}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
         {label && label}
         {children && children}

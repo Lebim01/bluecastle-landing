@@ -21,7 +21,7 @@ const Logo: FC<Props> = ({ branding }) => {
     <Link href="/" className="flex items-center gap-2 font-semibold">
       {/* LOGO */}
       {branding?.style !== 'text' &&
-      ((branding?.logoLight as Media)?.url || (branding?.logoDark as Media)?.url) ? (
+        ((branding?.logoLight as Media)?.url || (branding?.logoDark as Media)?.url) ? (
         <>
           {/* Modo claro */}
           {(branding?.logoLight as Media)?.url && (
@@ -38,7 +38,7 @@ const Logo: FC<Props> = ({ branding }) => {
             <img
               src={
                 ((branding?.logoDark as Media)?.url ??
-                  (branding?.logoLight as Media)?.url!) as string
+                  (branding?.logoLight as Media)?.url) || ""
               }
               alt={alt}
               className={`${logoH} w-auto hidden dark:block`}

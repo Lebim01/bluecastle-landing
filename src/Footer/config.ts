@@ -10,6 +10,7 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      interfaceName: 'FooterNavItems',
       name: 'navItems',
       type: 'array',
       fields: [

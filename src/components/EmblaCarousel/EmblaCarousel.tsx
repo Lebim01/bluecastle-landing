@@ -1,5 +1,5 @@
 import { DEFAULT_EMBLA_OPTS, EmblaSlide } from "@/blocks/TestimonialsBlock/Component"
-import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel'
+import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from "embla-carousel-react"
 
 import { usePrevNextButtons } from "@/hooks/useArrowsButton";

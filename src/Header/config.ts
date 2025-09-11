@@ -96,32 +96,5 @@ export const Header: GlobalConfig = {
           'Agrega ítems de navegación. Usa "Dropdown" o "Mega menú" para menús anidados.',
       },
     },
-    {
-      name: 'cta',
-      label: 'CTA del header (opcional)',
-      type: 'group',
-      fields: [
-        { name: 'show', type: 'checkbox', label: 'Mostrar', defaultValue: false },
-        { name: 'variant', type: 'select', options: ['solid', 'outline'], defaultValue: 'solid' },
-        { name: 'badge', type: 'text', admin: { placeholder: 'Nuevo, -20%, etc.' } },
-        // Reusa el linkField para la acción
-        {
-          type: 'tabs',
-          tabs: [
-            {
-              label: 'Enlace',
-              fields: [
-                /* inline to avoid circular import */
-              ],
-            },
-          ],
-        },
-      ],
-      admin: {
-        components: {
-          // Si no quieres reusar linkField aquí, puedes duplicar campos breves
-        },
-      },
-    },
-  ],
+  ]
 }

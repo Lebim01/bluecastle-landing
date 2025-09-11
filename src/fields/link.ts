@@ -23,6 +23,7 @@ type LinkType = (options?: {
 
 export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
   const linkResult: GroupField = {
+    interfaceName: 'FooterNavItem',
     name: 'link',
     type: 'group',
     admin: {
