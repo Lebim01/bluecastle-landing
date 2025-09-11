@@ -50,7 +50,7 @@ export default function HeaderClient({ data }: { data: Header }) {
 
   return (
     <header className={`w-full border-b  ${data.sticky ? 'sticky top-0 z-50 backdrop-blur' : ''}`}>
-      <div className="mx-auto max-w-7xl h-auto md:h-32 px-4 py-3 flex items-center gap-6">
+      <div className="mx-auto max-w-7xl h-auto px-4 py-3 flex items-center gap-6">
         <div className='flex justify-between w-full'>
           <div className='flex gap-4 md:gap-8 items-center'>
             {/* Botón hamburguesa móvil */}
