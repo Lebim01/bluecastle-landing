@@ -43,6 +43,7 @@ export const sectionStyleFields: Field[] = [
       { label: 'Brand', value: 'brand' },
       { label: 'Dark', value: 'dark' },
       { label: 'Imagen', value: 'image' },
+      { label: 'Imagen (URL)', value: 'imageUrl' },
       { label: 'Video', value: 'video' },
     ],
     defaultValue: 'default',
@@ -52,6 +53,29 @@ export const sectionStyleFields: Field[] = [
     type: 'upload',
     relationTo: 'media',
     admin: { condition: (_, s) => s?.background === 'image' },
+  },
+  {
+    name: 'bgImageUrl',
+    type: 'text',
+    label: 'URL de imagen (PNG/JPG/WebP)',
+    admin: { condition: (_, s) => s?.background === 'imageUrl' },
+  },
+  {
+    name: 'imageOverlay',
+    type: 'group',
+    label: 'Overlay para imagen',
+    admin: { condition: (_, s) => ['image', 'imageUrl'].includes(s?.background) },
+    fields: [
+      { name: 'show', type: 'checkbox', label: 'Mostrar overlay', defaultValue: false },
+      { name: 'color', type: 'text', label: 'Color (hex)', defaultValue: '#000000' },
+      {
+        name: 'opacity',
+        type: 'number',
+        label: 'Opacidad (0–1)',
+        defaultValue: 0.35,
+        admin: { step: 0.05 },
+      },
+    ],
   },
   {
     name: 'video',

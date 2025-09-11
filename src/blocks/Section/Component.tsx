@@ -52,6 +52,8 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
     customHeight,
     background,
     bgImage,
+    bgImageUrl,
+    imageOverlay,
     video,
     content,
   } = props as SectionBlock & {
@@ -86,6 +88,25 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
           className="absolute inset-0 -z-10 bg-cover bg-center"
           style={{
             backgroundImage: bgImage ? `url(${mediaUrl(bgImage as any)})` : undefined,
+          }}
+        />
+      )}
+
+      {background === 'imageUrl' && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-cover bg-center"
+          style={{ backgroundImage: bgImageUrl ? `url(${bgImageUrl})` : undefined }}
+        />
+      )}
+
+      {['image', 'imageUrl'].includes(background || '') && imageOverlay?.show && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundColor: imageOverlay?.color || '#000',
+            opacity: typeof imageOverlay?.opacity === 'number' ? imageOverlay.opacity : 0.35,
           }}
         />
       )}

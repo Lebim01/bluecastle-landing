@@ -772,8 +772,14 @@ export interface SectionBlock {
   paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
   height?: ('auto' | 'half' | 'screen' | 'custom') | null;
   customHeight?: number | null;
-  background?: ('default' | 'muted' | 'brand' | 'dark' | 'image' | 'video') | null;
+  background?: ('default' | 'muted' | 'brand' | 'dark' | 'image' | 'imageUrl' | 'video') | null;
   bgImage?: (number | null) | Media;
+  bgImageUrl?: string | null;
+  imageOverlay?: {
+    show?: boolean | null;
+    color?: string | null;
+    opacity?: number | null;
+  };
   video?: {
     sourceType?: ('upload' | 'external') | null;
     file?: (number | null) | Media;
@@ -1338,6 +1344,14 @@ export interface SectionBlockSelect<T extends boolean = true> {
   customHeight?: T;
   background?: T;
   bgImage?: T;
+  bgImageUrl?: T;
+  imageOverlay?:
+    | T
+    | {
+        show?: T;
+        color?: T;
+        opacity?: T;
+      };
   video?:
     | T
     | {

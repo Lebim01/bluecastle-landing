@@ -40,7 +40,7 @@ export const FAQBlock: React.FC<Props> = ({ title, items, className }) => {
         <section className={`w-full flex flex-col items-center gap-8 py-12 ${className ?? ''}`}>
             <h2 className="text-3xl font-semibold tracking-tight">{title || 'FAQ'}</h2>
 
-            <div className="w-full max-w-4xl rounded-2xl border border-gray-200 shadow-sm bg-white/80 backdrop-blur">
+            <div className="w-full max-w-7xl rounded-2xl border border-gray-200 shadow-sm bg-white/80 backdrop-blur">
                 <ul className="divide-y divide-gray-200">
                     {faqs.map(faq => (
                         <li key={faq.id} className="px-4 sm:px-6">

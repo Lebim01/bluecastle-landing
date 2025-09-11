@@ -187,7 +187,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                                     : 'text-left'
                               return (
                                 <div key={idx} className={`prose max-w-none ${align} data-[surface=dark]:prose-invert`}>
-                                  <RichText data={el.content} />
+                                  <RichText data={el.content} enableGutter={false} />
                                 </div>
                               )
                             }
