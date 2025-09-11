@@ -91,13 +91,5 @@ export const NavItem: Block = {
         },
       ],
     },
-
-    // Orden
-    {
-      name: 'order',
-      label: 'Orden',
-      type: 'number',
-      defaultValue: 0,
-    },
   ],
 }

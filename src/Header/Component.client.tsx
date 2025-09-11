@@ -4,13 +4,15 @@ import { resolveHref } from '@/utilities/resolveLink'
 import Link from 'next/link'
 import Logo from './Logo'
 
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDown } from 'lucide-react'
+
 export default function HeaderClient({ data }: { data: Header }) {
   const branding: Header['branding'] =
     data.branding ?? ({ style: 'wordmark', size: 'md' } as Header['branding'])
 
   const nav = [...(data.nav ?? [])]
     .filter((n) => n.visible !== false)
-    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 
   return (
     <header className={`w-full border-b  ${data.sticky ? 'sticky top-0 z-50 backdrop-blur' : ''}`}>
@@ -30,9 +32,8 @@ export default function HeaderClient({ data }: { data: Header }) {
                   )
                 }
 
-                if (item.style === 'dropdown') {
-                  return (
-                    <div key={i} className="relative group">
+                /**
+                 * <div key={i} className="relative group">
                       <button className="px-3 py-2">{item.link?.label}</button>
                       <div className="absolute left-0 mt-2 hidden group-hover:block min-w-56 rounded-md border bg-white shadow">
                         <ul className="py-2">
@@ -49,6 +50,37 @@ export default function HeaderClient({ data }: { data: Header }) {
                         </ul>
                       </div>
                     </div>
+                 */
+
+                if (item.style === 'dropdown') {
+                  return (
+                    <Menu as="div" className="relative inline-block" key={i}>
+                      <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold">
+                        {item.link?.label}
+                        <ChevronDown aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
+                      </MenuButton>
+
+                      <MenuItems
+                        anchor="bottom"
+                        transition
+                        className="absolute right-0 z-[100] mt-1 w-56 origin-top-right rounded-md bg-gray-100 outline-1 -outline-offset-1 outline-gray-200 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in shadow-md"
+                      >
+                        <div className="p-1">
+                          {(item.children ?? []).map((c, j) => (
+                            <MenuItem key={j}>
+                              <Link
+                                href={resolveHref(c.link)}
+                                className="block px-4 py-2 text-sm data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden hover:bg-white"
+                              >
+                                {c.link?.label}
+                              </Link>
+                            </MenuItem>
+                          ))}
+                        </div>
+                      </MenuItems>
+                    </Menu>
+
+
                   )
                 }
 

@@ -1657,7 +1657,6 @@ export interface HeaderNavItem {
       link: LinkField;
     };
   };
-  order?: number | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'navItem';
@@ -1758,7 +1757,6 @@ export interface HeaderNavItemSelect<T extends boolean = true> {
               link?: T | LinkFieldSelect<T>;
             };
       };
-  order?: T;
   id?: T;
   blockName?: T;
 }
