@@ -1,7 +1,4 @@
 import type { Block, Field } from 'payload'
-import {
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
 
 const when =

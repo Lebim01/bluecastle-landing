@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
+import RichText from '@/components/RichText'
 import type { Page } from '@/payload-types'
-import { RichText } from '@payloadcms/richtext-lexical/react'
 import { getHrefFromLink } from '@/components/ui/link-utils'
 
 type ContentLayoutBlock = Extract<
