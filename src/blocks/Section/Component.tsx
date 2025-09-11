@@ -15,7 +15,7 @@ const containerClass = (c?: string) =>
       c === 'md' && 'max-w-screen-md px-4',
       (c === 'lg' || !c) && 'max-w-screen-lg px-6',
       c === 'xl' && 'max-w-screen-xl px-6',
-      c === '2xl' && 'max-w-screen-2xl px-6'
+      c === '2xl' && 'max-w-screen-2xl px-4 xl:px-6'
     )
 
 const paddingYClass = (p?: string) =>

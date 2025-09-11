@@ -77,7 +77,7 @@ export const TestimonialsBlock: React.FC<Props> = ({
   }
 
   return (
-    <section className={`w-full py-16 flex flex-col items-center ${className ?? ''}`}>
+    <section className={`w-full overflow-hidden py-16 flex flex-col items-center ${className ?? ''}`}>
       {title && <h2 className="text-3xl font-semibold tracking-tight mb-8 text-center">{title}</h2>}
 
       {displayStyle === 'carousel' ? (
