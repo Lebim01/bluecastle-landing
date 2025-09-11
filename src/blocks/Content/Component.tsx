@@ -96,7 +96,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
 
   return (
     <section className={`w-full py-12 ${className ?? ''}`}>
-      <div className="mx-auto px-4 sm:px-6 lg:px-2">
+      <div className="mx-auto sm:px-6 lg:px-2">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {columns.map((col, i) => {
             const span = SIZE_TO_COL[col?.size ?? 'oneThird'] ?? 'lg:col-span-4'

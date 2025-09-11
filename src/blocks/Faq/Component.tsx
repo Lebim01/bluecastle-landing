@@ -37,7 +37,7 @@ export const FAQBlock: React.FC<Props> = ({ title, items, className }) => {
     }
 
     return (
-        <section className={`w-full flex flex-col items-center gap-8 py-12 ${className ?? ''}`}>
+        <section className={`w-full flex flex-col items-center px-4 xl:px-0 gap-8 py-12 ${className ?? ''}`}>
             <h2 className="text-3xl font-semibold tracking-tight">{title || 'FAQ'}</h2>
 
             <div className="w-full max-w-7xl rounded-2xl border border-gray-200 shadow-sm bg-white/80 backdrop-blur">
