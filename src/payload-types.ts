@@ -12,16 +12,6 @@
  */
 export type HeaderLogoSize = ('sm' | 'md' | 'lg' | 'xl') | null;
 /**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FooterNavItems".
- */
-export type FooterNavItems =
-  | {
-      link: FooterNavItem;
-      id?: string | null;
-    }[]
-  | null;
-/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1656,7 +1646,41 @@ export interface LinkField {
  */
 export interface Footer {
   id: number;
-  navItems?: FooterNavItems;
+  brand: {
+    name: string;
+    social?: {
+      facebook?: string | null;
+      twitter?: string | null;
+      instagram?: string | null;
+      whatsappPhone?: string | null;
+    };
+  };
+  columns?:
+    | {
+        title?: string | null;
+        items?:
+          | {
+              link: FooterNavItem;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  address?: string | null;
+  legalLeft?: string | null;
+  legalRight?: string | null;
+  ssl?: {
+    badge?: (number | null) | Media;
+    badgeAlt?: string | null;
+  };
+  developedBy: {
+    credit: FooterNavItem;
+  };
+  styles?: {
+    background?: string | null;
+    textColor?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1744,18 +1768,54 @@ export interface LinkFieldSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?: T | FooterNavItemsSelect<T>;
+  brand?:
+    | T
+    | {
+        name?: T;
+        social?:
+          | T
+          | {
+              facebook?: T;
+              twitter?: T;
+              instagram?: T;
+              whatsappPhone?: T;
+            };
+      };
+  columns?:
+    | T
+    | {
+        title?: T;
+        items?:
+          | T
+          | {
+              link?: T | FooterNavItemSelect<T>;
+              id?: T;
+            };
+        id?: T;
+      };
+  address?: T;
+  legalLeft?: T;
+  legalRight?: T;
+  ssl?:
+    | T
+    | {
+        badge?: T;
+        badgeAlt?: T;
+      };
+  developedBy?:
+    | T
+    | {
+        credit?: T | FooterNavItemSelect<T>;
+      };
+  styles?:
+    | T
+    | {
+        background?: T;
+        textColor?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FooterNavItems_select".
- */
-export interface FooterNavItemsSelect<T extends boolean = true> {
-  link?: T | FooterNavItemSelect<T>;
-  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
