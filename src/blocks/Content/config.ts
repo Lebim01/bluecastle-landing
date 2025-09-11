@@ -16,9 +16,9 @@ const columnFields: Field[] = [
     type: 'select',
     defaultValue: 'oneThird',
     options: [
-      { label: 'One Third', value: 'oneThird' },
-      { label: 'Half', value: 'half' },
-      { label: 'Two Thirds', value: 'twoThirds' },
+      { label: '1/3', value: 'oneThird' },
+      { label: '1/2', value: 'half' },
+      { label: '2/3', value: 'twoThirds' },
       { label: 'Full', value: 'full' },
     ],
   },
@@ -74,7 +74,7 @@ const columnFields: Field[] = [
     ],
   },
   {
-    name: 'bgImage',
+    name: 'Imagen de Fondo',
     type: 'group',
     fields: [
       { name: 'enabled', type: 'checkbox', defaultValue: false },
@@ -133,6 +133,7 @@ const columnFields: Field[] = [
     ],
   },
   {
+    label: 'Alto',
     name: 'height',
     type: 'select',
     defaultValue: 'auto',
@@ -143,7 +144,7 @@ const columnFields: Field[] = [
       { label: 'Grande (~480px)', value: 'lg' },
       { label: 'XL (~600px)', value: 'xl' },
       { label: 'Pantalla (100vh)', value: 'screen' },
-      { label: 'Pantalla Full', value: 'full' },
+      { label: 'Auto Full', value: 'full' },
       { label: 'Personalizada (px)', value: 'custom' },
     ],
   },
@@ -158,6 +159,7 @@ const columnFields: Field[] = [
 
   // — PADDING Y —
   {
+    label: 'Espaciado Vertical',
     name: 'paddingY',
     type: 'select',
     defaultValue: 'md',
@@ -170,6 +172,7 @@ const columnFields: Field[] = [
     ],
   },
   {
+    label: "Elementos",
     name: 'elements',
     type: 'blocks',
     admin: { initCollapsed: true },
@@ -201,18 +204,21 @@ const columnFields: Field[] = [
         labels: { singular: 'Media', plural: 'Medias' },
         fields: [
           {
+            label: 'Multimedia',
             name: 'media',
             type: 'upload',
             relationTo: 'media',
             required: false,
           },
           {
+            label: 'Link externo',
             name: 'externalUrl',
             type: 'text',
             required: false,
             admin: { description: 'URL directa de imagen o video (opcional)' },
           },
           {
+            label: 'Redondeado',
             name: 'rounded',
             type: 'select',
             defaultValue: '2xl',
@@ -237,6 +243,7 @@ const columnFields: Field[] = [
             ],
           },
           {
+            label: 'Ajustar',
             name: 'objectFit',
             type: 'select',
             defaultValue: 'cover',
@@ -246,6 +253,7 @@ const columnFields: Field[] = [
             ],
           },
           {
+            label: 'Sombra',
             name: 'shadow',
             type: 'checkbox',
             defaultValue: true,

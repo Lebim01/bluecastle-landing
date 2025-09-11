@@ -603,7 +603,7 @@ export interface ContentBlock {
           rounded?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
           shadow?: boolean | null;
         };
-        bgImage?: {
+        'Imagen de Fondo'?: {
           enabled?: boolean | null;
           image?: (number | null) | Media;
           /**
@@ -1233,7 +1233,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               rounded?: T;
               shadow?: T;
             };
-        bgImage?:
+        'Imagen de Fondo'?:
           | T
           | {
               enabled?: T;
