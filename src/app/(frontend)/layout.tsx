@@ -37,11 +37,33 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   )
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/site-settings?depth=1`, {
+    cache: 'no-store',
+  })
+  const site = await res.json()
+
+  const faviconUrl =
+    site?.favicon && typeof site.favicon === 'object' ? site.favicon.url : '/favicon.ico'
+
+  return {
+    title: site?.defaultTitle || 'Blue Castle',
+    metadataBase: new URL(getServerSideURL()),
+    openGraph: {
+      ...mergeOpenGraph(),
+      images: site?.defaultOgImage && typeof site.defaultOgImage === 'object'
+        ? [site.defaultOgImage.url]
+        : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      creator: '@payloadcms',
+    },
+    icons: {
+      icon: [
+        { url: faviconUrl, sizes: '32x32' },
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+      ],
+    },
+  }
 }
