@@ -23,6 +23,7 @@ import Carousel from '@/blocks/Carousel/config'
 import HeroBlock from '@/blocks/HeroBlock/config'
 import { FAQBlock } from '@/blocks/Faq/config'
 import { TestimonialsBlock } from '@/blocks/TestimonialsBlock/config'
+import { TradingViewBlock } from '@/blocks/TradingViewBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -80,7 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 if (isDefault && !val) return 'Requerido en el idioma por defecto'
                 return true
               },
-              blocks: [CallToAction, Content, MediaBlock, Archive, Section, Carousel, HeroBlock, FAQBlock, TestimonialsBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, Section, Carousel, HeroBlock, FAQBlock, TestimonialsBlock, TradingViewBlock],
               required: true,
               admin: {
                 initCollapsed: true,

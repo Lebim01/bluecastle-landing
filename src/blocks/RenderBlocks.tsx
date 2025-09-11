@@ -10,6 +10,7 @@ import CarouselBlockComponent from '@/blocks/Carousel/Component'
 import HeroBlockComponent from '@/blocks/HeroBlock/Component'
 import { FAQBlock } from './Faq/Component'
 import { TestimonialsBlock } from './TestimonialsBlock/Component'
+import { TradingViewBlock } from './TradingViewBlock/Component'
 
 
 const blockComponents = {
@@ -21,7 +22,8 @@ const blockComponents = {
   carousel: CarouselBlockComponent,
   heroBlock: HeroBlockComponent,
   faq: FAQBlock,
-  testimonials: TestimonialsBlock
+  testimonials: TestimonialsBlock,
+  tradingView: TradingViewBlock
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

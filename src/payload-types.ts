@@ -263,6 +263,17 @@ export interface Page {
         blockName?: string | null;
         blockType: 'testimonials';
       }
+    | {
+        /**
+         * Pega el bloque completo que te da TradingView (incluye <script> y el contenedor).
+         */
+        embedHtml: string;
+        height?: number | null;
+        fullWidth?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'tradingView';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1078,6 +1089,15 @@ export interface PagesSelect<T extends boolean = true> {
                     avatarUrl?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        tradingView?:
+          | T
+          | {
+              embedHtml?: T;
+              height?: T;
+              fullWidth?: T;
               id?: T;
               blockName?: T;
             };
