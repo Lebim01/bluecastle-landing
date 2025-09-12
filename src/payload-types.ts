@@ -273,6 +273,11 @@ export interface Page {
         blockName?: string | null;
         blockType: 'tradingView';
       }
+    | {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'calculator';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1097,6 +1102,12 @@ export interface PagesSelect<T extends boolean = true> {
               embedHtml?: T;
               height?: T;
               fullWidth?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calculator?:
+          | T
+          | {
               id?: T;
               blockName?: T;
             };

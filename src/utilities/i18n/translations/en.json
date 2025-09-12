@@ -1,0 +1,944 @@
+{
+  "login": "Login",
+  "logout": "Logout",
+  "forgot_password": "Forgot password?",
+  "errors_invalid_credentials": "Incorrect username and/or password",
+  "errors_confirm_email": "Email does not match",
+  "errors_confirm_password": "Password does not match",
+  "errors_network": "Something went wrong, try later",
+  "errors_user_exists": "User already exists",
+  "logged_as": "Logged as:",
+  "menu": {
+    "dashboard": "Dashboard",
+    "indicators": "Indicators",
+    "my_team": "Clients",
+    "unilevel": "Unilevel",
+    "binary": "Binary",
+    "academy": "Academy",
+    "live_sessions": "Live Sessions",
+    "past_sessions": "Past Sessions",
+    "investments": "Portfolio",
+    "invest": "Add value",
+    "my_investments": "My Portafolio",
+    "buys": "Plans",
+    "buy_membership": "Acquire a plan",
+    "my_buys": "My Plans",
+    "help": "Help",
+    "withdrawals": "Wallet",
+    "signals": "Signals",
+    "tools": "Tools",
+    "profile": "Profile",
+    "exit": "Exit",
+    "ranks": "Ranks"
+  },
+  "dashboard_view": {
+    "banner_membership": {
+      "title": "You have your membership",
+      "description": "You already have your membership! You can go to your academy to browse the courses!"
+    },
+    "banner_nft": {
+      "title": "You have an NFT",
+      "get_button": "Reclaim",
+      "connnect_button": "Connect wallet",
+      "need_install_metamask": "You need install metamask",
+      "need_connect": "Connect to your wallet first",
+      "wallet_denied": "Wallet denied",
+      "success_get": "Successfully obtained"
+    },
+    "banner_promotional": {
+      "promotional_bonus": "PROMOTIONAL BONUS",
+      "dubai_travel": "DUBAI TRAVEL",
+      "requirement_rank": "Requirement Rank",
+      "progress": "Progress"
+    },
+    "binance_bot": {
+      "get_bot": "Get your bot",
+      "get_button": "Connect bot"
+    },
+    "join_to_our_channel": "Join to our channel",
+    "banner_upgrade": {
+      "membership": "Membership",
+      "upgrade_your_membership": "Upgrade your membership to",
+      "upgrade": "Upgrade"
+    },
+    "banner_referral": {
+      "referral_link": "Referral link",
+      "left": "LEFT",
+      "right": "RIGHT",
+      "choose_the_placement": "Choose the placement",
+      "we_will": "We will place the guest who registers on your",
+      "side": "side",
+      "copy": "COPY"
+    },
+    "portfolio_banner": {
+      "portfolio": "Portfolio",
+      "add_value_up_to": "Add value up to"
+    },
+    "compound_interest_banner": {
+      "compound_interest": "Compound Interest",
+      "you_can_now": "You can now activate compound.",
+      "activate": "Activate",
+      "you_already_have": "You already have compound actived."
+    },
+    "multiplier_banner": {
+      "multiplier": "Multiplier",
+      "up_to": "Up to",
+      "portfolio": "Portfolio",
+      "membership": "Membership"
+    },
+    "rank_banner": {
+      "current_rank": "Current Rank",
+      "classified": "CLASSIFIED",
+      "rank": "RANK",
+      "left_points": "Left Points",
+      "right_points": "Right Points",
+      "shorter_leg": "Shorter Leg",
+      "next_rank": "Next Rank"
+    },
+    "finance": {
+      "earnings": "Earnings",
+      "total_deposits": "Total Deposits",
+      "cash_balance": "Cash Balance",
+      "total": "Total",
+      "history": "History",
+      "available": "Available",
+      "watch_individually": "Watch individually",
+      "projections_warning": "All projections are expected, not secured profits",
+      "become_agent": "Become an agent",
+      "click_here_to_start": "Click here to start.",
+      "next_payments": "Next Payments",
+      "of_month": "of month",
+      "no_movements": "No movements"
+    },
+    "indicators": {
+      "agents_dashboard": "Agents Dashboard",
+      "overall": "Overall",
+      "bonus_unilevel": "Bonus Unilevel",
+      "bonus_residual": "Bonus Residual",
+      "accumulated": "Accumulated",
+      "months": {
+        "jan": "Jan",
+        "feb": "Feb",
+        "mar": "Mar",
+        "apr": "Apr",
+        "may": "May",
+        "jun": "Jun",
+        "jul": "Jul",
+        "aug": "Aug",
+        "sep": "Sep",
+        "oct": "Oct",
+        "nov": "Nov",
+        "dec": "Dec"
+      },
+      "invite_friend": "Invite a friend",
+      "select_side": "Click here to select the side",
+      "referral_link_title": "Send referral link",
+      "active_users": "Active users"
+    }
+  },
+  "invest_view": {
+    "amount": "Amount",
+    "amount_deposit": "Amount to deposit",
+    "generate_qr": "Generate QR",
+    "min_amount": "Min amount is 100 USD",
+    "accept_terms": "You should accept the terms and conditions"
+  },
+  "commissions": {
+    "commissions": "Commissions",
+    "ewallet": "Ewallet"
+  },
+  "cancel": "Cancel",
+  "accept_terms": "I agree to the terms and conditions",
+  "my_team": {
+    "me": {
+      "direct": "Direct",
+      "name": "Name",
+      "email": "Email"
+    },
+    "binary": {
+      "left": "Left",
+      "right": "Right",
+      "pack": "Pack",
+      "home": "Home"
+    }
+  },
+  "portfolio_view": {
+    "add_value": {
+      "adding_value_generates_up_to": "Adding value generates up to 8% points monthly.",
+      "you_can_add_value": "You can add value up to 10x the value of your membership.",
+      "current": "Current",
+      "remaining": "Remaining"
+    },
+    "my_portfolio": {
+      "deposits": "Deposits",
+      "generated_returns": "Generated Returns",
+      "available_returns": "Available Returns",
+      "activating_compound": "Activate compound interest, it pays you 7.6% compound interest each month",
+      "your_compound_interest": "Your compound interest is already active!",
+      "deposit_history": "Deposit History",
+      "deposit_date": "Deposit date",
+      "deposited_amount": "Deposited amount",
+      "next_return": "Next return",
+      "generated": "Generated",
+      "withdrawn": "Withdrawn",
+      "availables": "Availables",
+      "details": "Details"
+    }
+  },
+  "purchases": {
+    "membership": {
+      "basic": "Basic",
+      "medium": "Medium",
+      "advanced": "Advanced",
+      "pro": "Pro",
+      "benefits": {
+        "crypto_course": "Crypto Course",
+        "tokenomic_course": "Tokenomics Course",
+        "binance_trading_bot": "Binance Trading Bot",
+        "trading_signals": "Trading Signals",
+        "live_classes": "Live Classes",
+        "generates_up_to_3": "Generates up to 3x points",
+        "adds_value_up_to_10": "Adds value up to 10x your membership"
+      },
+      "availability": "Already have this membership",
+      "not_available": "Not Available"
+    },
+    "my_memberships": {
+      "purchases": "Purchases",
+      "item": "Item",
+      "date": "Date",
+      "status": "Status",
+      "payment_method": "Payment Method"
+    }
+  },
+  "comissions_view": {
+    "uninivel": "Unilevel",
+    "residual": "Residual",
+    "anual": "Anual",
+    "direct": "Direct",
+    "binary": "Binary",
+    "reward": "Reward",
+    "rank": "Rank",
+    "amount": "Amount",
+    "description": "Description",
+    "date": "Date"
+  },
+  "witdhdrawals_view": {
+    "type": "Type",
+    "available_balance": "Available balance",
+    "pending_balance": "Pending to approve",
+    "status": "Status",
+    "amount_to_withdraw": "Amount to withdraw",
+    "withdraw": "Withdraw",
+    "withdrawal_history": "Movements history",
+    "amount": "Amount",
+    "date": "Date",
+    "destiny": "Destiny",
+    "tabs": {
+      "direct": "Direct withdrawal",
+      "ranks": "Rank withdrawal",
+      "binary": "Binary withdrawal",
+      "deposits": "Investment withdrawal"
+    }
+  },
+  "last_signals": "Last signals",
+  "looks_like": "Looks like you don't have signals yet",
+  "profile_view": {
+    "profile": "Profile",
+    "password": "Password",
+    "settings": "Settings",
+    "wallet": "Wallet",
+    "personal_data": "Personal data",
+    "missing_information": "Complete the missing information",
+    "id_number": "ID number",
+    "name": "Name",
+    "email": "Email",
+    "social_networks": "Social Networks",
+    "address": "Address",
+    "country": "Country",
+    "state": "State",
+    "city": "City",
+    "save": "Save",
+    "actual_password": "Current password",
+    "new_password": "New password",
+    "confirm_new_password": "Confirm new password",
+    "verification_code": "Verification code",
+    "confirm_code": "Confirm code",
+    "update_password": "Update Password",
+    "wallet_address": "Wallet Address",
+    "request_verification_code": "Request Verification Code",
+    "save_information": "Save Information",
+    "loading": "Loading",
+    "activate": "Activate Two Factor Authenticator",
+    "enabled": "Two Factor Auth is enabled"
+  },
+  "errors": {
+    "name_is_required": "Name is required",
+    "whatsapp_number_required": "The WhatsApp number is required",
+    "country_required": "The country is required",
+    "state_required": "The state is required",
+    "city_required": "The city is required",
+    "profile_updated_successfully": "Profile updated successfully",
+    "profile_update_failed": "Failed to update profile",
+    "current_password_required": "The current password is required",
+    "new_password_required": "The new password is required",
+    "password_min_length": "The password must be at least 8 characters long",
+    "passwords_do_not_match": "Passwords do not match",
+    "incorrect_verification_code": "The verification code is incorrect",
+    "wallet_address_required": "The wallet address is required"
+  },
+  "rank_view": {
+    "menu_rank": "Ranks",
+    "your_actual_score": "Your actual score",
+    "ranks": {
+      "emprendedor": "Entrepreneur",
+      "constructor": "Builder",
+      "director": "Director",
+      "director_premier": "Premier Director",
+      "embajador": "Ambassador",
+      "diamond": "Diamond",
+      "ejecutive_diamond": "Executive Diamond",
+      "premier_diamond": "Premier Diamond",
+      "black_diamond": "Black Diamond",
+      "crown_diamond": "Crown Diamond",
+      "royal_diamond": "Royal Diamond"
+    }
+  },
+  "landing": {
+    "sections": {
+      "discover_your_potential": "Discover your potential",
+      "join_dota": "Join DOTA",
+      "login_to_my_account": "Login to my account",
+      "dota_crypto_academy": "DOTA Crypto Academy",
+      "our_packages": "Our packages",
+      "learn_more_about_our_academy": "Learn more about our Academy at DOTA",
+      "get": "Get",
+      "menu": {
+        "home": "Home",
+        "products": "Products",
+        "about_us": "About us",
+        "sign_up": "Sign up"
+      }
+    },
+    "about_us": {
+      "title": "Learn more about our Academy at DOTA",
+      "welcome": "Welcome to DOTA, your trusted academy for learning cryptocurrency trading, from the basics to mastery.",
+      "experience": "At DOTA, we take pride in offering an exceptional educational experience designed specifically for those passionate about the exciting world of cryptocurrencies and trading.",
+      "guidance": "At DOTA, we understand that the cryptocurrency universe can seem intimidating to many. That is why we have assembled a team of trading and cryptocurrency experts who are here to guide you every step of the way, regardless of your prior experience. Our instructors not only have deep market knowledge but also a passion for sharing their expertise and helping you achieve your financial goals.",
+      "courses": "Our courses are carefully designed to cover all aspects of cryptocurrency trading, from fundamental basics to the most advanced strategies. Whether you are taking your first steps into trading or looking to refine your existing skills, at DOTA you will find courses tailored to your needs and goals.",
+      "highlight": "What makes us stand out? At DOTA, we not only strive to offer high-quality content, but we also aim to create a vibrant and supportive community. Our students have access to discussion forums, live Q&A sessions, and exclusive events where they can connect with other trading enthusiasts and share ideas and strategies.",
+      "evolution": "Furthermore, we understand that the cryptocurrency market is constantly evolving. That is why we are committed to keeping our courses updated with the latest trends and market developments, so you can make informed decisions and stay ahead.",
+      "goal": "At DOTA, our goal is to provide you with the tools and knowledge necessary to become a successful and confident trader in the exciting world of cryptocurrencies. Join us today and start your journey towards financial success with DOTA.",
+      "community": "Welcome to the DOTA community, where learning and success go hand in hand!"
+    }
+  },
+  "faq": {
+    "open_tickets": "Open tickets",
+    "open_new_ticket": "Open new ticket",
+    "title": "Title",
+    "issue_title": "Issue title",
+    "description": "Description",
+    "issue_description": "Issue description",
+    "change_email": "How can I change my email?",
+    "missing_commission": "Why hasn't my commission arrived?",
+    "change_info": "How can I change my information?",
+    "wrong_commission_amount": "My commission amount is higher or lower (it's incorrect)",
+    "purchase_not_approved": "My purchase is not approved, but I already made the payment",
+    "purchase_deleted": "Purchase deleted by mistake",
+    "unrecognized_charge": "An unrecognized charge was made"
+  },
+  "countries": "Countries",
+  "sign_up": {
+    "signup_title": "Sign up. It's easy and fast",
+    "referred_by": "Referred by",
+    "full_name": "Full Name",
+    "username": "Username",
+    "email": "Email",
+    "confirm_email": "Confirm Email",
+    "password": "Password",
+    "confirm_password": "Confirm your password",
+    "country": "Country",
+    "code": "Code",
+    "phone": "Phone",
+    "accept_terms": "I accept the",
+    "terms": "Terms",
+    "privacy_policy": "Privacy Policy",
+    "register": "Sign up",
+    "username_no_spaces": "Username cannot contain spaces",
+    "select_country": "Select a country from the list",
+    "and": "&",
+    "user_registered_success": "User successfully registered"
+  },
+  "landing": {
+    "hero_section": {
+      "grow_assets_part1": "Grow your assets by",
+      "grow_assets_part2": "up to 30%",
+      "grow_assets_part3": "annually with guaranteed deposits.",
+      "regulated_fintech": "Canadian fintech regulated in Canada and the US"
+    },
+    "story_section": {
+      "traditional_instruments_warning": "Traditional financial instruments no longer protect your money.",
+      "savings_lose_value": "As the cost of living rises, your savings lose value without you noticing.",
+      "inflation": "Inflation",
+      "inflation_effect": "Each year, your money buys less than the year before.",
+      "low_pensions": "Insufficient pensions",
+      "pension_system_warning": "The pension system is not enough for a dignified retirement.",
+      "fixed_terms": "Fixed-term deposits",
+      "fixed_terms_warning": "They don’t even cover current inflation. You lose real value."
+    },
+    "value_proposition_section": {
+      "active_management_nyse": "Active management on the NYSE"
+    },
+    "simulator_section": {
+      "select_goal": "Select your goal",
+      "simulate_investment": "Simulate your investment and discover how much you could earn",
+      "growth": "Growth",
+      "capitalization": "Capitalization",
+      "retirement": "Retirement",
+      "financial_plan": "Financial plan",
+      "initial_amount": "Initial amount",
+      "term": "Term",
+      "estimated_growth": "Your investment will grow approximately",
+      "months": "months",
+      "in": "en"
+    },
+    "faq_section": {
+      "question_1": "What kind of investments does Blue Castle Ventures offer?",
+      "answer_1": "We offer digital investment certificates with fixed rates ranging from 5% to 35% annually, depending on the selected portfolio and term.",
+      "question_2": "Are my investments guaranteed?",
+      "answer_2": "Yes, we have contracts with guarantee clauses, legal backing in Canada and the U.S., and SEC regulation in the U.S.",
+      "question_3": "How can I access my account and see my earnings?",
+      "answer_3": "You can access through our secure platform with a username and password, where you can view your investments and transactions.",
+      "question_4": "What is the minimum amount to invest?",
+      "answer_4": "We offer options starting from $25,000 USD (FortGarry Silver) up to larger investments like $150,000 USD (Bridgewater Business).",
+      "question_5": "Can I withdraw my earnings monthly?",
+      "answer_5": "Yes, depending on the plan. Some products allow monthly earnings; others accumulate until the end of the term.",
+      "question_6": "What happens to my investment in case of death?",
+      "answer_6": "The capital can be inherited by the designated beneficiaries by presenting the required legal documents.",
+      "question_7": "What sets Blue Castle apart from other investment companies?",
+      "answer_7": "We don’t rely on third parties or external funds. Our management is active and diversified, with over 6 years of consistent results.",
+      "question_8": "Who is behind Blue Castle Ventures?",
+      "answer_8": "Our CEO, David Rojas, is a trader with over 16 years of experience and a regular presence on Nasdaq TV.",
+      "question_9": "What is the minimum amount to start investing?",
+      "answer_9": "You can start investing with as little as $1,000 USD."
+    },
+    "banner_cta": {
+      "best_time": "The best time to invest is now",
+      "dont_wait": "Don't wait any longer.",
+      "start_now": "Start now"
+    }
+  },
+  "products_view": {
+    "growth": {
+      "title": "Monthly Growth",
+      "description": "Generate consistent monthly income through investment strategies focused on recurring profitability.",
+      "services": {
+        "bridgewater": {
+          "display": "Brigdewater",
+          "features": {
+            "inversion": {
+              "field": "INVERSIÓN",
+              "value": "The minimum investment is USD $1,000, with a maximum of USD ???."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDAD",
+              "value": "With a fixed annual interest rate of 20%, you will receive a monthly return of between USD $500 and $1,500."
+            },
+            "vigencia": {
+              "field": "VIGENCIA",
+              "value": "The term is 12 months, fixed, with the option to make additional deposits."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "It can be claimed by heirs with legal documents."
+            }
+          }
+        },
+        "bridgewaterPlus": {
+          "display": "Bridgewater Plus",
+          "features": {
+            "inversion": {
+              "field": "INVERSIÓN",
+              "value": "Minimum investment is USD $31,000, maximum is USD $100,000."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDAD",
+              "value": "With a fixed annual interest rate of 20%, you will receive a monthly return of between USD $500 and $1,500."
+            },
+            "vigencia": {
+              "field": "VIGENCIA",
+              "value": "The term is 12 months, fixed, with no option for additional deposits."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "It can be claimed by heirs with legal documents."
+            }
+          }
+        },
+        "bridgewaterBusiness": {
+          "display": "Bridgewater Business",
+          "features": {
+            "inversion": {
+              "field": "INVERSIÓN",
+              "value": "Investment of USD $150,000."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDAD",
+              "value": "Fixed annual rate of 20%, with up to USD $2,500 monthly return. Up to five accounts per client."
+            },
+            "vigencia": {
+              "field": "VIGENCIA",
+              "value": "The term is 12 months, fixed, with no option for additional deposits."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "It can be claimed by heirs with legal documents."
+            }
+          }
+        }
+      }
+    },
+    "capitalization": {
+      "title": "Capitalization",
+      "description": "Increase long-term capital by reinvesting profits to maximize the total value of the portfolio.",
+      "services": {
+        "regent": {
+          "display": "Regent",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGENCIA Y MONTO",
+              "value": "High-yield option with amounts and terms based on a provided chart."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "disponibilidad": {
+              "field": "DISPONIBILIDAD",
+              "value": "At the end of the term, the client can access their funds."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "Heirs can claim it with legal documentation."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDAD",
+              "value": "Short and medium-term return on investment."
+            }
+          }
+        },
+        "stJames": {
+          "display": "St. James",
+          "features": {
+            "inversion": {
+              "field": "INVERSIÓN",
+              "value": "Minimum investment of USD $15,000 with 25% annual return over 24 months (56% total gain) or 30% over 36 months (119% total gain). Compound annual interest."
+            },
+            "vigencia": {
+              "field": "VIGENCIA",
+              "value": "Term of 24 or 36 months, with possibility of additional deposits."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "It can be claimed by heirs with legal documents."
+            }
+          }
+        },
+        "lindenwood": {
+          "display": "Lindenwood",
+          "features": {
+            "inversion": {
+              "field": "INVERSIÓN",
+              "value": "Annual return of 22%, 24%, or 26% depending on investment amount (compound annual interest)."
+            },
+            "vigencia": {
+              "field": "VIGENCIA",
+              "value": "Term is 18 months, with possibility of additional deposits."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACCESIBILIDAD Y SEGURIDAD",
+              "value": "Clients access our platform with a username and password to view investments and withdraw funds. This is coordinated between BCV’s bank and the client’s bank."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "It can be claimed by heirs with legal documents."
+            }
+          }
+        }
+      }
+    },
+    "retirement": {
+      "title": "Retirement",
+      "description": "Build a safe and profitable fund to ensure financial stability in retirement.",
+      "services": {
+        "fortgarryPlatinum": {
+          "display": "Fort Garry - Platinum",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGENCIA Y MONTO",
+              "value": "Single investment of USD $100,000. After 72 months, receive lifetime monthly income based on early retirement chart."
+            },
+            "edad": {
+              "field": "EDAD",
+              "value": "Maximum age to invest is 59."
+            },
+            "mensualidad": {
+              "field": "MENSUALIDAD",
+              "value": "After term completion, lifetime monthly payments guaranteed, amounts depend on investor's age."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "Spouse inherits, not children."
+            }
+          }
+        },
+        "fortgarryGold": {
+          "display": "Fort Garry - Gold",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGENCIA Y MONTO",
+              "value": "Single investment of USD $50,000. After 72 months, receive lifetime monthly income based on early retirement chart."
+            },
+            "edad": {
+              "field": "EDAD",
+              "value": "Minimum age to invest is 24, maximum is 59."
+            },
+            "mensualidad": {
+              "field": "MENSUALIDAD",
+              "value": "After term completion, lifetime monthly payments guaranteed, amounts depend on investor's age."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "Spouse inherits, not children."
+            }
+          }
+        },
+        "fortgarrySilver": {
+          "display": "Fort Garry - Silver",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGENCIA Y MONTO",
+              "value": "Single investment of USD $25,000. After 72 months, receive lifetime monthly income based on early retirement chart."
+            },
+            "edad": {
+              "field": "EDAD",
+              "value": "Minimum age to invest is 24, maximum is 59."
+            },
+            "mensualidad": {
+              "field": "MENSUALIDAD",
+              "value": "After term completion, lifetime monthly payments guaranteed, amounts depend on investor's age."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "Spouse inherits, not children."
+            }
+          }
+        },
+        "fortgarryLimited": {
+          "display": "Fort Garry - Limited",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGENCIA Y MONTO",
+              "value": "Single investment of USD $10,000. After 72 months, receive lifetime monthly income based on early retirement chart."
+            },
+            "edad": {
+              "field": "EDAD",
+              "value": "Minimum age to invest is 24, maximum is 59."
+            },
+            "mensualidad": {
+              "field": "MENSUALIDAD",
+              "value": "After term completion, lifetime monthly payments guaranteed, amounts depend on investor's age."
+            },
+            "sucesion": {
+              "field": "SUCESIÓN",
+              "value": "Spouse inherits, not children."
+            }
+          }
+        }
+      }
+    }
+  },
+  "my_products": {
+    "contract_dates_tooltip": "(Start date - End date) of the contract",
+    "initial_amount": "Initial amount",
+    "initial_amount_tooltip": "This is the initial amount when you get the plan",
+    "additional_deposits": "Additional deposits",
+    "additional_deposits_tooltip": "These are sum of each additional amount you deposit after the initial amount",
+    "expected_ending": "Expected ending amount",
+    "expected_ending_tooltip": "This is the amount expected at the end of the period",
+    "current_profits": "Current profits",
+    "current_profits_tooltip": "This value reflect increase of monthly profits",
+    "current_monthly": "Current monthly",
+    "date": "Date",
+    "deposit": "Deposit"
+  },
+  "withdrawals": {
+    "wallet_actions": {
+      "title": "DOLLAR ACCOUNT",
+      "available_balance": "Available balance",
+      "deposit": "Deposit",
+      "withdraw": "Withdraw",
+      "transfer_to_user": "Transfer to another user",
+      "transfer_to_account": "Deposit into an investment account"
+    },
+    "deposits": {
+      "title": "Deposit",
+      "amount": "Amount",
+      "select_method": "Select your payment method",
+      "method_paypal": "Debit/Credit card",
+      "method_spei": "WIRE",
+      "upload_instruction": "Please take a screenshot of your payment and add it here:",
+      "upload_drag": "Drag your file here",
+      "upload_click": "Or click to select",
+      "upload_button": "Select file",
+      "cancel": "Cancel",
+      "confirm": "Deposit",
+      "error_no_amount": "Please enter the amount",
+      "error_no_method": "Please select the WIRE method",
+      "error_no_file": "Please upload your payment receipt",
+      "success_message": "Deposit sent successfully",
+      "error_invalid_paypal_amount": "Please enter a valid amount before continuing with PayPal",
+      "success_paypal": "Deposit completed successfully",
+      "error_paypal": "Error processing the payment"
+    },
+    "withdraw": {
+      "title": "Withdraw",
+      "select_account": "Select a saved account",
+      "add_account": "Add a new account",
+      "back": "Back",
+      "submit": "Add Account",
+      "success": "Withdrawal successful",
+      "otp_instruction": "Enter the verification code",
+      "cancel": "Cancel",
+      "form": {
+        "amount": {
+          "label": "Amount",
+          "placeholder": "Enter amount"
+        },
+        "holder_name": {
+          "label": "Cardholder's Name",
+          "placeholder": "Type your name"
+        },
+        "clabe": {
+          "label": "CLABE",
+          "placeholder": "Type your CLABE"
+        },
+        "bank_name": {
+          "label": "Bank's Name",
+          "placeholder": "Type your bank's name"
+        },
+        "otp": {
+          "label": "Code"
+        }
+      },
+      "errors": {
+        "exceeds": "Amount should be less than your balance",
+        "min": "Amount must be greater than 500 USD",
+        "otp": "Failed to generate OTP",
+        "withdraw": "Failed to process withdrawal",
+        "add": "Could not add account"
+      }
+    },
+    "transfer": {
+      "title": "Transfer to an Account",
+      "form": {
+        "amount": {
+          "label": "Amount",
+          "placeholder": "Enter amount",
+          "error_required": "Amount is required.",
+          "error_invalid": "Must be a positive number."
+        },
+        "account": {
+          "placeholder": "Select a plan"
+        }
+      },
+      "new_balance": "New balance: {{amount}}",
+      "errors": {
+        "no_account": "Please select an account",
+        "insufficient_balance": "You do not have enough balance for this operation",
+        "exceeds": "The amount exceeds the available balance.",
+        "server": "Transfer failed"
+      },
+      "success": "Transfer successful",
+      "cancel": "Cancel",
+      "submit": "Transfer"
+    },
+    "transfer_to_user": {
+      "title": "Transfer to a User",
+      "form": {
+        "email": {
+          "label": "User Email",
+          "placeholder": "user@example.com",
+          "error_required": "Email is required.",
+          "error_invalid": "Invalid email format."
+        },
+        "amount": {
+          "label": "Amount",
+          "placeholder": "Enter amount",
+          "error_required": "Amount is required.",
+          "error_invalid": "Must be a positive number."
+        },
+        "concept": {
+          "label": "Concept",
+          "placeholder": "Transfer reason",
+          "error_required": "Concept is required."
+        }
+      },
+      "cancel": "Cancel",
+      "submit": "Transfer",
+      "success": "Transfer completed successfully",
+      "errors": {
+        "insufficient_balance": "You don't have enough balance for this operation.",
+        "server": "An error occurred while processing the transfer."
+      }
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "selectedProduct": "Selected product",
+    "amountToPay": "Amount to pay",
+    "creditCard": "Credit card",
+    "wire": "WIRE",
+    "balance": "Balance",
+    "capturePrompt": "Please take a screenshot of your payment and upload it here:",
+    "dragFile": "Drag your file here",
+    "clickToSelect": "Or click to select",
+    "selectFile": "Select file",
+    "sendVoucher": "Send voucher",
+    "pay": "Pay",
+    "payWithBalance": "Pay with balance",
+    "selectMethod": "Select payment method",
+    "back": "BACK",
+    "fileRejected": "\"{{file}}\" was rejected",
+    "fileErrorType": "Only image files are allowed",
+    "fileErrorLimit": "Only one file is allowed",
+    "fileErrorSize": "File must be under 5MB",
+    "voucherSentSuccess": "Voucher sent successfully, please wait for validation",
+    "voucherError": "Failed to send voucher",
+    "balancePaymentSuccess": "Payment completed with balance",
+    "balancePaymentError": "An error occurred while paying with balance"
+  },
+  "steps": "Steps",
+  "documents_step": {
+    "national_id": "National ID",
+    "driver_licence": "Driver's license",
+    "passport": "Passport",
+    "scan_qr": "Scan the QR code with your phone to continue the process",
+    "title": "We need to validate your ID in order to continue the process.",
+    "select_type": "Select the type of document you want to use",
+    "continue_browser": "Continue in browser",
+    "continue_phone": "Continue on my phone",
+    "id_capture_instructions": "You must capture both sides of the ID, with clear quality and good lighting",
+    "front_side": "FRONT SIDE OF THE IDENTIFICATION",
+    "back_side": "BACK SIDE OF THE IDENTIFICATION"
+  },
+  "terms": {
+    "title": "Terms and Conditions of Use",
+    "sections": {
+      "1": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using the Blue Castle Ventures LLC (\"BCV\") platform, you agree to be legally bound by these Terms and Conditions of Use. If you do not agree with these terms, do not use this platform."
+      },
+      "2": {
+        "title": "Applicable Jurisdiction",
+        "content": "For investments offered by BCV LLC, the laws of the State of Wyoming, USA apply. For royalty programs related to retirement alternatives operated by BCV LTD, the laws of the Province of Manitoba, Canada apply."
+      },
+      "3": {
+        "title": "Disclaimer of Financial Advice",
+        "content": "BCV is not a registered financial advisory firm with the SEC or with any provincial Canadian regulator. All information provided on this platform is for informational and educational purposes only and should not be interpreted as personalized investment advice. BCV is registered with the SEC under a valid CIK to operate in accordance with Reg A, Reg CF, and Reg D regulations."
+      },
+      "4": {
+        "title": "Nature of Investments",
+        "content": "The alternative investments offered on this platform may include participations in private equity, real estate projects, royalty programs, U.S. brokerage agreements, or membership-based schemes. Participation is subject to the specific terms of each contract."
+      },
+      "5": {
+        "title": "Investment Risks",
+        "content": "ALTERNATIVE INVESTMENTS AND INVESTMENTS OF ANY KIND ARE NOT INSURED OR GUARANTEED BY ANY GOVERNMENTAL OR BANKING INSTITUTION. INVESTING IN PRIVATE EQUITY, REAL ESTATE PROJECTS, OR ROYALTY PROGRAMS INVOLVES A HIGH RISK OF TOTAL OR PARTIAL LOSS OF CAPITAL, AS WELL AS EXTENDED ILLIQUIDITY."
+      },
+      "6": {
+        "title": "Eligibility and Client Classification",
+        "content": "BCV distinguishes between retail and accredited clients. Some investment opportunities are exclusively reserved for accredited investors as defined by the SEC or equivalent authorities."
+      },
+      "7": {
+        "title": "Independent Contractors",
+        "content": "Agents, advisors, and referrals promoting this platform are independent contractors. None are authorized to receive funds on behalf of BCV or provide personalized financial or tax advice."
+      },
+      "8": {
+        "title": "Tax Responsibility",
+        "content": "The user is solely responsible for fulfilling their tax obligations in their country of residence regarding income derived from investments. BCV does not provide tax advice and is not liable for penalties resulting from investor tax non-compliance."
+      },
+      "9": {
+        "title": "Mandatory Arbitration Clause",
+        "content": "Any dispute arising between the user and BCV will be resolved exclusively through confidential arbitration, in accordance with the rules of the American Arbitration Association or another recognized body."
+      },
+      "10": {
+        "title": "Conflict of Laws",
+        "content": "In the event of a conflict between the user's local laws and the laws of Wyoming or Manitoba, the latter shall prevail for all contractual purposes related to the investment."
+      },
+      "11": {
+        "title": "Force Majeure Clause",
+        "content": "BCV shall not be held liable for delays, failures, or breaches resulting from causes beyond its reasonable control, including banking failures, unforeseen regulatory measures, geopolitical conflicts, natural disasters, or pandemics."
+      },
+      "12": {
+        "title": "Conduct Policy and Penalties",
+        "content": "BCV requires a respectful and professional environment among its clients, agents, and internal team. Any inappropriate, defamatory, or threatening behavior that jeopardizes the operation or reputation of BCV may be sanctioned according to the following progressive policy:",
+        "list": {
+          "0": "First offense: written warning and request to remove any offensive or defamatory public content within a maximum of 48 hours.",
+          "1": "Second offense: temporary suspension of access to BCV benefits or platforms for up to 180 days.",
+          "2": "Third offense: permanent cancellation of membership and the potential requirement for financial compensation for proven reputational damage."
+        },
+        "note": "These actions will be evaluated by BCV’s legal and compliance team and may be subject to arbitration in case of dispute."
+      }
+    }
+  },
+  "kyc_status": {
+    "verification_status": "Verification status:",
+    "verified": "Verified",
+    "pending": "Pending",
+    "pending_tooltip": "We are reviewing your documents. You will receive an update soon.",
+    "denied": "Denied",
+    "denied_tooltip": "Your data has been rejected. You must start the process again.",
+    "not_started": "Not started",
+    "pending_documents": "Pending documents to upload",
+    "id_document": "ID document",
+    "face_photo": "Face Photo",
+    "signature": "Signature",
+    "signature_needed": "We need your signature for the contract.",
+    "your_signature": "YOUR SIGNATURE",
+    "start": "Start"
+  },
+  "validation": {
+    "face_instruction": "We need to take a photo of your face",
+    "face_photo_label": "FACE PHOTO"
+  },
+  "profile": {
+    "verified": "Verified Profile",
+    "unverified": "Unverified Profile"
+  },
+  "spei": {
+    "beneficiary_name": "Beneficiary Name",
+    "bank_name": "Beneficiary Bank",
+    "swift_code": "Swift Code / BIC Code",
+    "routing_number": "ABA Routing Number - USA",
+    "account_number": "Beneficiary Account Number / IBAN",
+    "account_type": "Account Type",
+    "bank_address": "Beneficiary Bank Address",
+    "amount": "Amount"
+  }
+}

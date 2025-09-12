@@ -11,6 +11,7 @@ import HeroBlockComponent from '@/blocks/HeroBlock/Component'
 import { FAQBlock } from './Faq/Component'
 import { TestimonialsBlock } from './TestimonialsBlock/Component'
 import { TradingViewBlock } from './TradingViewBlock/Component'
+import Calculator from './PlansCalculator'
 
 
 const blockComponents = {
@@ -23,7 +24,8 @@ const blockComponents = {
   heroBlock: HeroBlockComponent,
   faq: FAQBlock,
   testimonials: TestimonialsBlock,
-  tradingView: TradingViewBlock
+  tradingView: TradingViewBlock,
+  calculator: Calculator
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

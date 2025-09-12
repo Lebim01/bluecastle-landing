@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
@@ -14,6 +15,8 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import RemoveDarkModeProvider from '@/providers/RemoveDarkModeProvider'
 import Footer from '@/Footer/Component'
+
+import "@/utilities/i18n";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 

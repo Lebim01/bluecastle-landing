@@ -1,0 +1,846 @@
+{
+  "login": "Entrar",
+  "logout": "Sair",
+  "forgot_password": "Esqueceu a senha?",
+  "errors_invalid_credentials": "Usuário e/ou senha incorretos",
+  "errors_confirm_email": "E-mail não confere",
+  "errors_confirm_password": "Senha não confere",
+  "errors_network": "Algo deu errado, tente novamente mais tarde",
+  "errors_user_exists": "Usuário já existe",
+  "logged_as": "Logado como:",
+  "menu": {
+    "dashboard": "Painel",
+    "indicators": "Indicadores",
+    "my_team": "Clientes",
+    "unilevel": "Unilevel",
+    "binary": "Binário",
+    "academy": "Academia",
+    "live_sessions": "Sessões ao Vivo",
+    "past_sessions": "Sessões Anteriores",
+    "investments": "Portfólio",
+    "invest": "Adicionar valor",
+    "my_investments": "Meu Portfólio",
+    "buys": "Planos",
+    "buy_membership": "Adquirir um plano",
+    "my_buys": "Meus Planos",
+    "help": "Ajuda",
+    "withdrawals": "Carteira",
+    "signals": "Sinais",
+    "tools": "Ferramentas",
+    "profile": "Perfil",
+    "exit": "Sair",
+    "ranks": "Classificações"
+  },
+  "dashboard_view": {
+    "banner_membership": {
+      "title": "Você tem sua assinatura",
+      "description": "Você já tem sua assinatura! Você pode ir para sua academia para navegar pelos cursos!"
+    },
+    "banner_nft": {
+      "title": "Você tem um NFT",
+      "get_button": "Reivindicar",
+      "connnect_button": "Conectar carteira",
+      "need_install_metamask": "Você precisa instalar o Metamask",
+      "need_connect": "Conecte-se à sua carteira primeiro",
+      "wallet_denied": "Carteira negada",
+      "success_get": "Obtido com sucesso"
+    },
+    "banner_promotional": {
+      "promotional_bonus": "BÔNUS PROMOCIONAL",
+      "dubai_travel": "VIAGEM A DUBAI",
+      "requirement_rank": "Classificação Requerida",
+      "progress": "Progresso"
+    },
+    "binance_bot": {
+      "get_bot": "Obtenha seu bot",
+      "get_button": "Conectar bot"
+    },
+    "join_to_our_channel": "Junte-se ao nosso canal",
+    "banner_upgrade": {
+      "membership": "Assinatura",
+      "upgrade_your_membership": "Atualize sua assinatura para",
+      "upgrade": "Atualizar"
+    },
+    "banner_referral": {
+      "referral_link": "Link de indicação",
+      "left": "ESQUERDA",
+      "right": "DIREITA",
+      "choose_the_placement": "Escolha o posicionamento",
+      "we_will": "Nós colocaremos o convidado que se registrar em seu",
+      "side": "lado",
+      "copy": "COPIAR"
+    },
+    "portfolio_banner": {
+      "portfolio": "Portfólio",
+      "add_value_up_to": "Adicionar valor até"
+    },
+    "compound_interest_banner": {
+      "compound_interest": "Juros Compostos",
+      "you_can_now": "Você pode ativar os juros compostos agora.",
+      "activate": "Ativar",
+      "you_already_have": "Você já tem os juros compostos ativados."
+    },
+    "multiplier_banner": {
+      "multiplier": "Multiplicador",
+      "up_to": "Até",
+      "portfolio": "Portfólio",
+      "membership": "Assinatura"
+    },
+    "rank_banner": {
+      "current_rank": "Classificação Atual",
+      "classified": "CLASSIFICADO",
+      "rank": "CLASSIFICAÇÃO",
+      "left_points": "Pontos Esquerda",
+      "right_points": "Pontos Direita",
+      "shorter_leg": "Perna Mais Curta",
+      "next_rank": "Próxima Classificação"
+    },
+    "finance": {
+      "earnings": "Ganhos",
+      "total_deposits": "Depósitos Totais",
+      "cash_balance": "Saldo em Dinheiro",
+      "total": "Total",
+      "history": "Histórico",
+      "available": "Disponível",
+      "watch_individually": "Ver individualmente",
+      "projections_warning": "Todas as projeções são esperadas, não lucros garantidos",
+      "become_agent": "Torne-se um agente",
+      "click_here_to_start": "Clique aqui para começar.",
+      "next_payments": "Próximos Pagamentos",
+      "of_month": "do mês",
+      "no_movements": "Nenhum movimento"
+    },
+    "indicators": {
+      "agents_dashboard": "Painel de Agentes",
+      "overall": "Geral",
+      "bonus_unilevel": "Bônus Unilevel",
+      "bonus_residual": "Bônus Residual",
+      "accumulated": "Acumulado",
+      "months": {
+        "jan": "Jan",
+        "feb": "Fev",
+        "mar": "Mar",
+        "apr": "Abr",
+        "may": "Mai",
+        "jun": "Jun",
+        "jul": "Jul",
+        "aug": "Ago",
+        "sep": "Set",
+        "oct": "Out",
+        "nov": "Nov",
+        "dec": "Dez"
+      },
+      "invite_friend": "Convidar um amigo",
+      "select_side": "Clique aqui para selecionar o lado",
+      "referral_link_title": "Enviar link de indicação",
+      "active_users": "Usuários ativos"
+    }
+  },
+  "invest_view": {
+    "amount": "Valor",
+    "amount_deposit": "Valor a depositar",
+    "generate_qr": "Gerar QR",
+    "min_amount": "Valor mínimo é 100 USD",
+    "accept_terms": "Você deve aceitar os termos e condições"
+  },
+  "commissions": {
+    "commissions": "Comissões",
+    "ewallet": "Carteira eletrônica"
+  },
+  "cancel": "Cancelar",
+  "accept_terms": "Eu concordo com os termos e condições",
+  "my_team": {
+    "me": {
+      "direct": "Direto",
+      "name": "Nome",
+      "email": "E-mail"
+    },
+    "binary": {
+      "left": "Esquerda",
+      "right": "Direita",
+      "pack": "Pacote",
+      "home": "Início"
+    }
+  },
+  "portfolio_view": {
+    "add_value": {
+      "adding_value_generates_up_to": "Adicionar valor gera até 8% de pontos mensais.",
+      "you_can_add_value": "Você pode adicionar valor até 10x o valor da sua assinatura.",
+      "current": "Atual",
+      "remaining": "Restante"
+    },
+    "my_portfolio": {
+      "deposits": "Depósitos",
+      "generated_returns": "Retornos Gerados",
+      "available_returns": "Retornos Disponíveis",
+      "activating_compound": "Ative os juros compostos, eles pagam 7,6% de juros compostos a cada mês",
+      "your_compound_interest": "Seus juros compostos já estão ativos!",
+      "deposit_history": "Histórico de Depósitos",
+      "deposit_date": "Data do depósito",
+      "deposited_amount": "Valor depositado",
+      "next_return": "Próximo retorno",
+      "generated": "Gerado",
+      "withdrawn": "Retirado",
+      "availables": "Disponíveis",
+      "details": "Detalhes"
+    }
+  },
+  "purchases": {
+    "membership": {
+      "basic": "Básico",
+      "medium": "Médio",
+      "advanced": "Avançado",
+      "pro": "Pro",
+      "benefits": {
+        "crypto_course": "Curso de Cripto",
+        "tokenomic_course": "Curso de Tokenomics",
+        "binance_trading_bot": "Robô de Negociação Binance",
+        "trading_signals": "Sinais de Negociação",
+        "live_classes": "Aulas ao Vivo",
+        "generates_up_to_3": "Gera até 3x pontos",
+        "adds_value_up_to_10": "Adiciona valor até 10x sua assinatura"
+      },
+      "availability": "Já tem esta assinatura",
+      "not_available": "Não disponível"
+    },
+    "my_memberships": {
+      "purchases": "Compras",
+      "item": "Item",
+      "date": "Data",
+      "status": "Status",
+      "payment_method": "Método de Pagamento"
+    }
+  },
+  "comissions_view": {
+    "uninivel": "Uninível",
+    "residual": "Residual",
+    "anual": "Anual",
+    "direct": "Direto",
+    "binary": "Binário",
+    "reward": "Recompensa",
+    "rank": "Classificação",
+    "amount": "Valor",
+    "description": "Descrição",
+    "date": "Data"
+  },
+  "witdhdrawals_view": {
+    "type": "Tipo",
+    "available_balance": "Saldo disponível",
+    "pending_balance": "Pendente de aprovação",
+    "status": "Status",
+    "amount_to_withdraw": "Valor a sacar",
+    "withdraw": "Sacar",
+    "withdrawal_history": "Histórico de movimentos",
+    "amount": "Valor",
+    "date": "Data",
+    "destiny": "Destino",
+    "tabs": {
+      "direct": "Saque direto",
+      "ranks": "Saque de classificação",
+      "binary": "Saque binário",
+      "deposits": "Saque de investimento"
+    }
+  },
+  "last_signals": "Últimos sinais",
+  "looks_like": "Parece que você ainda não tem sinais",
+  "profile_view": {
+    "profile": "Perfil",
+    "password": "Senha",
+    "settings": "Configurações",
+    "wallet": "Carteira",
+    "personal_data": "Dados pessoais",
+    "missing_information": "Complete as informações que faltam",
+    "id_number": "Número de identificação",
+    "name": "Nome",
+    "email": "E-mail",
+    "social_networks": "Redes Sociais",
+    "address": "Endereço",
+    "country": "País",
+    "state": "Estado",
+    "city": "Cidade",
+    "save": "Salvar",
+    "actual_password": "Senha atual",
+    "new_password": "Nova senha",
+    "confirm_new_password": "Confirmar nova senha",
+    "verification_code": "Código de verificação",
+    "confirm_code": "Confirmar código",
+    "update_password": "Atualizar Senha",
+    "wallet_address": "Endereço da Carteira",
+    "request_verification_code": "Solicitar Código de Verificação",
+    "save_information": "Salvar Informações",
+    "loading": "Carregando",
+    "activate": "Ativar Autenticador de Dois Fatores",
+    "enabled": "Autenticação de Dois Fatores está ativada"
+  },
+  "errors": {
+    "name_is_required": "O nome é obrigatório",
+    "whatsapp_number_required": "O número do WhatsApp é obrigatório",
+    "country_required": "O país é obrigatório",
+    "state_required": "O estado é obrigatório",
+    "city_required": "A cidade é obrigatória",
+    "profile_updated_successfully": "Perfil atualizado com sucesso",
+    "profile_update_failed": "Falha ao atualizar perfil",
+    "current_password_required": "A senha atual é obrigatória",
+    "new_password_required": "A nova senha é obrigatória",
+    "password_min_length": "A senha deve ter pelo menos 8 caracteres",
+    "passwords_do_not_match": "As senhas não coincidem",
+    "incorrect_verification_code": "O código de verificação está incorreto",
+    "wallet_address_required": "O endereço da carteira é obrigatório"
+  },
+  "rank_view": {
+    "menu_rank": "Classificações",
+    "your_actual_score": "Sua pontuação atual",
+    "ranks": {
+      "emprendedor": "Empreendedor",
+      "constructor": "Construtor",
+      "director": "Diretor",
+      "director_premier": "Diretor Premier",
+      "embajador": "Embaixador",
+      "diamond": "Diamante",
+      "ejecutive_diamond": "Diamante Executivo",
+      "premier_diamond": "Diamante Premier",
+      "black_diamond": "Diamante Negro",
+      "crown_diamond": "Diamante Coroa",
+      "royal_diamond": "Diamante Real"
+    }
+  },
+  "landing": {
+    "sections": {
+      "discover_your_potential": "Descubra seu potencial",
+      "join_dota": "Junte-se à DOTA",
+      "login_to_my_account": "Entrar na minha conta",
+      "dota_crypto_academy": "Academia de Cripto DOTA",
+      "our_packages": "Nossos pacotes",
+      "learn_more_about_our_academy": "Saiba mais sobre nossa Academia na DOTA",
+      "get": "Obter",
+      "menu": {
+        "home": "Início",
+        "products": "Produtos",
+        "about_us": "Sobre nós",
+        "sign_up": "Cadastre-se"
+      }
+    },
+    "about_us": {
+      "title": "Saiba mais sobre nossa Academia na DOTA",
+      "welcome": "Bem-vindo à DOTA, sua academia de confiança para aprender negociação de criptomoedas, do básico ao domínio.",
+      "experience": "Na DOTA, temos orgulho de oferecer uma experiência educacional excepcional projetada especificamente para aqueles apaixonados pelo emocionante mundo das criptomoedas e negociação.",
+      "guidance": "Na DOTA, entendemos que o universo das criptomoedas pode parecer intimidante para muitos. É por isso que reunimos uma equipe de especialistas em negociação e criptomoedas que estão aqui para guiá-lo a cada passo do caminho, independentemente da sua experiência prévia. Nossos instrutores não apenas possuem profundo conhecimento do mercado, mas também paixão por compartilhar sua experiência e ajudá-lo a alcançar seus objetivos financeiros.",
+      "courses": "Nossos cursos são cuidadosamente elaborados para cobrir todos os aspectos da negociação de criptomoedas, desde os conceitos fundamentais até as estratégias mais avançadas. Se você está dando seus primeiros passos na negociação ou procurando refinar suas habilidades existentes, na DOTA você encontrará cursos adaptados às suas necessidades e objetivos.",
+      "highlight": "O que nos diferencia? Na DOTA, não apenas nos esforçamos para oferecer conteúdo de alta qualidade, mas também visamos criar uma comunidade vibrante e de apoio. Nossos alunos têm acesso a fóruns de discussão, sessões de perguntas e respostas ao vivo e eventos exclusivos onde podem se conectar com outros entusiastas de negociação e compartilhar ideias e estratégias.",
+      "evolution": "Além disso, entendemos que o mercado de criptomoedas está em constante evolução. É por isso que estamos comprometidos em manter nossos cursos atualizados com as últimas tendências e desenvolvimentos do mercado, para que você possa tomar decisões informadas e ficar à frente.",
+      "goal": "Na DOTA, nosso objetivo é fornecer as ferramentas e o conhecimento necessários para se tornar um trader de sucesso e confiante no emocionante mundo das criptomoedas. Junte-se a nós hoje e comece sua jornada em direção ao sucesso financeiro com a DOTA.",
+      "community": "Bem-vindo à comunidade DOTA, onde o aprendizado e o sucesso andam de mãos dadas!"
+    },
+    "faq_section": {
+      "question_1": "Que tipo de investimentos a Blue Castle Ventures oferece?",
+      "answer_1": "Oferecemos certificados digitais de investimento com taxas fixas que variam de 5% a 35% ao ano, dependendo do portfólio e do prazo selecionado.",
+      "question_2": "Meus investimentos estão garantidos?",
+      "answer_2": "Sim, temos contratos com cláusulas de garantia, respaldo legal no Canadá e nos EUA, e regulação da SEC nos EUA.",
+      "question_3": "Como posso acessar minha conta e ver meus rendimentos?",
+      "answer_3": "Você pode acessar nossa plataforma segura com nome de usuário e senha, onde poderá visualizar seus investimentos e transações.",
+      "question_4": "Qual é o valor mínimo para investir?",
+      "answer_4": "Oferecemos opções a partir de US$ 25.000 (FortGarry Silver) até investimentos maiores como US$ 150.000 (Bridgewater Business).",
+      "question_5": "Posso retirar meus rendimentos mensalmente?",
+      "answer_5": "Sim, dependendo do plano. Alguns produtos permitem rendimentos mensais; outros acumulam até o final do prazo.",
+      "question_6": "O que acontece com meu investimento em caso de falecimento?",
+      "answer_6": "O capital pode ser herdado pelos beneficiários designados mediante apresentação dos documentos legais exigidos.",
+      "question_7": "O que diferencia a Blue Castle de outras empresas de investimento?",
+      "answer_7": "Não dependemos de terceiros ou fundos externos. Nossa gestão é ativa e diversificada, com mais de 6 anos de resultados consistentes.",
+      "question_8": "Quem está por trás da Blue Castle Ventures?",
+      "answer_8": "Nosso CEO, David Rojas, é um trader com mais de 16 anos de experiência e presença regular na Nasdaq TV.",
+      "question_9": "Qual é o valor mínimo para começar a investir?",
+      "answer_9": "Você pode começar a investir com apenas US$ 1.000."
+    }
+  },
+  "faq": {
+    "open_tickets": "Abrir tickets",
+    "open_new_ticket": "Abrir novo ticket",
+    "title": "Título",
+    "issue_title": "Título do problema",
+    "description": "Descrição",
+    "issue_description": "Descrição do problema",
+    "change_email": "Como posso mudar meu e-mail?",
+    "missing_commission": "Por que minha comissão não chegou?",
+    "change_info": "Como posso mudar minhas informações?",
+    "wrong_commission_amount": "O valor da minha comissão está maior ou menor (está incorreto)",
+    "purchase_not_approved": "Minha compra não foi aprovada, mas já fiz o pagamento",
+    "purchase_deleted": "Compra excluída por engano",
+    "unrecognized_charge": "Foi feita uma cobrança não reconhecida"
+  },
+  "countries": "Países",
+  "sign_up": {
+    "signup_title": "Cadastre-se. É fácil e rápido",
+    "referred_by": "Indicado por",
+    "full_name": "Nome Completo",
+    "username": "Nome de Usuário",
+    "email": "E-mail",
+    "confirm_email": "Confirmar E-mail",
+    "password": "Senha",
+    "confirm_password": "Confirme sua senha",
+    "country": "País",
+    "code": "Código",
+    "phone": "Telefone",
+    "accept_terms": "Eu aceito os",
+    "terms": "Termos",
+    "privacy_policy": "Política de Privacidade",
+    "register": "Cadastre-se",
+    "username_no_spaces": "O nome de usuário não pode conter espaços",
+    "select_country": "Selecione um país da lista",
+    "and": "e",
+    "user_registered_success": "Usuário registrado com sucesso"
+  },
+  "products_view": {
+    "growth": {
+      "title": "Crescimento Mensal",
+      "description": "Gere renda mensal consistente através de estratégias de investimento focadas na lucratividade recorrente.",
+      "services": {
+        "bridgewater": {
+          "display": "Brigdewater",
+          "features": {
+            "inversion": {
+              "field": "INVESTIMENTO",
+              "value": "O investimento mínimo é de US$ 1.000, com um máximo de US$ ???."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDADE",
+              "value": "Com uma taxa de juros anual fixa de 20%, você receberá um retorno mensal entre US$ 500 e US$ 1.500."
+            },
+            "vigencia": {
+              "field": "VIGÊNCIA",
+              "value": "O prazo é de 12 meses, fixo, com opção de fazer depósitos adicionais."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Pode ser reivindicado por herdeiros com documentos legais."
+            }
+          }
+        },
+        "bridgewaterPlus": {
+          "display": "Bridgewater Plus",
+          "features": {
+            "inversion": {
+              "field": "INVESTIMENTO",
+              "value": "O investimento mínimo é de US$ 31.000, o máximo é de US$ 100.000."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDADE",
+              "value": "Com uma taxa de juros anual fixa de 20%, você receberá um retorno mensal entre US$ 500 e US$ 1.500."
+            },
+            "vigencia": {
+              "field": "VIGÊNCIA",
+              "value": "O prazo é de 12 meses, fixo, sem opção para depósitos adicionais."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Pode ser reivindicado por herdeiros com documentos legais."
+            }
+          }
+        },
+        "bridgewaterBusiness": {
+          "display": "Bridgewater Business",
+          "features": {
+            "inversion": {
+              "field": "INVESTIMENTO",
+              "value": "Investimento de US$ 150.000."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDADE",
+              "value": "Taxa anual fixa de 20%, com até US$ 2.500 de retorno mensal. Até cinco contas por cliente."
+            },
+            "vigencia": {
+              "field": "VIGÊNCIA",
+              "value": "O prazo é de 12 meses, fixo, sem opção para depósitos adicionais."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Pode ser reivindicado por herdeiros com documentos legais."
+            }
+          }
+        }
+      }
+    },
+    "capitalization": {
+      "title": "Capitalização",
+      "description": "Aumente o capital a longo prazo reinvestindo os lucros para maximizar o valor total do portfólio.",
+      "services": {
+        "regent": {
+          "display": "Regent",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGÊNCIA E VALOR",
+              "value": "Opção de alto rendimento com valores e prazos com base em um gráfico fornecido."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "disponibilidad": {
+              "field": "DISPONIBILIDADE",
+              "value": "Ao final do prazo, o cliente pode acessar seus fundos."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Herdeiros podem reivindicá-lo com documentação legal."
+            },
+            "rentabilidad": {
+              "field": "RENTABILIDADE",
+              "value": "Retorno sobre o investimento de curto e médio prazo."
+            }
+          }
+        },
+        "stJames": {
+          "display": "St. James",
+          "features": {
+            "inversion": {
+              "field": "INVESTIMENTO",
+              "value": "Investimento mínimo de US$ 15.000 com 25% de retorno anual em 24 meses (56% de ganho total) ou 30% em 36 meses (119% de ganho total). Juros compostos anuais."
+            },
+            "vigencia": {
+              "field": "VIGÊNCIA",
+              "value": "Prazo de 24 ou 36 meses, com possibilidade de depósitos adicionais."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Pode ser reivindicado por herdeiros com documentos legais."
+            }
+          }
+        },
+        "lindenwood": {
+          "display": "Lindenwood",
+          "features": {
+            "inversion": {
+              "field": "INVESTIMENTO",
+              "value": "Retorno anual de 22%, 24% ou 26%, dependendo do valor do investimento (juros compostos anuais)."
+            },
+            "vigencia": {
+              "field": "VIGÊNCIA",
+              "value": "O prazo é de 18 meses, com possibilidade de depósitos adicionais."
+            },
+            "accesibilidad_y_seguridad": {
+              "field": "ACESSIBILIDADE E SEGURANÇA",
+              "value": "Os clientes acessam nossa plataforma com nome de usuário e senha para visualizar investimentos e sacar fundos. Isso é coordenado entre o banco do BCV e o banco do cliente."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "Pode ser reivindicado por herdeiros com documentos legais."
+            }
+          }
+        }
+      }
+    },
+    "retirement": {
+      "title": "Aposentadoria",
+      "description": "Construa um fundo seguro e lucrativo para garantir a estabilidade financeira na aposentadoria.",
+      "services": {
+        "fortgarryPlatinum": {
+          "display": "Fort Garry - Platina",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGÊNCIA E VALOR",
+              "value": "Investimento único de US$ 100.000. Após 72 meses, receba renda mensal vitalícia com base na tabela de aposentadoria antecipada."
+            },
+            "edad": {
+              "field": "IDADE",
+              "value": "Idade máxima para investir é 59."
+            },
+            "mensualidad": {
+              "field": "MENSALIDADE",
+              "value": "Após a conclusão do prazo, pagamentos mensais vitalícios garantidos, os valores dependem da idade do investidor."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "O cônjuge herda, não os filhos."
+            }
+          }
+        },
+        "fortgarryGold": {
+          "display": "Fort Garry - Ouro",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGÊNCIA E VALOR",
+              "value": "Investimento único de US$ 50.000. Após 72 meses, receba renda mensal vitalícia com base na tabela de aposentadoria antecipada."
+            },
+            "edad": {
+              "field": "IDADE",
+              "value": "Idade mínima para investir é 24, máxima é 59."
+            },
+            "mensualidad": {
+              "field": "MENSALIDADE",
+              "value": "Após a conclusão do prazo, pagamentos mensais vitalícios garantidos, os valores dependem da idade do investidor."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "O cônjuge herda, não os filhos."
+            }
+          }
+        },
+        "fortgarrySilver": {
+          "display": "Fort Garry - Prata",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGÊNCIA E VALOR",
+              "value": "Investimento único de US$ 25.000. Após 72 meses, receba renda mensal vitalícia com base na tabela de aposentadoria antecipada."
+            },
+            "edad": {
+              "field": "IDADE",
+              "value": "Idade mínima para investir é 24, máxima é 59."
+            },
+            "mensualidad": {
+              "field": "MENSALIDADE",
+              "value": "Após a conclusão do prazo, pagamentos mensais vitalícios garantidos, os valores dependem da idade do investidor."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "O cônjuge herda, não os filhos."
+            }
+          }
+        },
+        "fortgarryLimited": {
+          "display": "Fort Garry - Limitado",
+          "features": {
+            "vigencia_y_monto": {
+              "field": "VIGÊNCIA E VALOR",
+              "value": "Investimento único de US$ 10.000. Após 72 meses, receba renda mensal vitalícia com base na tabela de aposentadoria antecipada."
+            },
+            "edad": {
+              "field": "IDADE",
+              "value": "Idade mínima para investir é 24, máxima é 59."
+            },
+            "mensualidad": {
+              "field": "MENSALIDADE",
+              "value": "Após a conclusão do prazo, pagamentos mensais vitalícios garantidos, os valores dependem da idade do investidor."
+            },
+            "sucesion": {
+              "field": "SUCESSÃO",
+              "value": "O cônjuge herda, não os filhos."
+            }
+          }
+        }
+      }
+    }
+  },
+  "my_products": {
+    "contract_dates_tooltip": "(Data de início - Data de término) do contrato",
+    "initial_amount": "Valor inicial",
+    "initial_amount_tooltip": "Este é o valor inicial quando você adquire o plano",
+    "additional_deposits": "Depósitos adicionais",
+    "additional_deposits_tooltip": "Estas são as somas de cada valor adicional que você deposita após o valor inicial",
+    "expected_ending": "Valor final esperado",
+    "expected_ending_tooltip": "Este é o valor esperado ao final do período",
+    "current_profits": "Lucros atuais",
+    "current_profits_tooltip": "Este valor reflete o aumento dos lucros mensais",
+    "current_monthly": "Mensal atual",
+    "date": "Data",
+    "deposit": "Depósito"
+  },
+  "withdrawals": {
+    "wallet_actions": {
+      "title": "CONTA EM DÓLAR",
+      "available_balance": "Saldo disponível",
+      "deposit": "Depositar",
+      "withdraw": "Sacar",
+      "transfer_to_user": "Transferir para outro usuário",
+      "transfer_to_account": "Depositar em uma conta de investimento"
+    },
+    "deposits": {
+      "title": "Depósito",
+      "amount": "Valor",
+      "select_method": "Selecione seu método de pagamento",
+      "method_paypal": "Cartão de Débito/Crédito",
+      "method_spei": "TRANSFERÊNCIA BANCÁRIA",
+      "upload_instruction": "Por favor, tire uma captura de tela do seu pagamento e adicione-a aqui:",
+      "upload_drag": "Arraste seu arquivo para cá",
+      "upload_click": "Ou clique para selecionar",
+      "upload_button": "Selecionar arquivo",
+      "cancel": "Cancelar",
+      "confirm": "Depositar",
+      "error_no_amount": "Por favor, insira o valor",
+      "error_no_method": "Por favor, selecione o método de TRANSFERÊNCIA BANCÁRIA",
+      "error_no_file": "Por favor, envie seu comprovante de pagamento",
+      "success_message": "Depósito enviado com sucesso",
+      "error_invalid_paypal_amount": "Por favor, insira um valor válido antes de continuar com o PayPal",
+      "success_paypal": "Depósito concluído com sucesso",
+      "error_paypal": "Erro ao processar o pagamento"
+    },
+    "withdraw": {
+      "title": "Sacar",
+      "select_account": "Selecionar uma conta salva",
+      "add_account": "Adicionar uma nova conta",
+      "back": "Voltar",
+      "submit": "Adicionar Conta",
+      "success": "Saque bem-sucedido",
+      "otp_instruction": "Digite o código de verificação",
+      "cancel": "Cancelar",
+      "form": {
+        "amount": {
+          "label": "Valor",
+          "placeholder": "Digite o valor"
+        },
+        "holder_name": {
+          "label": "Nome do Titular do Cartão",
+          "placeholder": "Digite seu nome"
+        },
+        "clabe": {
+          "label": "CLABE",
+          "placeholder": "Digite sua CLABE"
+        },
+        "bank_name": {
+          "label": "Nome do Banco",
+          "placeholder": "Digite o nome do seu banco"
+        },
+        "otp": {
+          "label": "Código"
+        }
+      },
+      "errors": {
+        "exceeds": "O valor deve ser menor que o seu saldo",
+        "min": "O valor deve ser maior que 500 USD",
+        "otp": "Falha ao gerar OTP",
+        "withdraw": "Falha ao processar o saque",
+        "add": "Não foi possível adicionar a conta"
+      }
+    },
+    "transfer": {
+      "title": "Transferir para uma Conta",
+      "form": {
+        "amount": {
+          "label": "Valor",
+          "placeholder": "Digite o valor",
+          "error_required": "O valor é obrigatório.",
+          "error_invalid": "Deve ser um número positivo."
+        },
+        "account": {
+          "placeholder": "Selecione um plano"
+        }
+      },
+      "new_balance": "Novo saldo: {{amount}}",
+      "errors": {
+        "no_account": "Por favor, selecione uma conta",
+        "insufficient_balance": "Você não tem saldo suficiente para esta operação",
+        "exceeds": "O valor excede o saldo disponível.",
+        "server": "Transferência falhou"
+      },
+      "success": "Transferência bem-sucedida",
+      "cancel": "Cancelar",
+      "submit": "Transferir"
+    },
+    "transfer_to_user": {
+      "title": "Transferir para um Usuário",
+      "form": {
+        "email": {
+          "label": "E-mail do Usuário",
+          "placeholder": "usuario@example.com",
+          "error_required": "O e-mail é obrigatório.",
+          "error_invalid": "Formato de e-mail inválido."
+        },
+        "amount": {
+          "label": "Valor",
+          "placeholder": "Digite o valor",
+          "error_required": "O valor é obrigatório.",
+          "error_invalid": "Deve ser um número positivo."
+        },
+        "concept": {
+          "label": "Conceito",
+          "placeholder": "Motivo da transferência",
+          "error_required": "O conceito é obrigatório."
+        }
+      },
+      "cancel": "Cancelar",
+      "submit": "Transferir",
+      "success": "Transferência concluída com sucesso",
+      "errors": {
+        "insufficient_balance": "Você não tem saldo suficiente para esta operação.",
+        "server": "Ocorreu um erro ao processar a transferência."
+      }
+    }
+  },
+  "checkout": {
+    "title": "Finalizar Compra",
+    "selectedProduct": "Produto selecionado",
+    "amountToPay": "Valor a pagar",
+    "creditCard": "Cartão de crédito",
+    "wire": "TRANSFERÊNCIA BANCÁRIA",
+    "balance": "Saldo",
+    "capturePrompt": "Por favor, tire uma captura de tela do seu pagamento e faça o upload aqui:",
+    "dragFile": "Arraste seu arquivo para cá",
+    "clickToSelect": "Ou clique para selecionar",
+    "selectFile": "Selecionar arquivo",
+    "sendVoucher": "Enviar comprovante",
+    "pay": "Pagar",
+    "payWithBalance": "Pagar com saldo",
+    "selectMethod": "Selecionar método de pagamento",
+    "back": "VOLTAR",
+    "fileRejected": "\"{{file}}\" foi rejeitado",
+    "fileErrorType": "Somente arquivos de imagem são permitidos",
+    "fileErrorLimit": "Somente um arquivo é permitido",
+    "fileErrorSize": "O arquivo deve ter menos de 5MB",
+    "voucherSentSuccess": "Comprovante enviado com sucesso, aguarde a validação",
+    "voucherError": "Falha ao enviar comprovante",
+    "balancePaymentSuccess": "Pagamento concluído com saldo",
+    "balancePaymentError": "Ocorreu um erro ao pagar com saldo"
+  },
+  "steps": "Passos",
+  "documents_step": {
+    "national_id": "RG",
+    "driver_licence": "Carteira de motorista",
+    "passport": "Passaporte",
+    "scan_qr": "Escaneie o código QR com seu telefone para continuar o processo",
+    "title": "Precisamos validar sua identidade para continuar o processo.",
+    "select_type": "Selecione o tipo de documento que deseja usar",
+    "continue_browser": "Continuar no navegador",
+    "continue_phone": "Continuar no meu telefone",
+    "id_capture_instructions": "Você deve capturar ambos os lados da identidade, com qualidade clara e boa iluminação",
+    "front_side": "FRENTE DA IDENTIFICAÇÃO",
+    "back_side": "VERSO DA IDENTIFICAÇÃO"
+  },
+  "kyc_status": {
+    "verification_status": "Status da verificação:",
+    "verified": "Verificado",
+    "pending": "Pendente",
+    "pending_tooltip": "Estamos analisando seus documentos. Você receberá uma atualização em breve.",
+    "denied": "Negado",
+    "denied_tooltip": "Seus dados foram rejeitados. Você deve iniciar o processo novamente.",
+    "not_started": "Não iniciado",
+    "pending_documents": "Documentos pendentes para envio",
+    "id_document": "Documento de identidade",
+    "face_photo": "Foto do rosto",
+    "signature": "Assinatura",
+    "signature_needed": "Precisamos da sua assinatura para o contrato.",
+    "your_signature": "SUA ASSINATURA",
+    "start": "Iniciar"
+  },
+  "validation": {
+    "face_instruction": "Precisamos tirar uma foto do seu rosto",
+    "face_photo_label": "FOTO DO ROSTO"
+  },
+  "profile": {
+    "verified": "Perfil Verificado",
+    "unverified": "Perfil Não Verificado"
+  },
+  "spei": {
+    "beneficiary_name": "Nome do Beneficiário",
+    "bank_name": "Banco do Beneficiário",
+    "swift_code": "Código Swift / BIC",
+    "routing_number": "Número de Roteamento ABA - EUA",
+    "account_number": "Número da Conta do Beneficiário / IBAN",
+    "account_type": "Tipo de Conta",
+    "bank_address": "Endereço do Banco do Beneficiário",
+    "amount": "Quantia"
+  }
+}
