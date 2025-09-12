@@ -19,7 +19,6 @@ import Footer from '@/Footer/Component'
 import "@/utilities/i18n";
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
       <head>
