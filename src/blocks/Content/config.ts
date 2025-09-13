@@ -6,44 +6,58 @@ const when =
     (_data: any, _sibling: any, parent: any) =>
       pred(parent)
 
+const validateUrl = (val: unknown) =>
+  !val
+    ? true
+    : typeof val === 'string' && /^https?:\/\//i.test(val)
+      ? true
+      : 'Debe ser una URL válida que inicie con http:// o https://'
 
 const columnFields: Field[] = [
   {
     name: 'size',
     type: 'select',
+    label: 'Ancho de columna',
     defaultValue: 'oneThird',
+    admin: { description: 'Porcentaje del ancho total que ocupa esta columna' },
     options: [
       { label: '1/3', value: 'oneThird' },
       { label: '1/2', value: 'half' },
       { label: '2/3', value: 'twoThirds' },
-      { label: 'Full', value: 'full' },
+      { label: '100% (Full)', value: 'full' },
     ],
   },
 
   {
     name: 'richText',
     type: 'richText',
-    label: 'Content',
+    label: 'Contenido',
     localized: true,
   },
   {
     name: 'enableLink',
     type: 'checkbox',
+    label: 'Agregar enlace al contenido',
+    defaultValue: false,
   },
   link({
     overrides: {
       admin: {
         condition: (_data, siblingData) => Boolean(siblingData?.enableLink),
+        description: 'Se mostrará el enlace si activas "Agregar enlace al contenido".',
       },
     },
   }),
   {
     name: 'surface',
     type: 'group',
+    label: 'Superficie',
+    admin: { description: 'Fondo y estilo del contenedor de esta columna' },
     fields: [
       {
         name: 'bgColor',
         type: 'select',
+        label: 'Color de fondo',
         defaultValue: 'transparent',
         options: [
           { label: 'Transparente', value: 'transparent' },
@@ -57,74 +71,92 @@ const columnFields: Field[] = [
       {
         name: 'rounded',
         type: 'select',
+        label: 'Bordes redondeados',
         defaultValue: '2xl',
         options: [
-          { label: 'None', value: 'none' },
+          { label: 'Sin bordes', value: 'none' },
           { label: 'md', value: 'md' },
           { label: 'lg', value: 'lg' },
           { label: 'xl', value: 'xl' },
           { label: '2xl', value: '2xl' },
-          { label: 'full', value: 'full' },
+          { label: 'Redondo total', value: 'full' },
         ],
       },
-      { name: 'shadow', type: 'checkbox', defaultValue: true },
+      {
+        name: 'shadow',
+        type: 'checkbox',
+        label: 'Sombra',
+        defaultValue: true,
+      },
     ],
   },
   {
     name: 'Imagen de Fondo',
     type: 'group',
+    label: 'Imagen de fondo',
+    admin: { description: 'Activa para colocar una imagen o URL como fondo de esta columna' },
     fields: [
-      { name: 'enabled', type: 'checkbox', defaultValue: false },
+      { name: 'enabled', type: 'checkbox', label: 'Activar imagen de fondo', defaultValue: false },
 
       {
         name: 'image',
         type: 'upload',
         relationTo: 'media',
+        label: 'Imagen subida',
         admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
       },
       {
         name: 'externalUrl',
         type: 'text',
+        label: 'URL externa de imagen',
+        validate: validateUrl,
         admin: {
-          description: 'Prioridad sobre "image" (opcional)',
+          description: 'Tiene prioridad sobre “Imagen subida”. Ej: https://.../imagen.jpg',
           condition: (_data, siblingData) => !!siblingData?.enabled,
+          placeholder: 'https://ejemplo.com/imagen.jpg',
         },
       },
       {
         name: 'size',
         type: 'select',
+        label: 'Ajuste de imagen',
         defaultValue: 'cover',
         options: [
-          { label: 'Cover (llena)', value: 'cover' },
-          { label: 'Contain', value: 'contain' },
-          { label: 'Original', value: 'original' },
+          { label: 'Cover (cubre todo)', value: 'cover' },
+          { label: 'Contain (encaja)', value: 'contain' },
+          { label: 'Original (sin ajuste)', value: 'original' },
         ],
         admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
       },
       {
         name: 'position',
         type: 'select',
+        label: 'Posición de la imagen',
         defaultValue: 'bottom',
         options: [
-          { label: 'Top', value: 'top' },
-          { label: 'Center', value: 'center' },
-          { label: 'Bottom', value: 'bottom' },
-          { label: 'Left', value: 'left' },
-          { label: 'Right', value: 'right' },
-          { label: 'Top Left', value: 'top-left' },
-          { label: 'Top Right', value: 'top-right' },
-          { label: 'Bottom Left', value: 'bottom-left' },
-          { label: 'Bottom Right', value: 'bottom-right' },
+          { label: 'Arriba', value: 'top' },
+          { label: 'Centro', value: 'center' },
+          { label: 'Abajo', value: 'bottom' },
+          { label: 'Izquierda', value: 'left' },
+          { label: 'Derecha', value: 'right' },
+          { label: 'Arriba Izquierda', value: 'top-left' },
+          { label: 'Arriba Derecha', value: 'top-right' },
+          { label: 'Abajo Izquierda', value: 'bottom-left' },
+          { label: 'Abajo Derecha', value: 'bottom-right' },
         ],
         admin: { condition: (_data, siblingData) => !!siblingData?.enabled },
       },
       {
         name: 'opacity',
         type: 'number',
+        label: 'Opacidad',
         defaultValue: 100,
+        min: 0,
+        max: 100,
         admin: {
           description: '0–100 (porcentaje)',
           condition: (_data, siblingData) => !!siblingData?.enabled,
+          step: 1,
         },
       },
     ],
@@ -148,60 +180,66 @@ const columnFields: Field[] = [
   {
     name: 'customHeightPx',
     type: 'number',
+    label: 'Alto personalizado (px)',
+    min: 40,
+    max: 4000,
     admin: {
-      description: 'Aplica cuando Height = Personalizada',
+      description: 'Se aplica cuando “Alto” = Personalizada (px)',
       condition: when((p) => p?.height === 'custom'),
+      step: 10,
+      placeholder: 'Ej. 520',
     },
   },
 
-  // — PADDING Y —
   {
     label: 'Espaciado Vertical',
     name: 'paddingY',
     type: 'select',
     defaultValue: 'md',
     options: [
-      { label: 'None', value: 'none' },
-      { label: 'Sm', value: 'sm' },
-      { label: 'Md', value: 'md' },
-      { label: 'Lg', value: 'lg' },
-      { label: 'Xl', value: 'xl' },
+      { label: 'Sin espaciado', value: 'none' },
+      { label: 'Pequeño', value: 'sm' },
+      { label: 'Medio', value: 'md' },
+      { label: 'Grande', value: 'lg' },
+      { label: 'Muy grande', value: 'xl' },
     ],
   },
   {
-    label: "Elementos",
+    label: 'Elementos',
     name: 'elements',
     type: 'blocks',
-    admin: { initCollapsed: true },
+    admin: { initCollapsed: true, description: 'Agrega bloques de texto, multimedia o llamados a la acción' },
     blocks: [
       {
         slug: 'text',
+        labels: { singular: 'Texto', plural: 'Textos' },
         fields: [
           {
             name: 'content',
             type: 'richText',
-            label: 'Content',
+            label: 'Contenido',
             required: true,
             localized: true,
           },
           {
             name: 'align',
             type: 'select',
+            label: 'Alineación',
             defaultValue: 'start',
             options: [
-              { label: 'Start', value: 'start' },
-              { label: 'Center', value: 'center' },
-              { label: 'End', value: 'end' },
+              { label: 'Izquierda', value: 'start' },
+              { label: 'Centro', value: 'center' },
+              { label: 'Derecha', value: 'end' },
             ],
           },
         ],
       },
       {
         slug: 'media',
-        labels: { singular: 'Media', plural: 'Medias' },
+        labels: { singular: 'Multimedia', plural: 'Multimedias' },
         fields: [
           {
-            label: 'Multimedia',
+            label: 'Archivo multimedia',
             name: 'media',
             type: 'upload',
             relationTo: 'media',
@@ -212,7 +250,8 @@ const columnFields: Field[] = [
             name: 'externalUrl',
             type: 'text',
             required: false,
-            admin: { description: 'URL directa de imagen o video (opcional)' },
+            validate: validateUrl,
+            admin: { description: 'URL directa de imagen o video (opcional)', placeholder: 'https://...' },
           },
           {
             label: 'Redondeado',
@@ -220,33 +259,34 @@ const columnFields: Field[] = [
             type: 'select',
             defaultValue: '2xl',
             options: [
-              { label: 'None', value: 'none' },
+              { label: 'Sin bordes', value: 'none' },
               { label: 'md', value: 'md' },
               { label: 'lg', value: 'lg' },
               { label: 'xl', value: 'xl' },
               { label: '2xl', value: '2xl' },
-              { label: 'full', value: 'full' },
+              { label: 'Redondo total', value: 'full' },
             ],
           },
           {
             name: 'aspect',
             type: 'select',
+            label: 'Relación de aspecto',
             defaultValue: '16/9',
             options: [
               { label: 'Auto', value: 'auto' },
-              { label: '16/9', value: '16/9' },
-              { label: '4/3', value: '4/3' },
-              { label: '1/1', value: '1/1' },
+              { label: '16:9', value: '16/9' },
+              { label: '4:3', value: '4/3' },
+              { label: '1:1', value: '1/1' },
             ],
           },
           {
-            label: 'Ajustar',
+            label: 'Ajuste',
             name: 'objectFit',
             type: 'select',
             defaultValue: 'cover',
             options: [
-              { label: 'Cover', value: 'cover' },
-              { label: 'Contain', value: 'contain' },
+              { label: 'Cover (cubre)', value: 'cover' },
+              { label: 'Contain (encaja)', value: 'contain' },
             ],
           },
           {
@@ -258,7 +298,8 @@ const columnFields: Field[] = [
           {
             name: 'videoOptions',
             type: 'group',
-            admin: { description: 'Opciones solo para video' },
+            label: 'Opciones de video',
+            admin: { description: 'Se aplican cuando el archivo o URL es un video' },
             fields: [
               {
                 name: 'showOverlayControl',
@@ -289,6 +330,8 @@ const columnFields: Field[] = [
                 type: 'text',
                 label: 'Poster (URL opcional)',
                 required: false,
+                validate: validateUrl,
+                admin: { placeholder: 'https://.../poster.jpg' },
               },
             ],
           },
@@ -296,30 +339,33 @@ const columnFields: Field[] = [
       },
       {
         slug: 'cta',
+        labels: { singular: 'Botón / CTA', plural: 'Botones / CTA' },
         fields: [
-          { name: 'label', type: 'text', required: true },
+          { name: 'label', type: 'text', required: true, label: 'Texto del botón' },
           link({}),
           {
             name: 'variant',
             type: 'select',
+            label: 'Estilo',
             defaultValue: 'primary',
             options: [
-              { label: 'Primary', value: 'primary' },
-              { label: 'Secondary', value: 'secondary' },
-              { label: 'Link', value: 'link' },
+              { label: 'Primario', value: 'primary' },
+              { label: 'Secundario', value: 'secondary' },
+              { label: 'Enlace', value: 'link' },
             ],
           },
           {
             name: 'align',
             type: 'select',
+            label: 'Alineación',
             defaultValue: 'start',
             options: [
-              { label: 'Start', value: 'start' },
-              { label: 'Center', value: 'center' },
-              { label: 'End', value: 'end' },
+              { label: 'Izquierda', value: 'start' },
+              { label: 'Centro', value: 'center' },
+              { label: 'Derecha', value: 'end' },
             ],
           },
-          { name: 'fullWidth', type: 'checkbox', defaultValue: false },
+          { name: 'fullWidth', type: 'checkbox', defaultValue: false, label: 'Ocupar todo el ancho' },
         ],
       },
     ],
@@ -333,8 +379,13 @@ export const Content: Block = {
     {
       name: 'columns',
       type: 'array',
-      admin: { initCollapsed: true },
+      label: 'Columnas',
+      admin: {
+        initCollapsed: true,
+        description: 'Agrega una o más columnas y configura su contenido y estilo',
+      },
       fields: columnFields,
+      minRows: 1,
     },
   ],
 }

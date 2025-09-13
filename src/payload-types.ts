@@ -159,14 +159,14 @@ export interface Page {
     | SectionBlock
     | {
         /**
-         * Agrega, elimina o reordena logos libremente
+         * Agrega, elimina o reordena logos libremente.
          */
         items?:
           | {
               media: number | Media;
               alt: string;
               /**
-               * Link del logo (opcional)
+               * Se abrirá al hacer clic en el logo.
                */
               href?: string | null;
               newTab?: boolean | null;
@@ -174,13 +174,16 @@ export interface Page {
             }[]
           | null;
         /**
-         * Altura en px del carrusel
+         * Altura en píxeles (px).
          */
         height?: number | null;
         /**
-         * Cuántos logos por breakpoint
+         * Cuántos logos se muestran según el tamaño de pantalla.
          */
         perView?: {
+          /**
+           * < 640px
+           */
           base?: number | null;
           sm?: number | null;
           md?: number | null;
@@ -189,6 +192,9 @@ export interface Page {
         };
         autoScroll?: {
           playOnInit?: boolean | null;
+          /**
+           * 1 = normal. Ajusta entre 0.25 y 5.
+           */
           speed?: number | null;
           stopOnMouseEnter?: boolean | null;
           stopOnInteraction?: boolean | null;
@@ -537,8 +543,14 @@ export interface User {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  /**
+   * Agrega una o más columnas y configura su contenido y estilo
+   */
   columns?:
     | {
+        /**
+         * Porcentaje del ancho total que ocupa esta columna
+         */
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
         richText?: {
           root: {
@@ -557,16 +569,22 @@ export interface ContentBlock {
         } | null;
         enableLink?: boolean | null;
         link?: FooterNavItem;
+        /**
+         * Fondo y estilo del contenedor de esta columna
+         */
         surface?: {
           bgColor?: ('transparent' | 'white' | 'black' | 'slate-50' | 'slate-100' | 'slate-900') | null;
           rounded?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
           shadow?: boolean | null;
         };
+        /**
+         * Activa para colocar una imagen o URL como fondo de esta columna
+         */
         'Imagen de Fondo'?: {
           enabled?: boolean | null;
           image?: (number | null) | Media;
           /**
-           * Prioridad sobre "image" (opcional)
+           * Tiene prioridad sobre “Imagen subida”. Ej: https://.../imagen.jpg
            */
           externalUrl?: string | null;
           size?: ('cover' | 'contain' | 'original') | null;
@@ -590,10 +608,13 @@ export interface ContentBlock {
         };
         height?: ('auto' | 'sm' | 'md' | 'lg' | 'xl' | 'screen' | 'full' | 'custom') | null;
         /**
-         * Aplica cuando Height = Personalizada
+         * Se aplica cuando “Alto” = Personalizada (px)
          */
         customHeightPx?: number | null;
         paddingY?: ('none' | 'sm' | 'md' | 'lg' | 'xl') | null;
+        /**
+         * Agrega bloques de texto, multimedia o llamados a la acción
+         */
         elements?:
           | (
               | {
@@ -628,7 +649,7 @@ export interface ContentBlock {
                   objectFit?: ('cover' | 'contain') | null;
                   shadow?: boolean | null;
                   /**
-                   * Opciones solo para video
+                   * Se aplican cuando el archivo o URL es un video
                    */
                   videoOptions?: {
                     showOverlayControl?: boolean | null;

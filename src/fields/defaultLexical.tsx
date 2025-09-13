@@ -23,6 +23,14 @@ export const defaultLexical = lexicalEditor({
     TextFontFamilyFeature(),
     TextLineHeightFeature(),
     TextLetterSpacingFeature(),
-    TextSizeFeature(),
+    TextSizeFeature({
+      method: 'replace',
+      sizes: [
+        { label: 'Small', value: '0.875em' },
+        { label: 'Normal', value: '1em' },
+        { label: 'Large', value: '1.125em' },
+        { label: 'Huge', value: '1.25em' },
+      ],
+    }),
   ],
 })

@@ -111,7 +111,7 @@ const config = {
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['var(--font-inter)', 'system-ui', 'var(--font-geist-sans)'],
       },
       keyframes: {
         'accordion-down': {
