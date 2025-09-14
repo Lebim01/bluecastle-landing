@@ -204,20 +204,41 @@ export interface Page {
         blockType: 'carousel';
       }
     | {
-        variant: 'waves' | 'aurora';
-        title: string;
+        /**
+         * Elige el estilo visual del hero
+         */
+        variant: 'waves' | 'aurora' | 'carousel';
+        title?: string | null;
         subcopy?: string | null;
+        /**
+         * Botón principal de acción
+         */
         cta?: {
           label?: string | null;
           href?: string | null;
         };
+        /**
+         * Texto legal o aclaratorio opcional
+         */
         disclaimer?: string | null;
+        /**
+         * Imagen opcional para mostrar como marca
+         */
         logo?: (number | null) | Media;
+        /**
+         * Configura el degradado y la altura del hero
+         */
         waves?: {
           gradientStart?: string | null;
           gradientEnd?: string | null;
+          /**
+           * Porcentaje de la altura de pantalla (30–100)
+           */
           heightVH?: number | null;
         };
+        /**
+         * Configura colores, cantidad y velocidad de estrellas
+         */
         aurora?: {
           colors?:
             | {
@@ -225,8 +246,39 @@ export interface Page {
                 id?: string | null;
               }[]
             | null;
+          /**
+           * 0–10,000
+           */
           starsCount?: number | null;
+          /**
+           * 0.1–10 (1 = normal)
+           */
           starsSpeed?: number | null;
+        };
+        /**
+         * Hero tipo carrusel (Embla) con slides configurables
+         */
+        carousel?: {
+          heightVH?: number | null;
+          loop?: boolean | null;
+          /**
+           * 0 = desactivado
+           */
+          autoplayMs?: number | null;
+          slides: {
+            image: number | Media;
+            title?: string | null;
+            text?: string | null;
+            cta?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            overlayFrom?: string | null;
+            overlayTo?: string | null;
+            align?: ('start' | 'center' | 'end') | null;
+            lightText?: boolean | null;
+            id?: string | null;
+          }[];
         };
         id?: string | null;
         blockName?: string | null;
@@ -1078,6 +1130,31 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     starsCount?: T;
                     starsSpeed?: T;
+                  };
+              carousel?:
+                | T
+                | {
+                    heightVH?: T;
+                    loop?: T;
+                    autoplayMs?: T;
+                    slides?:
+                      | T
+                      | {
+                          image?: T;
+                          title?: T;
+                          text?: T;
+                          cta?:
+                            | T
+                            | {
+                                label?: T;
+                                href?: T;
+                              };
+                          overlayFrom?: T;
+                          overlayTo?: T;
+                          align?: T;
+                          lightText?: T;
+                          id?: T;
+                        };
                   };
               id?: T;
               blockName?: T;

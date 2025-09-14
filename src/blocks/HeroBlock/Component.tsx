@@ -3,14 +3,13 @@ import React from "react";
 import type { Page, Media } from "@/payload-types";
 import HeroAurora from "./variants/HeroAura";
 import HeroWaves from "./variants/HeroWaves";
+import HeroCarousel from "./variants/HeroCarousel";
 
-
-export type ExtractHero = Extract<Page["layout"][number], { blockType: "heroBlock" }>; // spread-friendly
-
+export type ExtractHero = Extract<Page["layout"][number], { blockType: "heroBlock" }>;
 
 export type HeroFallback = {
     blockType: "heroBlock";
-    variant?: "waves" | "aurora";
+    variant?: "waves" | "aurora" | "carousel"; // 👈 agrega carousel
     title?: string | null;
     subcopy?: string | null;
     cta?: { label?: string | null; href?: string | null } | null;
@@ -18,6 +17,7 @@ export type HeroFallback = {
     logo?: number | Media | null;
     waves?: { gradientStart?: string | null; gradientEnd?: string | null; heightVH?: number | null } | null;
     aurora?: { colors?: { color: string }[] | null; starsCount?: number | null; starsSpeed?: number | null } | null;
+    carousel?: any; // tipado flexible si no tienes los tipos generados aún
     id?: string;
     blockName?: string | null;
 };
@@ -30,6 +30,8 @@ export default function HeroBlockComponent(props: HeroProps & { disableInnerCont
     switch (variant) {
         case "aurora":
             return <HeroAurora {...(props as any)} />;
+        case "carousel":
+            return <HeroCarousel {...(props as any)} />; // 👈 nuevo
         case "waves":
         default:
             return <HeroWaves {...(props as any)} />;
