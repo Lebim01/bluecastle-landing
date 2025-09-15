@@ -32,19 +32,14 @@ export const TradingViewBlock: React.FC<TradingViewBlockType> = (props) => {
     const { embedHtml, height, fullWidth } = (props || {}) as any;
     const hostRef = useRef<HTMLDivElement>(null);
 
-    if (!props || !('embedHtml' in (props as any))) {
-        if (process.env.NODE_ENV !== 'production') {
-            console.warn('[TradingViewBlock] props vacíos o sin embedHtml:', props);
-        }
-        return null;
-    }
-
     const parts = useMemo(() => extractParts(embedHtml ?? ''), [embedHtml]);
 
     useEffect(() => {
-        if (!hostRef.current || !parts.scriptSrc) return;
+        const el = hostRef.current;
 
-        hostRef.current.innerHTML = parts.containerHtml || '';
+        if (!el || !parts.scriptSrc) return;
+
+        el.innerHTML = parts.containerHtml || '';
 
         const s = document.createElement('script');
         s.type = 'text/javascript';
@@ -52,18 +47,25 @@ export const TradingViewBlock: React.FC<TradingViewBlockType> = (props) => {
         s.src = parts.scriptSrc;
 
         if (typeof parts.config === 'string') {
-            s.innerHTML = parts.config;
+            s.text = parts.config;
         } else if (parts.config && typeof parts.config === 'object') {
             const cfg = { ...parts.config, autosize: true, width: '100%', height: '100%' };
             s.text = JSON.stringify(cfg);
         }
 
-        hostRef.current.appendChild(s);
+        el.appendChild(s);
 
         return () => {
-            if (hostRef.current) hostRef.current.innerHTML = '';
+            el.innerHTML = '';
         };
     }, [parts]);
+
+    if (!props || !('embedHtml' in (props as any))) {
+        if (process.env.NODE_ENV !== 'production') {
+            console.warn('[TradingViewBlock] props vacíos o sin embedHtml:', props);
+        }
+        return null;
+    }
 
     return (
         <div

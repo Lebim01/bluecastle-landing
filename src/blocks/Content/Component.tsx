@@ -162,7 +162,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                       <div className={`relative z-10 space-y-6 px-6 ${isDarkBg ? 'text-white' : 'text-gray-900'}`}>
                         {col?.richText?.root && (
                           <div className={`prose max-w-none ${isDarkBg ? 'prose-invert' : ''}`}>
-                            <RichText data={col.richText} />
+                            <RichText data={col.richText} enableGutter={false} />
                           </div>
                         )}
 
