@@ -69,6 +69,12 @@ export const Posts: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Título',
+      localized: true,
+      admin: {
+        components: {
+          Field: '@/components/Fields/LocalizedText',
+        },
+      }
     },
 
     // Slug
@@ -123,6 +129,7 @@ export const Posts: CollectionConfig = {
       type: 'textarea',
       label: 'Extracto',
       admin: { description: 'Resumen corto para listados y meta.' },
+      localized: true,
     },
 
     {
@@ -139,8 +146,8 @@ export const Posts: CollectionConfig = {
       label: 'SEO',
       admin: { position: 'sidebar' },
       fields: [
-        { name: 'metaTitle', type: 'text', label: 'Meta title' },
-        { name: 'metaDescription', type: 'textarea', label: 'Meta description', maxLength: 180 },
+        { name: 'metaTitle', type: 'text', label: 'Meta title', localized: true, },
+        { name: 'metaDescription', type: 'textarea', label: 'Meta description', maxLength: 180, localized: true, },
         { name: 'ogImage', type: 'upload', relationTo: 'media', label: 'Imagen OG' },
         { name: 'noIndex', type: 'checkbox', label: 'No index (robots)' },
         { name: 'keywords', type: 'text', label: 'Keywords' },
