@@ -11,6 +11,8 @@ const LocalizedText: TextFieldClientComponent = (props) => {
   const locale = useLocale()
   const [selectedLang, setSelectedLang] = useState(locale.code)
 
+  props.field.label?.toString
+
   return (
     <>
       <TextInput
@@ -20,7 +22,7 @@ const LocalizedText: TextFieldClientComponent = (props) => {
         {...props.field}
         Label={
           <div className="flex items-center gap-4 pb-2">
-            <span>{props.field.label || props.field.name || ''}</span>
+            <span>{props.field.label?.toString() || props.field?.name}</span>
             <div
               className="flex"
               style={{
