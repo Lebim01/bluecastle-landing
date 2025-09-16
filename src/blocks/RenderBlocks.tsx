@@ -12,6 +12,7 @@ import { FAQBlock } from './Faq/Component'
 import { TestimonialsBlock } from './TestimonialsBlock/Component'
 import { TradingViewBlock } from './TradingViewBlock/Component'
 import Calculator from './PlansCalculator'
+import TimelineBlock from './Timeline/Component'
 
 
 const blockComponents = {
@@ -25,7 +26,8 @@ const blockComponents = {
   faq: FAQBlock,
   testimonials: TestimonialsBlock,
   tradingView: TradingViewBlock,
-  calculator: Calculator
+  calculator: Calculator,
+  timeline: TimelineBlock,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

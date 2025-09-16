@@ -336,6 +336,47 @@ export interface Page {
         blockName?: string | null;
         blockType: 'calculator';
       }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        items?:
+          | {
+              title: string;
+              description?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              checklist?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              gallery?:
+                | {
+                    image: number | Media;
+                    alt?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'timeline';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1206,6 +1247,34 @@ export interface PagesSelect<T extends boolean = true> {
         calculator?:
           | T
           | {
+              id?: T;
+              blockName?: T;
+            };
+        timeline?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    checklist?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    gallery?:
+                      | T
+                      | {
+                          image?: T;
+                          alt?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

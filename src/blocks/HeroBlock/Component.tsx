@@ -31,7 +31,7 @@ export default function HeroBlockComponent(props: HeroProps & { disableInnerCont
         case "aurora":
             return <HeroAurora {...(props as any)} />;
         case "carousel":
-            return <HeroCarousel {...(props as any)} />; // 👈 nuevo
+            return <HeroCarousel {...(props as any)} />;
         case "waves":
         default:
             return <HeroWaves {...(props as any)} />;

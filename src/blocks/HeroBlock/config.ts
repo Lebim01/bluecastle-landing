@@ -61,7 +61,7 @@ export const HeroBlock: Block = {
             ],
         },
 
-        // Aurora (igual que ya lo tenías)
+
         {
             name: 'aurora',
             type: 'group',
@@ -83,8 +83,6 @@ export const HeroBlock: Block = {
                 { name: 'starsSpeed', type: 'number', label: 'Velocidad de estrellas', defaultValue: 2, min: 0.1, max: 10, admin: { description: '0.1–10 (1 = normal)', step: 0.1 } },
             ],
         },
-
-        // 👇 NUEVO: Carousel
         {
             name: 'carousel',
             type: 'group',
