@@ -26,6 +26,7 @@ import { TestimonialsBlock } from '@/blocks/TestimonialsBlock/config'
 import { TradingViewBlock } from '@/blocks/TradingViewBlock/config'
 import CalculatorBlock from '@/blocks/PlansCalculator/config'
 import { TimelineBlock } from '@/blocks/Timeline/config'
+import { BlogPostsList } from '@/blocks/BlogPostsList/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -83,7 +84,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 if (isDefault && !val) return 'Requerido en el idioma por defecto'
                 return true
               },
-              blocks: [CallToAction, Content, MediaBlock, Archive, Section, Carousel, HeroBlock, FAQBlock, TestimonialsBlock, TradingViewBlock, CalculatorBlock, TimelineBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, Section, Carousel, HeroBlock, FAQBlock, TestimonialsBlock, TradingViewBlock, CalculatorBlock, TimelineBlock, BlogPostsList],
               required: true,
               admin: {
                 initCollapsed: true,

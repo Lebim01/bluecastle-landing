@@ -377,6 +377,33 @@ export interface Page {
         blockName?: string | null;
         blockType: 'timeline';
       }
+    | {
+        heading?: string | null;
+        variant?: ('cards' | 'list') | null;
+        limit?: number | null;
+        columns?: number | null;
+        filters?: {
+          search?: string | null;
+          categories?: (number | Category)[] | null;
+          excludeIDs?: (string | Post)[] | null;
+          sort?: ('-publishedAt' | 'publishedAt' | 'title' | '-title') | null;
+        };
+        show?: {
+          showImage?: boolean | null;
+          showCategories?: boolean | null;
+          showDate?: boolean | null;
+          showAuthor?: boolean | null;
+          showExcerpt?: boolean | null;
+          showPaginationLink?: boolean | null;
+        };
+        advanced?: {
+          manualItems?: (string | Post)[] | null;
+          cardAspect?: ('16/9' | '4/3' | '1/1') | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'blogPostsList';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -452,9 +479,21 @@ export interface FooterNavItem {
  */
 export interface Post {
   id: string;
+  status?: ('draft' | 'published') | null;
   title: string;
-  heroImage?: (number | null) | Media;
-  content: {
+  /**
+   * URL del post
+   */
+  slug?: string | null;
+  publishedAt?: string | null;
+  author?: (number | null) | User;
+  categories?: (number | Category)[] | null;
+  coverImage?: (number | null) | Media;
+  /**
+   * Resumen corto para listados y meta.
+   */
+  excerpt?: string | null;
+  richText: {
     root: {
       type: string;
       children: {
@@ -469,29 +508,71 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  relatedPosts?: (string | Post)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    ogImage?: (number | null) | Media;
+    noIndex?: boolean | null;
   };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
+  tags?:
     | {
+        value: string;
         id?: string | null;
-        name?: string | null;
       }[]
     | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  /**
+   * Minutos (opcional, puede calcularse automáticamente).
+   */
+  readingTime?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  title: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  parent?: (number | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | Category;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -584,52 +665,6 @@ export interface Media {
       filename?: string | null;
     };
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  parent?: (number | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (number | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  name?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -853,7 +888,39 @@ export interface SectionBlock {
     };
   };
   id?: string | null;
-  content: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock)[];
+  content: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | {
+        heading?: string | null;
+        variant?: ('cards' | 'list') | null;
+        limit?: number | null;
+        columns?: number | null;
+        filters?: {
+          search?: string | null;
+          categories?: (number | Category)[] | null;
+          excludeIDs?: (string | Post)[] | null;
+          sort?: ('-publishedAt' | 'publishedAt' | 'title' | '-title') | null;
+        };
+        show?: {
+          showImage?: boolean | null;
+          showCategories?: boolean | null;
+          showDate?: boolean | null;
+          showAuthor?: boolean | null;
+          showExcerpt?: boolean | null;
+          showPaginationLink?: boolean | null;
+        };
+        advanced?: {
+          manualItems?: (string | Post)[] | null;
+          cardAspect?: ('16/9' | '4/3' | '1/1') | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'blogPostsList';
+      }
+  )[];
   blockName?: string | null;
   blockType: 'section';
 }
@@ -1278,6 +1345,40 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        blogPostsList?:
+          | T
+          | {
+              heading?: T;
+              variant?: T;
+              limit?: T;
+              columns?: T;
+              filters?:
+                | T
+                | {
+                    search?: T;
+                    categories?: T;
+                    excludeIDs?: T;
+                    sort?: T;
+                  };
+              show?:
+                | T
+                | {
+                    showImage?: T;
+                    showCategories?: T;
+                    showDate?: T;
+                    showAuthor?: T;
+                    showExcerpt?: T;
+                    showPaginationLink?: T;
+                  };
+              advanced?:
+                | T
+                | {
+                    manualItems?: T;
+                    cardAspect?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1472,6 +1573,40 @@ export interface SectionBlockSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
+        blogPostsList?:
+          | T
+          | {
+              heading?: T;
+              variant?: T;
+              limit?: T;
+              columns?: T;
+              filters?:
+                | T
+                | {
+                    search?: T;
+                    categories?: T;
+                    excludeIDs?: T;
+                    sort?: T;
+                  };
+              show?:
+                | T
+                | {
+                    showImage?: T;
+                    showCategories?: T;
+                    showDate?: T;
+                    showAuthor?: T;
+                    showExcerpt?: T;
+                    showPaginationLink?: T;
+                  };
+              advanced?:
+                | T
+                | {
+                    manualItems?: T;
+                    cardAspect?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   blockName?: T;
 }
@@ -1481,28 +1616,30 @@ export interface SectionBlockSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   id?: T;
+  status?: T;
   title?: T;
-  heroImage?: T;
-  content?: T;
-  relatedPosts?: T;
-  categories?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
   slug?: T;
-  slugLock?: T;
+  publishedAt?: T;
+  author?: T;
+  categories?: T;
+  coverImage?: T;
+  excerpt?: T;
+  richText?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        noIndex?: T;
+      };
+  tags?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  readingTime?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -2051,15 +2188,10 @@ export interface TaskSchedulePublish {
   input: {
     type?: ('publish' | 'unpublish') | null;
     locale?: string | null;
-    doc?:
-      | ({
-          relationTo: 'pages';
-          value: number | Page;
-        } | null)
-      | ({
-          relationTo: 'posts';
-          value: string | Post;
-        } | null);
+    doc?: {
+      relationTo: 'pages';
+      value: number | Page;
+    } | null;
     global?: string | null;
     user?: (number | null) | User;
   };

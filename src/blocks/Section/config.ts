@@ -4,6 +4,7 @@ import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { Archive } from '@/blocks/ArchiveBlock/config'
+import { BlogPostsList } from '../BlogPostsList/config'
 
 export const Section: Block = {
   slug: 'section',
@@ -17,7 +18,7 @@ export const Section: Block = {
       type: 'blocks',
       required: true,
       admin: { initCollapsed: true },
-      blocks: [CallToAction, Content, MediaBlock, Archive],
+      blocks: [CallToAction, Content, MediaBlock, Archive, BlogPostsList],
     },
   ],
 }

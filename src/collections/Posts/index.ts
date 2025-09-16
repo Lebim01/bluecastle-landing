@@ -1,61 +1,44 @@
-import type { CollectionConfig } from 'payload'
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { populateAuthors } from './hooks/populateAuthors'
-import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
+import { CollectionConfig, FieldHook } from 'payload'
+import slugify from 'slugify'
 import { v4 as uuidv4 } from 'uuid'
 
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
-import { slugField } from '@/fields/slug'
+// --- Hook: generar slug a partir del título ---
+const formatSlug: FieldHook = ({ data, value }) => {
+  const base = value || data?.title || ''
+  return slugify(String(base), { lower: true, strict: true, trim: true })
+}
 
-export const Posts: CollectionConfig<'posts'> = {
+// --- Hook: si se publica y no hay fecha, setear publishedAt ---
+const setPublishedAt: FieldHook = ({ data, value, originalDoc }) => {
+  const wasDraft = (originalDoc as any)?.status !== 'published'
+  const nowPublishing = data?.status === 'published'
+  if (nowPublishing && wasDraft && !value) {
+    return new Date().toISOString()
+  }
+  return value
+}
+
+export const Posts: CollectionConfig = {
   slug: 'posts',
-  access: {
-    create: authenticated,
-    delete: authenticated,
-    read: authenticatedOrPublished,
-    update: authenticated,
-  },
-  // This config controls what's populated by default when a post is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'posts'>
-  defaultPopulate: {
-    title: true,
-    slug: true,
-    categories: true,
-    meta: {
-      image: true,
-      description: true,
-    },
-  },
+  labels: { singular: 'Post', plural: 'Posts' },
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data, req }) => {
-        const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'posts',
-          req,
-        })
-
-        return path
-      },
-    },
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'posts',
-        req,
-      }),
     useAsTitle: 'title',
+    defaultColumns: ['title', 'status', 'publishedAt', 'author', 'categories'],
+    listSearchableFields: ['title', 'slug', 'excerpt'],
   },
+  versions: {
+    drafts: true,
+    maxPerDoc: 25,
+
+  },
+  access: {
+    read: ({ req }) => true, // público; si necesitas restringir, cambia la condición
+    create: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => Boolean(req.user),
+  },
+  timestamps: true,
+  defaultSort: '-publishedAt',
   fields: [
     {
       name: 'id',
@@ -67,160 +50,122 @@ export const Posts: CollectionConfig<'posts'> = {
         },
       },
     },
+
+    // Estado del post
+    {
+      name: 'status',
+      type: 'select',
+      defaultValue: 'draft',
+      options: [
+        { label: 'Borrador', value: 'draft' },
+        { label: 'Publicado', value: 'published' },
+      ],
+      admin: { position: 'sidebar' },
+    },
+
+    // Título
     {
       name: 'title',
       type: 'text',
       required: true,
-      localized: true,
+      label: 'Título',
     },
+
+    // Slug
     {
-      type: 'tabs',
-      tabs: [
-        {
-          fields: [
-            {
-              name: 'heroImage',
-              type: 'upload',
-              relationTo: 'media',
-              localized: true,
-            },
-            {
-              label: 'Content',
-              name: 'content',
-              type: 'richText',
-              localized: true,
-              required: true,
-            },
-          ],
-          label: 'Content',
-        },
-        {
-          fields: [
-            {
-              name: 'relatedPosts',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              filterOptions: ({ id }) => {
-                return {
-                  id: {
-                    not_in: [id],
-                  },
-                }
-              },
-              hasMany: true,
-              relationTo: 'posts',
-            },
-            {
-              name: 'categories',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              hasMany: true,
-              relationTo: 'categories',
-            },
-          ],
-          label: 'Meta',
-        },
-        {
-          name: 'meta',
-          label: 'SEO',
-          localized: true,
-          fields: [
-            OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
-            }),
-            MetaTitleField({
-              hasGenerateFn: true,
-            }),
-            MetaImageField({
-              relationTo: 'media',
-            }),
-
-            MetaDescriptionField({}),
-            PreviewField({
-              // if the `generateUrl` function is configured
-              hasGenerateFn: true,
-
-              // field paths to match the target field for data
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-            }),
-          ],
-        },
-      ],
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      index: true,
+      hooks: {
+        beforeValidate: [formatSlug],
+      },
+      admin: { description: 'URL del post' },
     },
+
+    // Fecha de publicación
     {
       name: 'publishedAt',
       type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-        position: 'sidebar',
-      },
-      hooks: {
-        beforeChange: [
-          ({ siblingData, value }) => {
-            if (siblingData._status === 'published' && !value) {
-              return new Date()
-            }
-            return value
-          },
-        ],
-      },
+      admin: { date: { pickerAppearance: 'dayAndTime' }, position: 'sidebar' },
+      hooks: { beforeValidate: [setPublishedAt] },
     },
+
+    // Autor (ajusta a tu colección real de usuarios/autores)
     {
-      name: 'authors',
+      name: 'author',
       type: 'relationship',
-      admin: {
-        position: 'sidebar',
-      },
-      hasMany: true,
       relationTo: 'users',
+      label: 'Autor',
+      admin: { position: 'sidebar' },
     },
-    // This field is only used to populate the user data via the `populateAuthors` hook
-    // This is because the `user` collection has access control locked to protect user privacy
-    // GraphQL will also not return mutated user data that differs from the underlying schema
+
+    // Categorías
     {
-      name: 'populatedAuthors',
-      type: 'array',
-      access: {
-        update: () => false,
-      },
-      admin: {
-        disabled: true,
-        readOnly: true,
-      },
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      label: 'Categorías',
+    },
+
+    // Imagen de portada
+    {
+      name: 'coverImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Imagen de portada',
+    },
+
+    // Extracto
+    {
+      name: 'excerpt',
+      type: 'textarea',
+      label: 'Extracto',
+      admin: { description: 'Resumen corto para listados y meta.' },
+    },
+
+    {
+      type: 'richText',
+      name: 'richText',
+      required: true,
+      localized: true,
+    },
+
+    // SEO
+    {
+      name: 'seo',
+      type: 'group',
+      label: 'SEO',
+      admin: { position: 'sidebar' },
       fields: [
-        {
-          name: 'id',
-          type: 'text',
-        },
-        {
-          name: 'name',
-          type: 'text',
-        },
+        { name: 'metaTitle', type: 'text', label: 'Meta title' },
+        { name: 'metaDescription', type: 'textarea', label: 'Meta description', maxLength: 180 },
+        { name: 'ogImage', type: 'upload', relationTo: 'media', label: 'Imagen OG' },
+        { name: 'noIndex', type: 'checkbox', label: 'No index (robots)' },
       ],
     },
-    ...slugField(),
-  ],
-  hooks: {
-    afterChange: [revalidatePost],
-    afterRead: [populateAuthors],
-    afterDelete: [revalidateDelete],
-  },
-  versions: {
-    drafts: {
-      autosave: {
-        interval: 100, // We set this interval for optimal live preview
-      },
-      schedulePublish: true,
+
+    // Etiquetas opcionales
+    {
+      name: 'tags',
+      type: 'array',
+      labels: { singular: 'Tag', plural: 'Tags' },
+      fields: [
+        { name: 'value', type: 'text', required: true },
+      ],
     },
-    maxPerDoc: 50,
-  },
+
+    // Lectura estimada (puedes calcular en hook afterChange)
+    {
+      name: 'readingTime',
+      type: 'number',
+      admin: { position: 'sidebar', description: 'Minutos (opcional, puede calcularse automáticamente).' },
+    },
+  ],
+
+  // Índices de utilidad (si usas Postgres, ve plugin correspondiente; en Mongo, index:true en campos)
+  // hooks: {
+  //   afterChange: [revalidateFrontendRoutes],
+  // },
 }
