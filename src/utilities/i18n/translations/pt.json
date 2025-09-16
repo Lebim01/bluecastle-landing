@@ -842,5 +842,9 @@
     "account_type": "Tipo de Conta",
     "bank_address": "Endereço do Banco do Beneficiário",
     "amount": "Quantia"
+  },
+  "buttons": {
+    "next": "Próxima",
+    "prev": "Anterior"
   }
 }

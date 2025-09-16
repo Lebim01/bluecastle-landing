@@ -940,5 +940,9 @@
     "account_type": "Account Type",
     "bank_address": "Beneficiary Bank Address",
     "amount": "Amount"
+  },
+  "buttons": {
+    "next": "Next",
+    "prev": "Previous"
   }
 }

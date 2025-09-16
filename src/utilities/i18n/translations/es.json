@@ -939,5 +939,9 @@
     "account_type": "Tipo de cuenta",
     "bank_address": "Dirección del Banco Beneficiario",
     "amount": "Cantidad"
+  },
+  "buttons": {
+    "next": "Siguiente",
+    "prev": "Anterior"
   }
 }

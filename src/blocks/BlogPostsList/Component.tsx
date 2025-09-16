@@ -9,6 +9,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 
 export type Media = {
   id: string
@@ -177,6 +178,8 @@ async function fetchPosts(
 }
 
 export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
+  const { t } = useTranslation()
+
   const baseURL = React.useMemo(
     () => process.env.NEXT_PUBLIC_CMS_URL || process.env.NEXT_PUBLIC_SERVER_URL || '',
     []
@@ -245,7 +248,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
           disabled={page <= 1}
           className="rounded-xl border border-white/20 px-3 py-2 text-sm disabled:opacity-40"
         >
-          ← Anterior
+          ← {t("buttons.prev")}
         </button>
         {start > 1 && (
           <>
@@ -278,7 +281,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
           disabled={page >= totalPages}
           className="rounded-xl border border-white/20 px-3 py-2 text-sm disabled:opacity-40"
         >
-          Siguiente →
+          {t("buttons.next")} →
         </button>
       </nav>
     )
