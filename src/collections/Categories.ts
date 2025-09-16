@@ -14,7 +14,6 @@ export const Categories: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    hidden: true,
   },
   fields: [
     {

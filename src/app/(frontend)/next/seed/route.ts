@@ -2,6 +2,7 @@ import { createLocalReq, getPayload } from 'payload'
 
 import config from '@payload-config'
 import { headers } from 'next/headers'
+import { seed } from '@/seeds'
 
 export const maxDuration = 60 // This function can run for a maximum of 60 seconds
 
@@ -21,7 +22,7 @@ export async function POST(): Promise<Response> {
     // At this point you should pass in a user, locale, and any other context you need for the Local API
     const payloadReq = await createLocalReq({ user }, payload)
 
-
+    await seed(payloadReq)
 
     return Response.json({ success: true })
   } catch (e) {

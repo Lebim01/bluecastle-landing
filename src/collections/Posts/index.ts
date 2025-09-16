@@ -143,6 +143,7 @@ export const Posts: CollectionConfig = {
         { name: 'metaDescription', type: 'textarea', label: 'Meta description', maxLength: 180 },
         { name: 'ogImage', type: 'upload', relationTo: 'media', label: 'Imagen OG' },
         { name: 'noIndex', type: 'checkbox', label: 'No index (robots)' },
+        { name: 'keywords', type: 'text', label: 'Keywords' },
       ],
     },
 
