@@ -15,6 +15,7 @@ import Calculator from './PlansCalculator'
 import TimelineBlock from './Timeline/Component'
 import BlogPostsListBlock from './BlogPostsList/Component'
 import TradingViewNewsBlock from './TradingViewNews/Component'
+import SubscriptionsBlock from './SubscriptionBlock/Component'
 
 
 const blockComponents = {
@@ -31,7 +32,8 @@ const blockComponents = {
   calculator: Calculator,
   timeline: TimelineBlock,
   blogPostsList: BlogPostsListBlock,
-  tradingViewNews: TradingViewNewsBlock
+  tradingViewNews: TradingViewNewsBlock,
+  subscriptions: SubscriptionsBlock
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
