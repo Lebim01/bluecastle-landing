@@ -3,8 +3,12 @@ import React from "react";
 import type { Page, Media } from "@/payload-types";
 import HeroAurora from "./variants/HeroAura";
 import HeroWaves from "./variants/HeroWaves";
-import HeroCarousel from "./variants/HeroCarousel";
 import HeroStacked from "./variants/HeroStacked";
+import dynamic from "next/dynamic";
+
+const HeroCarousel = dynamic(() => import("./variants/HeroCarousel"), {
+  ssr: false
+})
 
 export type ExtractHero = Extract<Page["layout"][number], { blockType: "heroBlock" }>;
 
@@ -19,7 +23,7 @@ export type HeroFallback = {
   waves?: { gradientStart?: string | null; gradientEnd?: string | null; heightVH?: number | null } | null;
   aurora?: { colors?: { color: string }[] | null; starsCount?: number | null; starsSpeed?: number | null } | null;
   carousel?: any;
-  stacked?: any; 
+  stacked?: any;
   id?: string;
   blockName?: string | null;
 };
