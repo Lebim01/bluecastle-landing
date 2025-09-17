@@ -59,11 +59,11 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
   const posterUrl =
     (video?.poster && getMediaUrl(video.poster as any)) || (bgImage && getMediaUrl(bgImage as any))
 
- 
+
   const isMediaBg = background === 'image' || background === 'video' || background === 'imageUrl'
   const surface =
     background === 'dark' || background === 'brand' ? 'dark' : 'light'
-     console.log("back", isMediaBg)
+
   return (
     <section
       id={props.id || id || undefined}
