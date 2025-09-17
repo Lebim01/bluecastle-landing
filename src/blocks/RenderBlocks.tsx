@@ -18,6 +18,7 @@ import TradingViewNewsBlock from './TradingViewNews/Component'
 import NewsroomMentionBlockView from './NewsroomMention/Component'
 import { RowView } from './Row/Component'
 import clsx from 'clsx'
+import SubscriptionsBlock from './SubscriptionBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -36,6 +37,7 @@ const blockComponents = {
   tradingViewNews: TradingViewNewsBlock,
   newsroomMention: NewsroomMentionBlockView,
   row: RowView,
+  subscriptions: SubscriptionsBlock,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

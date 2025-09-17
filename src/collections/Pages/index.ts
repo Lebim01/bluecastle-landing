@@ -28,6 +28,7 @@ import CalculatorBlock from '@/blocks/PlansCalculator/config'
 import { TimelineBlock } from '@/blocks/Timeline/config'
 import { BlogPostsList } from '@/blocks/BlogPostsList/config'
 import { NewsroomMention } from '@/blocks/NewsroomMention/config'
+import { SubscriptionsBlock } from '@/blocks/SubscriptionBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -100,6 +101,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 TimelineBlock,
                 BlogPostsList,
                 NewsroomMention,
+                SubscriptionsBlock,
               ],
               required: true,
               admin: {

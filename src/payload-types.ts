@@ -418,6 +418,47 @@ export interface Page {
         blockName?: string | null;
         blockType: 'newsroomMention';
       }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        groups?:
+          | {
+              title: string;
+              theme?: ('indigo' | 'emerald' | 'sky' | 'amber' | 'rose' | 'slate') | null;
+              description?: string | null;
+              /**
+               * En mobile es 1 columna; aquí defines md+.
+               */
+              columns?: ('2' | '3' | '4') | null;
+              plans?:
+                | {
+                    title: string;
+                    tagline?: string | null;
+                    badge?: string | null;
+                    image?: (number | null) | Media;
+                    features?:
+                      | {
+                          field: string;
+                          value: string;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    ctaLabel?: string | null;
+                    ctaUrl?: string | null;
+                    /**
+                     * Si no eliges, usará el tema del grupo.
+                     */
+                    accentTheme?: ('indigo' | 'emerald' | 'sky' | 'amber' | 'rose' | 'slate') | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'subscriptions';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1445,6 +1486,42 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     url?: T;
                     label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        subscriptions?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              groups?:
+                | T
+                | {
+                    title?: T;
+                    theme?: T;
+                    description?: T;
+                    columns?: T;
+                    plans?:
+                      | T
+                      | {
+                          title?: T;
+                          tagline?: T;
+                          badge?: T;
+                          image?: T;
+                          features?:
+                            | T
+                            | {
+                                field?: T;
+                                value?: T;
+                                id?: T;
+                              };
+                          ctaLabel?: T;
+                          ctaUrl?: T;
+                          accentTheme?: T;
+                          id?: T;
+                        };
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
