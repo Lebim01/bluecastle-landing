@@ -62,7 +62,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   )
 }
 
-export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+/*export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = 'home', lang = 'en' } = await paramsPromise
   const page = await queryPageBySlug({
     slug,
@@ -70,7 +70,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   })
 
   return generateMeta({ doc: page })
-}
+}*/
 
 const queryPageBySlug = cache(async ({ slug, lang }: { slug: string; lang: Langs }) => {
   const { isEnabled: draft } = await draftMode()
