@@ -15,7 +15,9 @@ import Calculator from './PlansCalculator'
 import TimelineBlock from './Timeline/Component'
 import BlogPostsListBlock from './BlogPostsList/Component'
 import TradingViewNewsBlock from './TradingViewNews/Component'
-
+import NewsroomMentionBlockView from './NewsroomMention/Component'
+import { RowView } from './Row/Component'
+import clsx from 'clsx'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -31,23 +33,31 @@ const blockComponents = {
   calculator: Calculator,
   timeline: TimelineBlock,
   blogPostsList: BlogPostsListBlock,
-  tradingViewNews: TradingViewNewsBlock
+  tradingViewNews: TradingViewNewsBlock,
+  newsroomMention: NewsroomMentionBlockView,
+  row: RowView,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
   switch (gap) {
-    case 'sm': return 'my-4'
-    case 'md': return 'my-8'
-    case 'lg': return 'my-16'
-    case 'xl': return 'my-24'
-    default: return ''
+    case 'sm':
+      return 'my-4'
+    case 'md':
+      return 'my-8'
+    case 'lg':
+      return 'my-16'
+    case 'xl':
+      return 'my-24'
+    default:
+      return ''
   }
 }
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
   gapY?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-}> = ({ blocks, gapY = 'none' }) => {
+  className?: string
+}> = ({ blocks, gapY = 'none', className }) => {
   const hasBlocks = Array.isArray(blocks) && blocks.length > 0
   if (!hasBlocks) return null
 
@@ -60,7 +70,7 @@ export const RenderBlocks: React.FC<{
           const wrapClass = blockType === 'section' ? '' : gapYClass(gapY)
 
           return (
-            <div key={index} className={wrapClass}>
+            <div key={index} className={clsx(wrapClass, className)}>
               {/* @ts-expect-error  */}
               <Block {...block} disableInnerContainer />
             </div>

@@ -1,4 +1,4 @@
-import type { Field } from 'payload';
+import type { Field } from 'payload'
 
 export const sectionStyleFields: Field[] = [
   {
@@ -152,5 +152,5 @@ export const sectionStyleFields: Field[] = [
       },
     ],
   },
-  { name: 'id', type: 'text', label: 'Anchor ID (#seccion)' },
-];
+  { name: 'id', type: 'text', label: 'Anchor ID (#seccion)', admin: { hidden: true } },
+]

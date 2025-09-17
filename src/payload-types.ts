@@ -404,6 +404,20 @@ export interface Page {
         blockName?: string | null;
         blockType: 'blogPostsList';
       }
+    | {
+        outletName: string;
+        headline: string;
+        summary?: string | null;
+        date?: string | null;
+        logo?: (number | null) | Media;
+        link: {
+          url: string;
+          label?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'newsroomMention';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -912,6 +926,53 @@ export interface SectionBlock {
         blockName?: string | null;
         blockType: 'blogPostsList';
       }
+    | {
+        asContainer?: boolean | null;
+        maxWidth?: ('lg' | 'xl' | '2xl' | '7xl' | 'full') | null;
+        background?: ('transparent' | 'white' | 'neutral-900' | 'zinc-50' | 'panel') | null;
+        paddingY?: ('' | 'py-6 md:py-8' | 'py-8 md:py-12' | 'py-12 md:py-16' | 'py-16 md:py-24') | null;
+        gap?: ('gap-0' | 'gap-3 md:gap-4' | 'gap-4 md:gap-6' | 'gap-6 md:gap-8' | 'gap-8 md:gap-12') | null;
+        alignY?: ('items-start' | 'items-center' | 'items-end' | 'items-stretch') | null;
+        alignX?: ('justify-start' | 'justify-center' | 'justify-end' | 'justify-between') | null;
+        /**
+         * Define cuántas columnas tiene la grilla
+         */
+        cols?: {
+          base?: number | null;
+          sm?: number | null;
+          md?: number | null;
+          lg?: number | null;
+          xl?: number | null;
+        };
+        cells?:
+          | {
+              blocks: {
+                outletName: string;
+                headline: string;
+                summary?: string | null;
+                date?: string | null;
+                logo?: (number | null) | Media;
+                link: {
+                  url: string;
+                  label?: string | null;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'newsroomMention';
+              }[];
+              vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
+              base?: number | null;
+              sm?: number | null;
+              md?: number | null;
+              lg?: number | null;
+              xl?: number | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'row';
+      }
   )[];
   blockName?: string | null;
   blockType: 'section';
@@ -1371,6 +1432,23 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        newsroomMention?:
+          | T
+          | {
+              outletName?: T;
+              headline?: T;
+              summary?: T;
+              date?: T;
+              logo?: T;
+              link?:
+                | T
+                | {
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1595,6 +1673,60 @@ export interface SectionBlockSelect<T extends boolean = true> {
                 | {
                     manualItems?: T;
                     cardAspect?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        row?:
+          | T
+          | {
+              asContainer?: T;
+              maxWidth?: T;
+              background?: T;
+              paddingY?: T;
+              gap?: T;
+              alignY?: T;
+              alignX?: T;
+              cols?:
+                | T
+                | {
+                    base?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                  };
+              cells?:
+                | T
+                | {
+                    blocks?:
+                      | T
+                      | {
+                          newsroomMention?:
+                            | T
+                            | {
+                                outletName?: T;
+                                headline?: T;
+                                summary?: T;
+                                date?: T;
+                                logo?: T;
+                                link?:
+                                  | T
+                                  | {
+                                      url?: T;
+                                      label?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    vAlign?: T;
+                    base?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                    id?: T;
                   };
               id?: T;
               blockName?: T;

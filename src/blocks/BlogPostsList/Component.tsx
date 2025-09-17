@@ -374,7 +374,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
               return (
                 <article
                   key={p.id}
-                  className="group overflow-hidden rounded-2xl border border-white/10 bg-neutral-400/40 transition hover:border-white/20"
+                  className="group overflow-hidden rounded-2xl border border-white/10 bg-slate-100 transition hover:border-white/20"
                 >
                   <Link href={`/blog/${p.slug}`} className="block">
                     {block.show?.showImage && imgSrc && (
