@@ -21,6 +21,7 @@ import { en } from '@payloadcms/translations/languages/en'
 import { es } from '@payloadcms/translations/languages/es'
 import { pt } from '@payloadcms/translations/languages/pt'
 import { SiteSettings } from './global/SiteSettings'
+import Contacts from './collections/Contacts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -78,12 +79,10 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Categories, Posts, Media, Users],
+  collections: [Pages, Categories, Posts, Media, Users, Contacts],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
-  plugins: [
-    ...plugins,
-  ],
+  plugins: [...plugins],
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {

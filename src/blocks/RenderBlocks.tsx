@@ -19,6 +19,8 @@ import NewsroomMentionBlockView from './NewsroomMention/Component'
 import { RowView } from './Row/Component'
 import clsx from 'clsx'
 import SubscriptionsBlock from './SubscriptionBlock/Component'
+import RichTextBlockView from './RichText/Component'
+import ContactForm from './ContactForm/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -38,6 +40,8 @@ const blockComponents = {
   newsroomMention: NewsroomMentionBlockView,
   row: RowView,
   subscriptions: SubscriptionsBlock,
+  richText: RichTextBlockView,
+  contactForm: ContactForm,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

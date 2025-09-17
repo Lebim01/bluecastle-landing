@@ -77,6 +77,7 @@ export interface Config {
     posts: Post;
     media: Media;
     users: User;
+    contacts: Contact;
     redirects: Redirect;
     search: Search;
     'payload-jobs': PayloadJob;
@@ -91,6 +92,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
@@ -987,20 +989,47 @@ export interface SectionBlock {
         };
         cells?:
           | {
-              blocks: {
-                outletName: string;
-                headline: string;
-                summary?: string | null;
-                date?: string | null;
-                logo?: (number | null) | Media;
-                link: {
-                  url: string;
-                  label?: string | null;
-                };
-                id?: string | null;
-                blockName?: string | null;
-                blockType: 'newsroomMention';
-              }[];
+              blocks: (
+                | {
+                    outletName: string;
+                    headline: string;
+                    summary?: string | null;
+                    date?: string | null;
+                    logo?: (number | null) | Media;
+                    link: {
+                      url: string;
+                      label?: string | null;
+                    };
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'newsroomMention';
+                  }
+                | {
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'richText';
+                  }
+                | {
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'contactForm';
+                  }
+              )[];
               vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
               base?: number | null;
               sm?: number | null;
@@ -1017,6 +1046,30 @@ export interface SectionBlock {
   )[];
   blockName?: string | null;
   blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: number;
+  name: string;
+  last_name: string;
+  email: string;
+  phone?: string | null;
+  message: string;
+  source?: string | null;
+  utm?: {
+    campaign?: string | null;
+    source?: string | null;
+    medium?: string | null;
+    term?: string | null;
+    content?: string | null;
+  };
+  _hp?: string | null;
+  consent: boolean;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1198,6 +1251,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'contacts';
+        value: number | Contact;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1796,6 +1853,19 @@ export interface SectionBlockSelect<T extends boolean = true> {
                                 id?: T;
                                 blockName?: T;
                               };
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          contactForm?:
+                            | T
+                            | {
+                                id?: T;
+                                blockName?: T;
+                              };
                         };
                     vAlign?: T;
                     base?: T;
@@ -1972,6 +2042,31 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  name?: T;
+  last_name?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  source?: T;
+  utm?:
+    | T
+    | {
+        campaign?: T;
+        source?: T;
+        medium?: T;
+        term?: T;
+        content?: T;
+      };
+  _hp?: T;
+  consent?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

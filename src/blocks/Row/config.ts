@@ -1,5 +1,7 @@
 import type { Block } from 'payload'
 import { NewsroomMention } from '../NewsroomMention/config'
+import { RichText } from '../RichText/config'
+import { ContactForm } from '../ContactForm/config'
 
 export const Row: Block = {
   slug: 'row',
@@ -155,7 +157,7 @@ export const Row: Block = {
           required: true,
           label: 'Contenido de la columna',
           // agrega aquí los blocks que quieras permitir dentro de una columna
-          blocks: [NewsroomMention],
+          blocks: [NewsroomMention, RichText, ContactForm],
         },
         {
           name: 'vAlign',
