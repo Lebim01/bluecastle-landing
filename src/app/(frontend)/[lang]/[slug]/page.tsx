@@ -49,8 +49,6 @@ export default async function Page({ params: paramsPromise }: Args) {
     lang,
   })
 
-  console.log(url, page, lang)
-
   if (!page) {
     return <PayloadRedirects url={url} />
   }
@@ -59,12 +57,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <main className="">
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
-
-      {draft && <LivePreviewListener />}
-
-      <RenderBlocks blocks={layout} />
+      TEST
     </main>
   )
 }

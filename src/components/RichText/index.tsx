@@ -7,7 +7,6 @@ import {
 } from '@payloadcms/richtext-lexical'
 import {
   JSXConvertersFunction,
-  LinkJSXConverter,
   RichText as ConvertRichText,
 } from '@payloadcms/richtext-lexical/react'
 import { TypographyJSXConverters } from "payload-lexical-typography/converters";
