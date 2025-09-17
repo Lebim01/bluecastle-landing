@@ -49,6 +49,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     lang,
   })
 
+  console.log(url, page, lang)
+
   if (!page) {
     return <PayloadRedirects url={url} />
   }
