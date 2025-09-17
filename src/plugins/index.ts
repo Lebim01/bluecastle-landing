@@ -81,7 +81,9 @@ export const plugins: Plugin[] = [
       },
     },
   }),
-  payloadCloudPlugin(),
+  payloadCloudPlugin({
+    email: false,
+  }),
   gcsStorage({
     enabled: true,
     collections: {
