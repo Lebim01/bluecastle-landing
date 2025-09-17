@@ -75,7 +75,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   return generateMeta({ doc: page })
 }
 
-const queryPageBySlug = cache(async ({ slug, lang }: { slug: string; lang: Langs }) => {
+const queryPageBySlug = async ({ slug, lang }: { slug: string; lang: Langs }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
@@ -91,4 +91,4 @@ const queryPageBySlug = cache(async ({ slug, lang }: { slug: string; lang: Langs
   })
 
   return result.docs?.[0] || null
-})
+}
