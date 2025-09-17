@@ -40,7 +40,7 @@ type Args = {
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { isEnabled: draft } = await draftMode()
+
   const { slug = 'home', lang = 'en' } = await paramsPromise
   const url = '/' + slug
 
@@ -57,7 +57,10 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <main className="">
-      TEST
+      {/* Allows redirects for valid pages too */}
+      <PayloadRedirects disableNotFound url={url} />
+
+      <RenderBlocks blocks={layout} />
     </main>
   )
 }
@@ -73,16 +76,12 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
 }
 
 const queryPageBySlug = cache(async ({ slug, lang }: { slug: string; lang: Langs }) => {
-  const { isEnabled: draft } = await draftMode()
-
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',
-    draft,
     limit: 1,
     pagination: false,
-    overrideAccess: draft,
     locale: lang,
     where: {
       slug: {
