@@ -3,7 +3,6 @@ import { sectionStyleFields } from '@/fields/sectionStyle'
 import { CallToAction } from '@/blocks/CallToAction/config'
 import { Content } from '@/blocks/Content/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
-import { Archive } from '@/blocks/ArchiveBlock/config'
 import { BlogPostsList } from '../BlogPostsList/config'
 import { Row } from '../Row/config'
 
@@ -19,7 +18,7 @@ export const Section: Block = {
       type: 'blocks',
       required: true,
       admin: { initCollapsed: true },
-      blocks: [CallToAction, Content, MediaBlock, Archive, BlogPostsList, Row],
+      blocks: [CallToAction, Content, MediaBlock, BlogPostsList, Row],
     },
   ],
 }

@@ -31,11 +31,12 @@ const LocalizedText: TextFieldClientComponent = (props) => {
             >
               {['es', 'pt', 'en'].map((lang) => (
                 <div
+                  key={lang}
                   className={clsx(
                     selectedLang == lang && 'bg-blue-400',
                     'px-1 border border-solid border-gray-100 rounded-[8px] select-none uppercase',
                   )}
-                  //onClick={() => setSelectedLang(lang)}
+                //onClick={() => setSelectedLang(lang)}
                 >
                   {lang}
                 </div>

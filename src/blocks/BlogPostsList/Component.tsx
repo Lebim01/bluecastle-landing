@@ -1,8 +1,3 @@
-// BlogPostsListBlock con paginación para PayloadCMS + Next.js (App Router)
-// - Paginación en cliente (botones Anterior/Siguiente y números)
-// - Respeta filtros de búsqueda/categorías/excluir IDs y manualItems (pinea manuales en página 1)
-// - Tailwind seguro (sin clases dinámicas no registrables)
-
 'use client'
 
 import React from 'react'
@@ -217,7 +212,6 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
   React.useEffect(() => {
     setPage(1)
     load(1)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseURL, JSON.stringify(block)])
 
   const cols = Math.min(Math.max(block.columns ?? 3, 1), 4)

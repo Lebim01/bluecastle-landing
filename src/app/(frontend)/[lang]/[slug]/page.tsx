@@ -8,7 +8,6 @@ import React, { cache } from 'react'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { generateMeta } from '@/utilities/generateMeta'
-import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Langs } from '@/utilities/locales'
 
@@ -61,7 +60,6 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <main className="">
-      <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 

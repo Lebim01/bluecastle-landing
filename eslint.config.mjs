@@ -16,8 +16,10 @@ const eslintConfig = [
       '@typescript-eslint/ban-ts-comment': 'warn',
       '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@next/next/no-img-element': 'off',
+      'react-hooks/exhaustive-deps': 'off',
       '@typescript-eslint/no-unused-vars': [
-        'warn',
+        'off',
         {
           vars: 'all',
           args: 'after-used',

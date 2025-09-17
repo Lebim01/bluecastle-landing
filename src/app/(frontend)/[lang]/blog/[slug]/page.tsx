@@ -1,6 +1,8 @@
+import { Langs } from '@/utilities/locales'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { cache } from 'react'
 
 // ===== Tipos =====
 
@@ -56,7 +58,7 @@ function formatDate(iso?: string) {
   return d.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: '2-digit' })
 }
 
-async function fetchPost(slug: string): Promise<Post | null> {
+const fetchPost = cache(async (slug: string) => {
   if (!CMS_URL) return null
   const params = new URLSearchParams({
     depth: '3',
@@ -69,11 +71,13 @@ async function fetchPost(slug: string): Promise<Post | null> {
   if (!res.ok) return null
   const data = (await res.json()) as Paginated<Post>
   return data.docs?.[0] || null
-}
+})
+
 
 // ====== SEO ======
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await fetchPost(params.slug)
+export async function generateMetadata({ params }: Args) {
+  const { slug } = await params
+  const post = await fetchPost(slug)
   if (!post) return { title: 'Artículo no encontrado | Blog' }
 
   const title = post.seo?.metaTitle || post.title
@@ -280,8 +284,16 @@ function RenderContent({ value }: { value: any }) {
   )
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await fetchPost(params.slug)
+type Args = {
+  params: Promise<{
+    slug: string
+    lang: Langs
+  }>
+}
+
+export default async function BlogPostPage({ params }: Args) {
+  const { slug } = await params
+  const post = await fetchPost(slug)
   if (!post) return notFound()
 
   const img =

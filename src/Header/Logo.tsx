@@ -25,7 +25,6 @@ const Logo: FC<Props> = ({ branding }) => {
         <>
           {/* Modo claro */}
           {(branding?.logoLight as Media)?.url && (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={(branding?.logoLight as Media).url!}
               alt={alt}
@@ -34,7 +33,6 @@ const Logo: FC<Props> = ({ branding }) => {
           )}
           {/* Modo oscuro */}
           {((branding?.logoDark as Media)?.url ?? (branding?.logoLight as Media)?.url) && (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={
                 ((branding?.logoDark as Media)?.url ??

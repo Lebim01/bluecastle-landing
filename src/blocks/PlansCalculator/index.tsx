@@ -1,6 +1,4 @@
 "use client"
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
 import { Tabs, Tab, Select, SelectItem, Switch } from "@heroui/react";
 import { FC, useEffect, useState } from "react";
 import CalculatorChart from "./CalculatorChart";

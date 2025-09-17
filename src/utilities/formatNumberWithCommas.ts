@@ -16,7 +16,7 @@ export const formatNumberWithCommas = (
 
   try {
     text = text.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
-  } catch (Err) {
+  } catch (err) {
     console.error('REGEX NO SUPPORTED')
     text = Number(text).toLocaleString('en-US')
   }

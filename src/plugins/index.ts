@@ -10,7 +10,6 @@ import { gcsStorage } from '@payloadcms/storage-gcs'
 
 import { Media, Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
-import { localizedVariantsPlugin, options } from './LocalizedFields'
 
 type Locale = 'all' | 'es' | 'en' | 'pt' | undefined
 const normalizeLocale = (l: unknown): Locale =>
