@@ -2,7 +2,7 @@
 import React from 'react'
 import type { Page } from '@/payload-types'
 import clsx from 'clsx'
-import { Button } from '@heroui/react'
+import { Button, Divider } from '@heroui/react'
 
 type LayoutBlock = Page['layout'][number]
 type SubscriptionsBlockType = Extract<LayoutBlock, { blockType: 'subscriptions' }>
@@ -70,11 +70,11 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                     : 'md:grid-cols-3'
 
                         return (
-                            <div key={gi} className="w-full border border-4 border-gray-300 p-8 pt-0 rounded-2xl">
+                            <div key={gi} className="w-full border-t border-t-4 border-gray-300 p-8 pt-0 ">
 
-                                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
-                                    <div className='flex flex-col items-start'>
-                                        <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white -mt-4 bg-white px-2">
+                                <div className="flex w-full flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                                    <div className='flex w-full flex-col items-center'>
+                                        <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white  -mt-4 bg-white px-2">
                                             {group.title}
                                         </h3>
                                         {group.description && (
@@ -98,10 +98,10 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                             <article
                                                 key={pi}
                                                 className={clsx(
-                                                    'relative rounded-2xl p-6 text-white overflow-hidden',
+                                                    'relative p-6 overflow-hidden',
                                                     'bg-gradient-to-br',
-                                                    planTheme,
-                                                    'shadow-[0_10px_30px_rgba(0,0,0,0.25)] ring-1 ring-white/10'
+                                                    
+                                                    'shadow-lg border ring-1 ring-white/10'
                                                 )}
                                             >
 
@@ -124,7 +124,8 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                                     />
                                                 )}
 
-                                                <h4 className="text-lg md:text-xl font-bold">{plan.title}</h4>
+                                                <h4 className="text-lg md:text-xl font-bold mb-2">{plan.title}</h4>
+                                                <Divider />
                                                 {plan.tagline && (
                                                     <p className="text-white/90 text-sm mt-1">{plan.tagline}</p>
                                                 )}
@@ -147,7 +148,7 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        <Button variant='bordered' size='lg' className="mt-6 w-full text-white">
+                                                        <Button variant='solid' size='lg' color='primary' className="mt-6 rounded-none w-full text-white">
 
                                                             {plan.ctaLabel}
 
