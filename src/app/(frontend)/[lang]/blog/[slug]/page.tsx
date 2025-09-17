@@ -104,9 +104,6 @@ export async function generateMetadata({ params }: Args) {
   }
 }
 
-export const revalidate = 60
-export const dynamicParams = true
-
 // ===== Render RichText (soporta Slate y Lexical simples) =====
 function TextNodes({ nodes }: { nodes: any[] }) {
   return (
