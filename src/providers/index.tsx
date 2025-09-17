@@ -1,7 +1,4 @@
 import React from 'react'
-
-import { HeaderThemeProvider } from './HeaderTheme'
-import { ThemeProvider } from './Theme'
 import { HeroUIProvider } from "@heroui/react";
 
 export const Providers: React.FC<{
@@ -9,11 +6,7 @@ export const Providers: React.FC<{
 }> = ({ children }) => {
   return (
     <HeroUIProvider>
-      <ThemeProvider>
-        <HeaderThemeProvider>
-          {children}
-        </HeaderThemeProvider>
-      </ThemeProvider>
+      {children}
     </HeroUIProvider>
   )
 }

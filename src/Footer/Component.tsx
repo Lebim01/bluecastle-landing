@@ -1,13 +1,12 @@
-import type { Footer as FooterGlobal, Media } from 'src/payload-types'
-import { getCachedGlobal } from '@/utilities/getGlobals'
+import type { Media } from 'src/payload-types'
+import { getGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CMSLink } from '@/components/LinkFooter'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export default async function Footer() {
-  const fetchFooter = getCachedGlobal('footer', 1)
-  const footerData: FooterGlobal = await fetchFooter()
+  const footerData = await getGlobal('footer', 1)
 
   const bg = footerData.styles?.background || '#131217'
   const tc = footerData.styles?.textColor || '#ADADAD'
