@@ -8,7 +8,7 @@ import { getClientSideURL } from '@/utilities/getURL'
  * @returns Properly formatted URL with cache tag if provided
  */
 export const getMediaUrl = (media: Media, cacheTag?: string | null, fromDirectStorage = true): string => {
-  if (!media.url) return ''
+  if (!media?.url) return ''
 
   if (fromDirectStorage) {
     return cacheTag

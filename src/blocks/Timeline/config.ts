@@ -88,7 +88,6 @@ export const TimelineBlock: Block = {
                 },
             },
         },
-        // (Opcional) estilos de sección si los usas globalmente
-        // ...sectionStyleFields
+    
     ],
 }

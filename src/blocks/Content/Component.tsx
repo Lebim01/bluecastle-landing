@@ -102,6 +102,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
           {columns.map((col, i) => {
             const span = SIZE_TO_COL[col?.size ?? 'oneThird'] ?? 'lg:col-span-4'
             const elements = Array.isArray(col?.elements) ? col.elements : []
+            console.log(col)
             return (
               <div key={i} className={`col-span-12 ${span}`}>
                 {(() => {
@@ -133,12 +134,13 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                       : undefined;
 
                   // src de la bg image
-                  const bgSrc = getMediaUrl(bgImage)
+                  const bgSrc = getMediaUrl(bgImage?.image)
+                  console.log("bgsrc", bgSrc)
                   const imgOpacity =
                     typeof bgImage?.opacity === 'number'
                       ? Math.max(0, Math.min(100, bgImage.opacity)) / 100
                       : 1
-
+                  console.log("bg", bgImage)
                   return (
                     <div className={wrapperCls} style={style}>
                       {/* Imagen de fondo ABSOLUTA (opcional) */}

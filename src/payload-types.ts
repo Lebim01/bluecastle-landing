@@ -209,23 +209,14 @@ export interface Page {
         /**
          * Elige el estilo visual del hero
          */
-        variant: 'waves' | 'aurora' | 'carousel';
+        variant: 'waves' | 'aurora' | 'carousel' | 'stacked';
         title?: string | null;
         subcopy?: string | null;
-        /**
-         * Botón principal de acción
-         */
         cta?: {
           label?: string | null;
           href?: string | null;
         };
-        /**
-         * Texto legal o aclaratorio opcional
-         */
         disclaimer?: string | null;
-        /**
-         * Imagen opcional para mostrar como marca
-         */
         logo?: (number | null) | Media;
         /**
          * Configura el degradado y la altura del hero
@@ -233,9 +224,6 @@ export interface Page {
         waves?: {
           gradientStart?: string | null;
           gradientEnd?: string | null;
-          /**
-           * Porcentaje de la altura de pantalla (30–100)
-           */
           heightVH?: number | null;
         };
         /**
@@ -248,13 +236,7 @@ export interface Page {
                 id?: string | null;
               }[]
             | null;
-          /**
-           * 0–10,000
-           */
           starsCount?: number | null;
-          /**
-           * 0.1–10 (1 = normal)
-           */
           starsSpeed?: number | null;
         };
         /**
@@ -263,9 +245,6 @@ export interface Page {
         carousel?: {
           heightVH?: number | null;
           loop?: boolean | null;
-          /**
-           * 0 = desactivado
-           */
           autoplayMs?: number | null;
           slides: {
             image: number | Media;
@@ -281,6 +260,54 @@ export interface Page {
             lightText?: boolean | null;
             id?: string | null;
           }[];
+        };
+        /**
+         * Hero con múltiples capas de fondo y layout izquierda/centrado.
+         */
+        stacked?: {
+          height?: ('twoThirds' | 'full' | 'auto') | null;
+          layout?: ('left' | 'center') | null;
+          container?: ('lg' | 'xl' | '2xl' | 'full') | null;
+          pattern?: {
+            show?: boolean | null;
+            image?: (number | null) | Media;
+            size?: ('auto' | 'contain' | 'cover') | null;
+            position?: string | null;
+            repeat?: ('repeat' | 'no-repeat') | null;
+          };
+          overlay?: {
+            show?: boolean | null;
+            from?: string | null;
+            to?: string | null;
+            direction?: string | null;
+          };
+          bgImage?: {
+            show?: boolean | null;
+            image?: (number | null) | Media;
+            fit?: ('cover' | 'contain') | null;
+            position?: string | null;
+          };
+          baseGradient?: {
+            show?: boolean | null;
+            from?: string | null;
+            to?: string | null;
+            direction?: string | null;
+          };
+          sideImage?: {
+            image?: (number | null) | Media;
+            alt?: string | null;
+            width?: ('md' | 'lg') | null;
+            disableOnMobile?: boolean | null;
+          };
+          animate?: {
+            enable?: boolean | null;
+            delayMs?: number | null;
+            durationMs?: number | null;
+          };
+          baseColor?: {
+            show?: boolean | null;
+            color?: string | null;
+          };
         };
         id?: string | null;
         blockName?: string | null;
@@ -460,6 +487,80 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'subscriptions';
+      }
+    | {
+        asContainer?: boolean | null;
+        maxWidth?: ('lg' | 'xl' | '2xl' | '7xl' | 'full') | null;
+        background?: ('transparent' | 'white' | 'neutral-900' | 'zinc-50' | 'panel') | null;
+        paddingY?: ('' | 'py-6 md:py-8' | 'py-8 md:py-12' | 'py-12 md:py-16' | 'py-16 md:py-24') | null;
+        gap?: ('gap-0' | 'gap-3 md:gap-4' | 'gap-4 md:gap-6' | 'gap-6 md:gap-8' | 'gap-8 md:gap-12') | null;
+        alignY?: ('items-start' | 'items-center' | 'items-end' | 'items-stretch') | null;
+        alignX?: ('justify-start' | 'justify-center' | 'justify-end' | 'justify-between') | null;
+        /**
+         * Define cuántas columnas tiene la grilla
+         */
+        cols?: {
+          base?: number | null;
+          sm?: number | null;
+          md?: number | null;
+          lg?: number | null;
+          xl?: number | null;
+        };
+        cells?:
+          | {
+              blocks: (
+                | {
+                    outletName: string;
+                    headline: string;
+                    summary?: string | null;
+                    date?: string | null;
+                    logo?: (number | null) | Media;
+                    link: {
+                      url: string;
+                      label?: string | null;
+                    };
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'newsroomMention';
+                  }
+                | {
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'richText';
+                  }
+                | {
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'contactForm';
+                  }
+              )[];
+              vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
+              base?: number | null;
+              sm?: number | null;
+              md?: number | null;
+              lg?: number | null;
+              xl?: number | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'row';
       }
   )[];
   meta?: {
@@ -757,7 +858,7 @@ export interface ContentBlock {
         /**
          * Activa para colocar una imagen o URL como fondo de esta columna
          */
-        'Imagen de Fondo'?: {
+        bgImage?: {
           enabled?: boolean | null;
           image?: (number | null) | Media;
           /**
@@ -1415,6 +1516,67 @@ export interface PagesSelect<T extends boolean = true> {
                           id?: T;
                         };
                   };
+              stacked?:
+                | T
+                | {
+                    height?: T;
+                    layout?: T;
+                    container?: T;
+                    pattern?:
+                      | T
+                      | {
+                          show?: T;
+                          image?: T;
+                          size?: T;
+                          position?: T;
+                          repeat?: T;
+                        };
+                    overlay?:
+                      | T
+                      | {
+                          show?: T;
+                          from?: T;
+                          to?: T;
+                          direction?: T;
+                        };
+                    bgImage?:
+                      | T
+                      | {
+                          show?: T;
+                          image?: T;
+                          fit?: T;
+                          position?: T;
+                        };
+                    baseGradient?:
+                      | T
+                      | {
+                          show?: T;
+                          from?: T;
+                          to?: T;
+                          direction?: T;
+                        };
+                    sideImage?:
+                      | T
+                      | {
+                          image?: T;
+                          alt?: T;
+                          width?: T;
+                          disableOnMobile?: T;
+                        };
+                    animate?:
+                      | T
+                      | {
+                          enable?: T;
+                          delayMs?: T;
+                          durationMs?: T;
+                        };
+                    baseColor?:
+                      | T
+                      | {
+                          show?: T;
+                          color?: T;
+                        };
+                  };
               id?: T;
               blockName?: T;
             };
@@ -1583,6 +1745,73 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        row?:
+          | T
+          | {
+              asContainer?: T;
+              maxWidth?: T;
+              background?: T;
+              paddingY?: T;
+              gap?: T;
+              alignY?: T;
+              alignX?: T;
+              cols?:
+                | T
+                | {
+                    base?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                  };
+              cells?:
+                | T
+                | {
+                    blocks?:
+                      | T
+                      | {
+                          newsroomMention?:
+                            | T
+                            | {
+                                outletName?: T;
+                                headline?: T;
+                                summary?: T;
+                                date?: T;
+                                logo?: T;
+                                link?:
+                                  | T
+                                  | {
+                                      url?: T;
+                                      label?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          contactForm?:
+                            | T
+                            | {
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    vAlign?: T;
+                    base?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1644,7 +1873,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
               rounded?: T;
               shadow?: T;
             };
-        'Imagen de Fondo'?:
+        bgImage?:
           | T
           | {
               enabled?: T;

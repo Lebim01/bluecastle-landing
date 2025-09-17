@@ -22,6 +22,8 @@ import SubscriptionsBlock from './SubscriptionBlock/Component'
 import RichTextBlockView from './RichText/Component'
 import ContactForm from './ContactForm/Component'
 
+type LayoutBlock = Page['layout'][number]
+
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -60,7 +62,7 @@ const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: LayoutBlock[]
   gapY?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
 }> = ({ blocks, gapY = 'none', className }) => {

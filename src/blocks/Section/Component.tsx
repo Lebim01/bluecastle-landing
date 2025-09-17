@@ -1,7 +1,9 @@
 import React from 'react'
-import type { Media, SectionBlock } from '@/payload-types'
+import type { Media, Page } from '@/payload-types'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+
+type SectionBlock = Extract<Page['layout'][number], { blockType: 'section' }>
 
 function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ')
@@ -57,10 +59,11 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
   const posterUrl =
     (video?.poster && getMediaUrl(video.poster as any)) || (bgImage && getMediaUrl(bgImage as any))
 
-
-  const isMediaBg = background === 'image' || background === 'video'
+ 
+  const isMediaBg = background === 'image' || background === 'video' || background === 'imageUrl'
   const surface =
     background === 'dark' || background === 'brand' ? 'dark' : 'light'
+     console.log("back", isMediaBg)
   return (
     <section
       id={props.id || id || undefined}
@@ -79,7 +82,7 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
       {background === 'image' && (
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-cover bg-center"
+          className="absolute inset-0  bg-cover bg-center"
           style={{
             backgroundImage: bgImage ? `url(${getMediaUrl(bgImage as any)})` : undefined,
           }}
@@ -153,7 +156,7 @@ export const Section: React.FC<SectionBlock & { id?: string }> = (props) => {
       )}
 
       <div className={containerClass(container!)}>
-        <RenderBlocks blocks={content || []} />
+        <RenderBlocks blocks={(content as NonNullable<SectionBlock['content']>) ?? []} />
       </div>
     </section>
   )

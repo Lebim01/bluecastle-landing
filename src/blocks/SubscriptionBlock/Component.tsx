@@ -100,7 +100,7 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                                 className={clsx(
                                                     'relative p-6 overflow-hidden',
                                                     'bg-gradient-to-br',
-                                                    
+
                                                     'shadow-lg border ring-1 ring-white/10'
                                                 )}
                                             >
@@ -130,31 +130,33 @@ export const SubscriptionsBlock: React.FC<Props> = (props) => {
                                                     <p className="text-white/90 text-sm mt-1">{plan.tagline}</p>
                                                 )}
 
-                                                {features.length > 0 && (
-                                                    <ul className="mt-4 space-y-2 text-sm">
-                                                        {features.map((f, fi) => (
-                                                            <li key={fi} className="flex gap-2 leading-relaxed">
-                                                                <span className="opacity-90 "><span className="font-semibold">{f.field}</span>: {f.value}</span>
+                                                <div className='flex flex-col justify-between h-full pb-8'>
+                                                    {features.length > 0 && (
+                                                        <ul className="mt-4 space-y-2 text-sm">
+                                                            {features.map((f, fi) => (
+                                                                <li key={fi} className="flex gap-2 leading-relaxed">
+                                                                    <span className="opacity-90 "><span className="font-semibold">{f.field}</span>: {f.value}</span>
 
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                )}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
 
-                                                {hasCTA && (
-                                                    <a
-                                                        href={plan.ctaUrl as string}
-                                                        className=""
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <Button variant='solid' size='lg' color='primary' className="mt-6 rounded-none w-full text-white">
+                                                    {hasCTA && (
+                                                        <a
+                                                            href={plan.ctaUrl as string}
+                                                            className=""
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <Button variant='solid' size='lg' color='primary' className="mt-6 rounded-none w-full text-white">
 
-                                                            {plan.ctaLabel}
+                                                                {plan.ctaLabel}
 
-                                                        </Button>
-                                                    </a>
-                                                )}
+                                                            </Button>
+                                                        </a>
+                                                    )}
+                                                </div>
                                             </article>
                                         )
                                     })}

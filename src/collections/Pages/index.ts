@@ -29,6 +29,7 @@ import { TimelineBlock } from '@/blocks/Timeline/config'
 import { BlogPostsList } from '@/blocks/BlogPostsList/config'
 import { NewsroomMention } from '@/blocks/NewsroomMention/config'
 import { SubscriptionsBlock } from '@/blocks/SubscriptionBlock/config'
+import { Row } from '@/blocks/Row/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -102,6 +103,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 BlogPostsList,
                 NewsroomMention,
                 SubscriptionsBlock,
+                Row
               ],
               required: true,
               admin: {

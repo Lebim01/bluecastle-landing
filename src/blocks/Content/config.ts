@@ -91,7 +91,7 @@ const columnFields: Field[] = [
     ],
   },
   {
-    name: 'Imagen de Fondo',
+    name: 'bgImage',
     type: 'group',
     label: 'Imagen de fondo',
     admin: { description: 'Activa para colocar una imagen o URL como fondo de esta columna' },

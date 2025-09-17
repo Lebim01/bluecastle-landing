@@ -274,6 +274,15 @@
     opacity: 0.4;
   }
 
+  :root[data-theme="light"]{
+  --background-color--background-secondary:#0d1b2a;
+  --background-color--background-primary:#091226;
+}
+  :root[data-theme="dark"]{
+    --background-color--background-secondary:#0b1524;
+    --background-color--background-primary:#050b14;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
