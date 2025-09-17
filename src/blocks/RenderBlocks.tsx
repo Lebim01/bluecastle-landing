@@ -3,7 +3,7 @@ import type { Page } from '@/payload-types'
 import clsx from 'clsx'
 
 import { ContentBlock } from '@/blocks/Content/Component'
-/*import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { Section } from './Section/Component'
 import { CarouselBlockComponent } from '@/blocks/Carousel/Component.client'
@@ -19,13 +19,13 @@ import NewsroomMentionBlockView from './NewsroomMention/Component'
 import { RowView } from './Row/Component'
 import SubscriptionsBlock from './SubscriptionBlock/Component'
 import RichTextBlockView from './RichText/Component'
-import ContactForm from './ContactForm/Component'*/
+import ContactForm from './ContactForm/Component'
 
 type LayoutBlock = Page['layout'][number]
 
-const blockComponents = {
+const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "carousel" | "heroBlock" | "faq" | "testimonials" | "tradingView" | "calculator" | "timeline" | "blogPostsList" | "newsroomMention" | "subscriptions" | "row" | "richText" | "contactForm", any> = {
   content: ContentBlock,
-  /*cta: CallToActionBlock,
+  cta: CallToActionBlock,
   mediaBlock: MediaBlock,
   section: Section,
   carousel: CarouselBlockComponent,
@@ -36,12 +36,11 @@ const blockComponents = {
   calculator: Calculator,
   timeline: TimelineBlock,
   blogPostsList: BlogPostsListBlock,
-  tradingViewNews: TradingViewNewsBlock,
   newsroomMention: NewsroomMentionBlockView,
   row: RowView,
   subscriptions: SubscriptionsBlock,
   richText: RichTextBlockView,
-  contactForm: ContactForm,*/
+  contactForm: ContactForm,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
@@ -77,8 +76,7 @@ export const RenderBlocks: React.FC<{
 
           return (
             <div key={index} className={clsx(wrapClass, className)}>
-              {/* @ts-expect-error  */}
-              <Block {...block} disableInnerContainer />
+              <Block {...block} />
             </div>
           )
         }

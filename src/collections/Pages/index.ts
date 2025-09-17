@@ -29,6 +29,8 @@ import { BlogPostsList } from '@/blocks/BlogPostsList/config'
 import { NewsroomMention } from '@/blocks/NewsroomMention/config'
 import { SubscriptionsBlock } from '@/blocks/SubscriptionBlock/config'
 import { Row } from '@/blocks/Row/config'
+import { RichText } from '@/blocks/RichText/config'
+import { ContactForm } from '@/blocks/ContactForm/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -101,7 +103,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 BlogPostsList,
                 NewsroomMention,
                 SubscriptionsBlock,
-                Row
+                Row,
+                RichText,
+                ContactForm
               ],
               required: true,
               admin: {

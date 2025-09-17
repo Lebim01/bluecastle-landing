@@ -586,6 +586,31 @@ export interface Page {
         blockName?: string | null;
         blockType: 'row';
       }
+    | {
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }
+    | {
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1795,6 +1820,19 @@ export interface PagesSelect<T extends boolean = true> {
                     xl?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        richText?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
               id?: T;
               blockName?: T;
             };
