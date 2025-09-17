@@ -74,8 +74,9 @@ export default buildConfig({
       max: 60,
       allowExitOnIdle: true,
     },
+    schemaName: 'payload'
   }),
-  collections: [Pages, Categories, Posts, Media, Users, Contacts],
+  collections: [Users, Pages, Categories, Posts, Media, Contacts],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteSettings],
   plugins: [...plugins],
