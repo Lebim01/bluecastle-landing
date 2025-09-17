@@ -86,7 +86,10 @@ function looksLikeId(v: string) {
   return /^[0-9a-f-]{10,}$/i.test(v) || /^\d+$/.test(v)
 }
 
-function buildWhereFromFilters(block: BlogPostsListBlockProps, pageCatsKey: 'categories' | 'categories.slug') {
+function buildWhereFromFilters(
+  block: BlogPostsListBlockProps,
+  pageCatsKey: 'categories' | 'categories.slug',
+) {
   const where: Record<string, string> = {
     'where[status][equals]': 'published',
   }
@@ -97,7 +100,7 @@ function buildWhereFromFilters(block: BlogPostsListBlockProps, pageCatsKey: 'cat
   }
   const cats = block?.filters?.categories ?? []
   cats.forEach((c, idx) => {
-    const val = typeof c === 'string' ? c : c.slug ?? c.id
+    const val = typeof c === 'string' ? c : (c.slug ?? c.id)
     if (!val) return
     if (pageCatsKey === 'categories') {
       where[`where[categories][in][${idx}]`] = String(val)
@@ -116,11 +119,13 @@ function buildWhereFromFilters(block: BlogPostsListBlockProps, pageCatsKey: 'cat
 async function fetchPosts(
   cmsURL: string,
   block: BlogPostsListBlockProps,
-  page = 1
+  page = 1,
 ): Promise<Paginated<Post>> {
   const manual = block.advanced?.manualItems?.filter(Boolean) ?? []
   const manualResolved: Post[] = manual.filter((i): i is Post => typeof i === 'object')
-  const manualIDs: string[] = manual.map((i) => (typeof i === 'string' ? i : i.id)).filter(Boolean) as string[]
+  const manualIDs: string[] = manual
+    .map((i) => (typeof i === 'string' ? i : i.id))
+    .filter(Boolean) as string[]
 
   const limit = Math.max(block.limit ?? 6, 1)
   const sort = block?.filters?.sort ?? '-publishedAt'
@@ -130,10 +135,12 @@ async function fetchPosts(
   const effectiveLimit = isFirstPage ? Math.max(limit - manualResolved.length, 0) : limit
 
   // ¿Filtrar categorías por slug o por id?
-  const pageCatsKey: 'categories' | 'categories.slug' = (block?.filters?.categories ?? []).some((c) => {
-    const val = typeof c === 'string' ? c : c.slug ?? c.id
-    return val ? !looksLikeId(val) : false
-  })
+  const pageCatsKey: 'categories' | 'categories.slug' = (block?.filters?.categories ?? []).some(
+    (c) => {
+      const val = typeof c === 'string' ? c : (c.slug ?? c.id)
+      return val ? !looksLikeId(val) : false
+    },
+  )
     ? 'categories.slug'
     : 'categories'
 
@@ -182,7 +189,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
 
   const baseURL = React.useMemo(
     () => process.env.NEXT_PUBLIC_CMS_URL || process.env.NEXT_PUBLIC_SERVER_URL || '',
-    []
+    [],
   )
 
   const [page, setPage] = React.useState(1)
@@ -198,13 +205,13 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
       const data = await fetchPosts(baseURL, block, p)
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
       setPosts(data.docs)
       setTotalPages(data.totalPages || 1)
       setLoading(false)
     },
-    [baseURL, JSON.stringify(block)]
+    [baseURL, JSON.stringify(block)],
   )
 
   React.useEffect(() => {
@@ -214,9 +221,12 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
   }, [baseURL, JSON.stringify(block)])
 
   const cols = Math.min(Math.max(block.columns ?? 3, 1), 4)
-  const gridColsClass = { 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' }[
-    cols as 1 | 2 | 3 | 4
-  ]
+  const gridColsClass = {
+    1: 'lg:grid-cols-1',
+    2: 'lg:grid-cols-2',
+    3: 'lg:grid-cols-3',
+    4: 'lg:grid-cols-4',
+  }[cols as 1 | 2 | 3 | 4]
 
   function Pagination() {
     if (totalPages <= 1) return null
@@ -248,11 +258,13 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
           disabled={page <= 1}
           className="rounded-xl border border-white/20 px-3 py-2 text-sm disabled:opacity-40"
         >
-          ← {t("buttons.prev")}
+          ← {t('buttons.prev')}
         </button>
         {start > 1 && (
           <>
-            <button onClick={go(1)} className="rounded-md px-2 text-sm hover:underline">1</button>
+            <button onClick={go(1)} className="rounded-md px-2 text-sm hover:underline">
+              1
+            </button>
             <span className="px-1 text-neutral-500">…</span>
           </>
         )}
@@ -264,7 +276,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
             className={clsx(
               `rounded-md px-2 py-1 text-sm`,
               i === page && 'bg-blue-400 text-white',
-              i !== page && 'hover:bg-black/30'
+              i !== page && 'hover:bg-black/30',
             )}
           >
             {i}
@@ -273,7 +285,9 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
         {end < totalPages && (
           <>
             <span className="px-1 text-neutral-500">…</span>
-            <button onClick={go(totalPages)} className="rounded-md px-2 text-sm hover:underline">{totalPages}</button>
+            <button onClick={go(totalPages)} className="rounded-md px-2 text-sm hover:underline">
+              {totalPages}
+            </button>
           </>
         )}
         <button
@@ -281,7 +295,7 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
           disabled={page >= totalPages}
           className="rounded-xl border border-white/20 px-3 py-2 text-sm disabled:opacity-40"
         >
-          {t("buttons.next")} →
+          {t('buttons.next')} →
         </button>
       </nav>
     )
@@ -292,27 +306,50 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
       {block.heading && <h2 className="mb-4 text-2xl font-bold">{block.heading}</h2>}
 
       {loading && posts?.length == 0 && (
-        <div className="rounded-xl border border-white/10 bg-neutral-900/10 p-6 text-sm text-neutral-400">Cargando posts…</div>
+        <div className="rounded-xl border border-white/10 bg-neutral-900/10 p-6 text-sm text-neutral-400">
+          Cargando posts…
+        </div>
       )}
 
       {!loading && posts && posts.length === 0 && (
-        <div className="rounded-xl border border-white/10 bg-neutral-900/10 p-6 text-sm text-neutral-400">No hay artículos para mostrar.</div>
+        <div className="rounded-xl border border-white/10 bg-neutral-900/10 p-6 text-sm text-neutral-400">
+          No hay artículos para mostrar.
+        </div>
       )}
 
-      {!loading && posts && posts.length > 0 && (
-        block.variant === 'list' ? (
+      {!loading &&
+        posts &&
+        posts.length > 0 &&
+        (block.variant === 'list' ? (
           <ul className="divide-y divide-white/10 overflow-hidden rounded-xl border border-white/10">
             {posts.map((p) => {
-              const imgSrc = typeof p.coverImage === 'string' ? p.coverImage : p.coverImage?.sizes?.card?.url || p.coverImage?.url
+              const imgSrc =
+                typeof p.coverImage === 'string'
+                  ? p.coverImage
+                  : p.coverImage?.sizes?.card?.url || p.coverImage?.url
               return (
                 <li key={p.id} className="flex items-start gap-4 p-4">
                   {block.show?.showImage && imgSrc && (
                     <div className="relative h-20 w-32 shrink-0 overflow-hidden rounded-lg bg-neutral-800">
-                      <Image src={imgSrc} alt={typeof p.coverImage === 'object' ? (p.coverImage as Media).alt || p.title : p.title} fill className="object-cover" />
+                      <Image
+                        src={imgSrc}
+                        alt={
+                          typeof p.coverImage === 'object'
+                            ? (p.coverImage as Media).alt || p.title
+                            : p.title
+                        }
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   )}
                   <div className="min-w-0 flex-1">
-                    <Link href={`/blog/${p.slug}`} className="text-base font-semibold hover:underline">{p.title}</Link>
+                    <Link
+                      href={`/blog/${p.slug}`}
+                      className="text-base font-semibold hover:underline"
+                    >
+                      {p.title}
+                    </Link>
                     {block.show?.showExcerpt && p.excerpt && (
                       <p className="mt-1 line-clamp-2 text-sm text-neutral-400">{p.excerpt}</p>
                     )}
@@ -330,15 +367,27 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
         ) : (
           <div className={`grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 ${gridColsClass}`}>
             {posts.map((p) => {
-              const imgSrc = typeof p.coverImage === 'string' ? p.coverImage : p.coverImage?.sizes?.card?.url || p.coverImage?.url
+              const imgSrc =
+                typeof p.coverImage === 'string'
+                  ? p.coverImage
+                  : p.coverImage?.sizes?.card?.url || p.coverImage?.url
               return (
-                <article key={p.id} className="group overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/40 transition hover:border-white/20">
+                <article
+                  key={p.id}
+                  className="group overflow-hidden rounded-2xl border border-white/10 bg-neutral-400/40 transition hover:border-white/20"
+                >
                   <Link href={`/blog/${p.slug}`} className="block">
                     {block.show?.showImage && imgSrc && (
-                      <div className={`relative w-full ${aspectToClass(block.advanced?.cardAspect)} overflow-hidden bg-neutral-800`}>
+                      <div
+                        className={`relative w-full ${aspectToClass(block.advanced?.cardAspect)} overflow-hidden bg-neutral-800`}
+                      >
                         <Image
                           src={imgSrc}
-                          alt={typeof p.coverImage === 'object' ? p.coverImage?.alt || p.title : p.title}
+                          alt={
+                            typeof p.coverImage === 'object'
+                              ? p.coverImage?.alt || p.title
+                              : p.title
+                          }
                           fill
                           sizes="(min-width: 1024px) 33vw, 100vw"
                           className="object-cover transition duration-300 group-hover:scale-[1.02]"
@@ -349,7 +398,12 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
                       {block.show?.showCategories && (p.categories ?? []).length > 0 && (
                         <div className="flex flex-wrap gap-2">
                           {(p.categories ?? []).slice(0, 3).map((c) => (
-                            <span key={c.id} className="rounded-full border border-white/20 px-2 py-0.5 text-xs text-neutral-300">{c.title}</span>
+                            <span
+                              key={c.id}
+                              className="rounded-full border border-black/20 px-2 py-0.5 text-xs text-neutral-500"
+                            >
+                              {c.title}
+                            </span>
                           ))}
                         </div>
                       )}
@@ -359,9 +413,9 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
                       )}
                       <div className="mt-1 flex items-center gap-3 text-xs text-neutral-500">
                         {block.show?.showDate && <span>{formatDate(p.publishedAt)}</span>}
-                        {block.show?.showAuthor && typeof p.author === 'object' && p.author?.name && (
-                          <span>• Por {p.author.name}</span>
-                        )}
+                        {block.show?.showAuthor &&
+                          typeof p.author === 'object' &&
+                          p.author?.name && <span>• Por {p.author.name}</span>}
                       </div>
                     </div>
                   </Link>
@@ -369,15 +423,19 @@ export default function BlogPostsListBlock(block: BlogPostsListBlockProps) {
               )
             })}
           </div>
-        )
-      )}
+        ))}
 
       {/* Paginación */}
       {!loading && totalPages > 1 && <Pagination />}
 
       {block.show?.showPaginationLink && (
         <div className="mt-6 text-center">
-          <Link href="/blog" className="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-black hover:opacity-90">Ver todos</Link>
+          <Link
+            href="/blog"
+            className="inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-black hover:opacity-90"
+          >
+            Ver todos
+          </Link>
         </div>
       )}
     </section>

@@ -1,10 +1,3 @@
-// app/blog/[slug]/page.tsx
-// Página de detalle de Post para PayloadCMS (Next.js App Router)
-// - Obtiene el post por `slug` desde el REST de Payload
-// - Muestra portada, título, metadatos (fecha, autor, categorías) y contenido richText
-// - Incluye generateMetadata para SEO/OG
-// - Tailwind CSS
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
