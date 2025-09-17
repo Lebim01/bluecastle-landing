@@ -16,7 +16,10 @@ export const Users: CollectionConfig = {
     useAsTitle: 'name',
   },
   auth: {
-    disableLocalStrategy: true
+    verify: false,
+    disableLocalStrategy: {
+      enableFields: true
+    }
   },
   fields: [
     {
