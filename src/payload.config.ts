@@ -72,7 +72,6 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
       max: 60,
-      allowExitOnIdle: true,
     },
     schemaName: 'payload'
   }),
