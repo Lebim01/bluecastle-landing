@@ -40,5 +40,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|admin|public|next).*)'],
+  matcher: ['/((?!_next|api|admin|public|next|favicon).*)'],
 }
