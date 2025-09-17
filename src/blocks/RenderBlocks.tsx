@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
-
+import dynamic from 'next/dynamic'
+import clsx from 'clsx'
 
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { Section } from './Section/Component'
-import CarouselBlockComponent from '@/blocks/Carousel/Component'
+//import CarouselBlockComponent from '@/blocks/Carousel/Component'
 import HeroBlockComponent from '@/blocks/HeroBlock/Component'
 import { FAQBlock } from './Faq/Component'
-import { TestimonialsBlock } from './TestimonialsBlock/Component'
+//import { TestimonialsBlock } from './TestimonialsBlock/Component'
 import { TradingViewBlock } from './TradingViewBlock/Component'
 import Calculator from './PlansCalculator'
 import TimelineBlock from './Timeline/Component'
@@ -17,12 +18,18 @@ import BlogPostsListBlock from './BlogPostsList/Component'
 import TradingViewNewsBlock from './TradingViewNews/Component'
 import NewsroomMentionBlockView from './NewsroomMention/Component'
 import { RowView } from './Row/Component'
-import clsx from 'clsx'
 import SubscriptionsBlock from './SubscriptionBlock/Component'
 import RichTextBlockView from './RichText/Component'
 import ContactForm from './ContactForm/Component'
 
 type LayoutBlock = Page['layout'][number]
+
+const TestimonialsBlock = dynamic(() => import("./TestimonialsBlock/Component").then(mod => mod.TestimonialsBlock), {
+  ssr: false
+})
+const CarouselBlockComponent = dynamic(() => import("@/blocks/Carousel/Component"), {
+  ssr: false
+})
 
 const blockComponents = {
   content: ContentBlock,
