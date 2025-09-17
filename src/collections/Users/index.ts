@@ -17,9 +17,6 @@ export const Users: CollectionConfig = {
   },
   auth: {
     verify: false,
-    disableLocalStrategy: {
-      enableFields: true
-    }
   },
   fields: [
     {
