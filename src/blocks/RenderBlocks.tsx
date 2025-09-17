@@ -1,3 +1,4 @@
+"use client"
 import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import clsx from 'clsx'
