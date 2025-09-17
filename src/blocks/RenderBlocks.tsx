@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
-import dynamic from 'next/dynamic'
 import clsx from 'clsx'
 
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
