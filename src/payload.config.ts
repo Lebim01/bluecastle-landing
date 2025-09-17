@@ -72,8 +72,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
       max: 60,
-    },
-    schemaName: 'payload'
+    }
   }),
   collections: [Users, Pages, Categories, Posts, Media, Contacts],
   cors: [getServerSideURL()].filter(Boolean),
