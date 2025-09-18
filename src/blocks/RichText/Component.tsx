@@ -11,5 +11,5 @@ export type RichTextBlock = {
 export default function RichTextBlockView(props: RichTextBlock) {
   const { content } = props
 
-  return <RichText data={content} />
+  return <RichText data={content} enableGutter={false} />
 }
