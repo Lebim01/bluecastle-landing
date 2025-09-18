@@ -31,6 +31,7 @@ import { SubscriptionsBlock } from '@/blocks/SubscriptionBlock/config'
 import { Row } from '@/blocks/Row/config'
 import { RichText } from '@/blocks/RichText/config'
 import { ContactForm } from '@/blocks/ContactForm/config'
+import { CTABlock } from '@/blocks/CTAButton/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -105,7 +106,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 SubscriptionsBlock,
                 Row,
                 RichText,
-                ContactForm
+                ContactForm,
+                CTABlock,
               ],
               required: true,
               admin: {

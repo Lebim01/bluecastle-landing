@@ -155,6 +155,21 @@ export interface User {
   name?: string | null;
   updatedAt: string;
   createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -557,6 +572,7 @@ export interface Page {
                     blockName?: string | null;
                     blockType: 'contactForm';
                   }
+                | CTABlock
               )[];
               vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
               base?: number | null;
@@ -596,6 +612,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'contactForm';
       }
+    | CTABlock
   )[];
   meta?: {
     title?: string | null;
@@ -1104,6 +1121,7 @@ export interface SectionBlock {
                     blockName?: string | null;
                     blockType: 'contactForm';
                   }
+                | CTABlock
               )[];
               vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
               base?: number | null;
@@ -1121,6 +1139,27 @@ export interface SectionBlock {
   )[];
   blockName?: string | null;
   blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlock".
+ */
+export interface CTABlock {
+  label: string;
+  link: FooterNavItem;
+  variant?: ('primary' | 'secondary' | 'link' | 'solid' | 'bordered' | 'faded' | 'light' | 'ghost' | 'shadow') | null;
+  size?: ('xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  radius?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
+  fullWidth?: boolean | null;
+  align?: ('start' | 'center' | 'end') | null;
+  isDisabled?: boolean | null;
+  /**
+   * Útil si el CTA dispara acciones asincrónicas.
+   */
+  isLoading?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1393,6 +1432,20 @@ export interface UsersSelect<T extends boolean = true> {
   name?: T;
   updatedAt?: T;
   createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1782,6 +1835,7 @@ export interface PagesSelect<T extends boolean = true> {
                                 id?: T;
                                 blockName?: T;
                               };
+                          ctaBlock?: T | CTABlockSelect<T>;
                         };
                     vAlign?: T;
                     base?: T;
@@ -1807,6 +1861,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        ctaBlock?: T | CTABlockSelect<T>;
       };
   meta?:
     | T
@@ -2075,6 +2130,7 @@ export interface SectionBlockSelect<T extends boolean = true> {
                                 id?: T;
                                 blockName?: T;
                               };
+                          ctaBlock?: T | CTABlockSelect<T>;
                         };
                     vAlign?: T;
                     base?: T;
@@ -2088,6 +2144,23 @@ export interface SectionBlockSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlock_select".
+ */
+export interface CTABlockSelect<T extends boolean = true> {
+  label?: T;
+  link?: T | FooterNavItemSelect<T>;
+  variant?: T;
+  size?: T;
+  radius?: T;
+  fullWidth?: T;
+  align?: T;
+  isDisabled?: T;
+  isLoading?: T;
+  id?: T;
   blockName?: T;
 }
 /**
