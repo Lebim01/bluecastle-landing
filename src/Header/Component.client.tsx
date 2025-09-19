@@ -203,7 +203,7 @@ export default function HeaderClient({ data }: { data: Header }) {
 
         <div className="mt-6 border-t pt-6">
           <Link
-            href="https://bluecastle-front-client.vercel.app/login"
+            href="https://app.bluecastleventures.ca/"
             className="inline-flex w-full items-center justify-center rounded-xl border border-black px-4 py-2 text-sm font-semibold hover:bg-black hover:text-white"
           >
             Log in
