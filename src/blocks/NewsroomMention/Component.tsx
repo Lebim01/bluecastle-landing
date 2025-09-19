@@ -38,24 +38,27 @@ export default function NewsroomMentionBlockView(props: Props) {
       className={`rounded-2xl border border-gray-200 dark:border-gray-800 p-5 md:p-6 bg-white dark:bg-neutral-900 shadow-sm ${className} h-full`}
       aria-label={`Aparición en prensa: ${outletName}`}
     >
-      <header className="flex items-start gap-4">
-        {logoUrl ? (
-          <div className="relative h-10 w-28 shrink-0 md:h-12 md:w-36">
-            <Image
-              src={logoUrl}
-              alt={typeof logo === 'object' && logo?.alt ? logo.alt : outletName}
-              fill
-              className="object-contain"
-              sizes="144px"
-              priority={false}
-            />
-          </div>
-        ) : null}
+      <header className="flex flex-col gap-4">
+        <div className='flex items-center gap-4'>
+          {logoUrl ? (
+            <div className="relative h-10 w-28 shrink-0 md:h-12 md:w-36">
+              <Image
+                src={logoUrl}
+                alt={typeof logo === 'object' && logo?.alt ? logo.alt : outletName}
+                fill
+                className="object-contain"
+                sizes="144px"
+                priority={false}
+              />
+            </div>
+          ) : null}
 
-        <div className="flex-1">
           <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
             {outletName} {sponsored ? '• Patrocinado' : ''}
           </p>
+        </div>
+
+        <div className="flex-1">
           <h3 className="mt-1 text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-100">
             {headline}
           </h3>
