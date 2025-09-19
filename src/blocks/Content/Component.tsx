@@ -134,7 +134,7 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                       : undefined;
 
                   // src de la bg image
-                  const bgSrc = getMediaUrl(bgImage?.image)
+                  const bgSrc = (bgImage?.externalUrl as string) || getMediaUrl(bgImage?.image)
 
                   const imgOpacity =
                     typeof bgImage?.opacity === 'number'
@@ -197,10 +197,9 @@ export const ContentBlock: React.FC<Props> = ({ columns, className }) => {
                               const aspect = aspectMap[el?.aspect ?? '16/9']
                               const fit = fitMap[el?.objectFit ?? 'cover']
                               const shadow = el?.shadow ? 'shadow-md' : ''
-                              const src = getMediaUrl(el?.media)
-                              const isVideo =
-                                el?.media?.mimeType?.startsWith?.('video') ||
-                                (typeof src === 'string' && /\.(mp4|webm|ogg)(\?|#|$)/i.test(src))
+                              const src: string =
+                                (el?.externalUrl as string) || getMediaUrl(el?.media) || ''
+                              const isVideo = el?.media?.mimeType?.startsWith?.('video') || /\.(mp4|webm|ogg)(\?|#|$)/i.test(src)
                               const vo = el?.videoOptions || {}
                               const showOverlay = vo?.showOverlayControl ?? true
                               const autoplay = vo?.autoplay ?? true
