@@ -109,7 +109,7 @@ export default function HeaderClient({ data }: { data: Header }) {
             </div>
 
             <div className='border border-primary rounded-full px-6 py-3 hover:bg-primary hover:text-white bg-white'>
-              <Link href="https://bluecastle-front-client.vercel.app/login">Log in</Link>
+              <Link href="https://app.bluecastleventures.ca/">Log in</Link>
             </div>
           </div>
         </div>
