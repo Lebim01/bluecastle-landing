@@ -3,6 +3,7 @@ import { NewsroomMention } from '../NewsroomMention/config'
 import { RichText } from '../RichText/config'
 import { ContactForm } from '../ContactForm/config'
 import { CTABlock } from '../CTAButton/config'
+import { MediaBlock } from '../MediaBlock/config'
 
 export const Row: Block = {
   slug: 'row',
@@ -158,7 +159,7 @@ export const Row: Block = {
           required: true,
           label: 'Contenido de la columna',
           // agrega aquí los blocks que quieras permitir dentro de una columna
-          blocks: [NewsroomMention, RichText, ContactForm, CTABlock],
+          blocks: [NewsroomMention, RichText, ContactForm, CTABlock, MediaBlock],
         },
         {
           name: 'vAlign',
