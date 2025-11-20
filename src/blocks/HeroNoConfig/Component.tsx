@@ -30,7 +30,7 @@ export default function HeroNoCBlockComponent(props: Props) {
     >
       <div
         className={clsx(
-          'absolute left-0 p-12 flex flex-col gap-4 text-shadow-xl',
+          'absolute left-0 p-4 md:p-12 flex flex-col gap-4 text-shadow-xl',
           props['left-side'].align == 'top' ? 'top-0' : 'bottom-0',
         )}
       >
@@ -38,7 +38,7 @@ export default function HeroNoCBlockComponent(props: Props) {
       </div>
       <div
         className={clsx(
-          'absolute right-0 p-12 flex flex-col gap-4 items-end',
+          'absolute right-0 p-4 md:p-12 flex flex-col gap-4 items-end',
           props['right-side'].align == 'top' ? 'top-0' : 'bottom-0',
         )}
       >
