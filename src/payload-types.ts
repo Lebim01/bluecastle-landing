@@ -179,6 +179,67 @@ export interface Page {
   id: number;
   title: string;
   layout: (
+    | {
+        bg?: (number | null) | Media;
+        'height-aspect'?: ('full' | 'percent') | null;
+        height?: number | null;
+        'left-side'?: {
+          align?: ('top' | 'bottom') | null;
+          content?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        'right-side'?: {
+          align?: ('top' | 'bottom') | null;
+          content?:
+            | (
+                | {
+                    content: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                    blockName?: string | null;
+                    blockType: 'richText';
+                  }
+                | CTABlock
+              )[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroBlockNoConfig';
+      }
     | CallToActionBlock
     | ContentBlock
     | MediaBlock
@@ -631,10 +692,12 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock".
+ * via the `definition` "media".
  */
-export interface CallToActionBlock {
-  richText?: {
+export interface Media {
+  id: number;
+  alt?: string | null;
+  caption?: {
     root: {
       type: string;
       children: {
@@ -649,15 +712,100 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
-  links?:
-    | {
-        link: FooterNavItem;
-        id?: string | null;
-      }[]
-    | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    square?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlock".
+ */
+export interface CTABlock {
+  label: string;
+  link: FooterNavItem;
+  variant?: ('primary' | 'secondary' | 'link' | 'solid' | 'bordered' | 'faded' | 'light' | 'ghost' | 'shadow') | null;
+  'solid-color'?: {
+    bg?: string | null;
+    text?: string | null;
+  };
+  size?: ('xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
+  radius?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
+  fullWidth?: boolean | null;
+  align?: ('start' | 'center' | 'end') | null;
+  isDisabled?: boolean | null;
+  /**
+   * Útil si el CTA dispara acciones asincrónicas.
+   */
+  isLoading?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'cta';
+  blockType: 'ctaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -752,12 +900,10 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "CallToActionBlock".
  */
-export interface Media {
-  id: number;
-  alt?: string | null;
-  caption?: {
+export interface CallToActionBlock {
+  richText?: {
     root: {
       type: string;
       children: {
@@ -772,75 +918,15 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    square?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    og?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
+  links?:
+    | {
+        link: FooterNavItem;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1142,27 +1228,6 @@ export interface SectionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTABlock".
- */
-export interface CTABlock {
-  label: string;
-  link: FooterNavItem;
-  variant?: ('primary' | 'secondary' | 'link' | 'solid' | 'bordered' | 'faded' | 'light' | 'ghost' | 'shadow') | null;
-  size?: ('xs' | 'sm' | 'md' | 'lg' | 'xl') | null;
-  radius?: ('none' | 'md' | 'lg' | 'xl' | '2xl' | 'full') | null;
-  fullWidth?: boolean | null;
-  align?: ('start' | 'center' | 'end') | null;
-  isDisabled?: boolean | null;
-  /**
-   * Útil si el CTA dispara acciones asincrónicas.
-   */
-  isLoading?: boolean | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'ctaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts".
  */
 export interface Contact {
@@ -1456,6 +1521,48 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        heroBlockNoConfig?:
+          | T
+          | {
+              bg?: T;
+              'height-aspect'?: T;
+              height?: T;
+              'left-side'?:
+                | T
+                | {
+                    align?: T;
+                    content?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              'right-side'?:
+                | T
+                | {
+                    align?: T;
+                    content?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          ctaBlock?: T | CTABlockSelect<T>;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         cta?: T | CallToActionBlockSelect<T>;
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
@@ -1879,16 +1986,24 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock_select".
+ * via the `definition` "CTABlock_select".
  */
-export interface CallToActionBlockSelect<T extends boolean = true> {
-  richText?: T;
-  links?:
+export interface CTABlockSelect<T extends boolean = true> {
+  label?: T;
+  link?: T | FooterNavItemSelect<T>;
+  variant?: T;
+  'solid-color'?:
     | T
     | {
-        link?: T | FooterNavItemSelect<T>;
-        id?: T;
+        bg?: T;
+        text?: T;
       };
+  size?: T;
+  radius?: T;
+  fullWidth?: T;
+  align?: T;
+  isDisabled?: T;
+  isLoading?: T;
   id?: T;
   blockName?: T;
 }
@@ -1903,6 +2018,21 @@ export interface FooterNavItemSelect<T extends boolean = true> {
   url?: T;
   label?: T;
   appearance?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlock_select".
+ */
+export interface CallToActionBlockSelect<T extends boolean = true> {
+  richText?: T;
+  links?:
+    | T
+    | {
+        link?: T | FooterNavItemSelect<T>;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2144,23 +2274,6 @@ export interface SectionBlockSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTABlock_select".
- */
-export interface CTABlockSelect<T extends boolean = true> {
-  label?: T;
-  link?: T | FooterNavItemSelect<T>;
-  variant?: T;
-  size?: T;
-  radius?: T;
-  fullWidth?: T;
-  align?: T;
-  isDisabled?: T;
-  isLoading?: T;
-  id?: T;
   blockName?: T;
 }
 /**

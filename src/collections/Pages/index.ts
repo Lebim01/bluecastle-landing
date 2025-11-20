@@ -32,6 +32,7 @@ import { Row } from '@/blocks/Row/config'
 import { RichText } from '@/blocks/RichText/config'
 import { ContactForm } from '@/blocks/ContactForm/config'
 import { CTABlock } from '@/blocks/CTAButton/config'
+import HeroBlockNoC from '@/blocks/HeroNoConfig/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -90,6 +91,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 return true
               },
               blocks: [
+                HeroBlockNoC,
                 CallToAction,
                 Content,
                 MediaBlock,

@@ -2,91 +2,111 @@ import type { Block } from 'payload'
 import { link } from '@/fields/link'
 
 export const CTABlock: Block = {
-    slug: 'ctaBlock',
-    labels: { singular: 'Botón / CTA', plural: 'Botones / CTA' },
-    interfaceName: 'CTABlock',
-    fields: [
-        { name: 'label', type: 'text', required: true, label: 'Texto del botón', localized: true },
+  slug: 'ctaBlock',
+  labels: { singular: 'Botón / CTA', plural: 'Botones / CTA' },
+  interfaceName: 'CTABlock',
+  fields: [
+    { name: 'label', type: 'text', required: true, label: 'Texto del botón', localized: true },
 
-        link({}),
+    link({}),
 
-        {
-            name: 'variant',
-            type: 'select',
-            label: 'Estilo',
-            defaultValue: 'primary',
-            options: [
+    {
+      name: 'variant',
+      type: 'select',
+      label: 'Estilo',
+      defaultValue: 'primary',
+      options: [
+        { label: 'Primario', value: 'primary' },
+        { label: 'Secundario', value: 'secondary' },
+        { label: 'Enlace', value: 'link' },
+        { label: 'Solid', value: 'solid' },
+        { label: 'Bordered', value: 'bordered' },
+        { label: 'Faded', value: 'faded' },
+        { label: 'Light', value: 'light' },
+        { label: 'Ghost', value: 'ghost' },
+        { label: 'Shadow', value: 'shadow' },
+      ],
+    },
 
-                { label: 'Primario', value: 'primary' },
-                { label: 'Secundario', value: 'secondary' },
-                { label: 'Enlace', value: 'link' },
-                { label: 'Solid', value: 'solid' },
-                { label: 'Bordered', value: 'bordered' },
-                { label: 'Faded', value: 'faded' },
-                { label: 'Light', value: 'light' },
-                { label: 'Ghost', value: 'ghost' },
-                { label: 'Shadow', value: 'shadow' },
-            ],
+    {
+      type: 'group',
+      name: 'solid-color',
+      label: 'Color del botón',
+      fields: [
+        {
+          type: 'text',
+          label: 'Color boton',
+          name: 'bg',
         },
+        {
+          type: 'text',
+          label: 'Color texto',
+          name: 'text',
+        },
+      ],
+      admin: {
+        condition: (data, sinbling) => sinbling.variant == 'solid',
+      },
+    },
 
-        {
-            name: 'size',
-            type: 'select',
-            label: 'Tamaño',
-            defaultValue: 'md',
-            options: [
-                { label: 'XS', value: 'xs' },
-                { label: 'SM', value: 'sm' },
-                { label: 'MD', value: 'md' },
-                { label: 'LG', value: 'lg' },
-                { label: 'XL', value: 'xl' },
-            ],
-        },
-        {
-            name: 'radius',
-            type: 'select',
-            label: 'Radio',
-            defaultValue: '2xl',
-            options: [
-                { label: 'None', value: 'none' },
-                { label: 'MD', value: 'md' },
-                { label: 'LG', value: 'lg' },
-                { label: 'XL', value: 'xl' },
-                { label: '2XL', value: '2xl' },
-                { label: 'Full', value: 'full' },
-            ],
-        },
-        {
-            name: 'fullWidth',
-            type: 'checkbox',
-            defaultValue: false,
-            label: 'Ocupar todo el ancho',
-        },
+    {
+      name: 'size',
+      type: 'select',
+      label: 'Tamaño',
+      defaultValue: 'md',
+      options: [
+        { label: 'XS', value: 'xs' },
+        { label: 'SM', value: 'sm' },
+        { label: 'MD', value: 'md' },
+        { label: 'LG', value: 'lg' },
+        { label: 'XL', value: 'xl' },
+      ],
+    },
+    {
+      name: 'radius',
+      type: 'select',
+      label: 'Radio',
+      defaultValue: '2xl',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'MD', value: 'md' },
+        { label: 'LG', value: 'lg' },
+        { label: 'XL', value: 'xl' },
+        { label: '2XL', value: '2xl' },
+        { label: 'Full', value: 'full' },
+      ],
+    },
+    {
+      name: 'fullWidth',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Ocupar todo el ancho',
+    },
 
-        {
-            name: 'align',
-            type: 'select',
-            label: 'Alineación',
-            defaultValue: 'start',
-            options: [
-                { label: 'Izquierda', value: 'start' },
-                { label: 'Centro', value: 'center' },
-                { label: 'Derecha', value: 'end' },
-            ],
-        },
+    {
+      name: 'align',
+      type: 'select',
+      label: 'Alineación',
+      defaultValue: 'start',
+      options: [
+        { label: 'Izquierda', value: 'start' },
+        { label: 'Centro', value: 'center' },
+        { label: 'Derecha', value: 'end' },
+      ],
+    },
 
-        {
-            name: 'isDisabled',
-            type: 'checkbox',
-            label: 'Deshabilitado',
-            defaultValue: false,
-        },
-        {
-            name: 'isLoading',
-            type: 'checkbox',
-            label: 'Mostrar estado "Cargando"',
-            defaultValue: false,
-            admin: { description: 'Útil si el CTA dispara acciones asincrónicas.' },
-        },
-    ],
+    {
+      name: 'isDisabled',
+      type: 'checkbox',
+      label: 'Deshabilitado',
+      defaultValue: false,
+    },
+    {
+      name: 'isLoading',
+      type: 'checkbox',
+      label: 'Mostrar estado "Cargando"',
+      defaultValue: false,
+      admin: { description: 'Útil si el CTA dispara acciones asincrónicas.' },
+    },
+  ],
 }

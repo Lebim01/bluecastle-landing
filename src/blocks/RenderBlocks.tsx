@@ -21,11 +21,12 @@ import SubscriptionsBlock from './SubscriptionBlock/Component'
 import RichTextBlockView from './RichText/Component'
 import ContactForm from './ContactForm/Component'
 import CTABlockComponent from './CTAButton/Component'
+import HeroNoCBlockComponent from './HeroNoConfig/Component'
 
 
 type LayoutBlock = Page['layout'][number]
 
-const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "carousel" | "heroBlock" | "faq" | "testimonials" | "tradingView" | "calculator" | "timeline" | "blogPostsList" | "newsroomMention" | "subscriptions" | "row" | "richText" | "contactForm" | "ctaBlock", any> = {
+const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "carousel" | "heroBlock" | "faq" | "testimonials" | "tradingView" | "calculator" | "timeline" | "blogPostsList" | "newsroomMention" | "subscriptions" | "row" | "richText" | "contactForm" | "ctaBlock" | "heroBlockNoConfig", any> = {
   content: ContentBlock,
   cta: CallToActionBlock,
   mediaBlock: MediaBlock,
@@ -43,7 +44,8 @@ const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "ca
   subscriptions: SubscriptionsBlock,
   richText: RichTextBlockView,
   contactForm: ContactForm,
-  ctaBlock: CTABlockComponent
+  ctaBlock: CTABlockComponent,
+  heroBlockNoConfig: HeroNoCBlockComponent
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
