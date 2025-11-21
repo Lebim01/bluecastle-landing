@@ -39,7 +39,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...TypographyJSXConverters,
   //...LinkJSXConverter({ internalDocToHref }),
   blocks: {
-    mediaBlock: ({ node }) => (
+    mediaBlock: ({ node }: any) => (
       <MediaBlock
         className="col-start-1 col-span-3"
         imgClassName="m-0"
