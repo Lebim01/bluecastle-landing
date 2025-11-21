@@ -22,11 +22,33 @@ import RichTextBlockView from './RichText/Component'
 import ContactForm from './ContactForm/Component'
 import CTABlockComponent from './CTAButton/Component'
 import HeroNoCBlockComponent from './HeroNoConfig/Component'
-
+import MediaBlockComponent from './MediaBlockAdvanced/Component'
 
 type LayoutBlock = Page['layout'][number]
 
-const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "carousel" | "heroBlock" | "faq" | "testimonials" | "tradingView" | "calculator" | "timeline" | "blogPostsList" | "newsroomMention" | "subscriptions" | "row" | "richText" | "contactForm" | "ctaBlock" | "heroBlockNoConfig", any> = {
+const blockComponents: Record<
+  | 'content'
+  | 'cta'
+  | 'mediaBlock'
+  | 'section'
+  | 'carousel'
+  | 'heroBlock'
+  | 'faq'
+  | 'testimonials'
+  | 'tradingView'
+  | 'calculator'
+  | 'timeline'
+  | 'blogPostsList'
+  | 'newsroomMention'
+  | 'subscriptions'
+  | 'row'
+  | 'richText'
+  | 'contactForm'
+  | 'ctaBlock'
+  | 'heroBlockNoConfig'
+  | 'mediaAdvancedBlock',
+  any
+> = {
   content: ContentBlock,
   cta: CallToActionBlock,
   mediaBlock: MediaBlock,
@@ -45,7 +67,8 @@ const blockComponents: Record<"content" | "cta" | "mediaBlock" | "section" | "ca
   richText: RichTextBlockView,
   contactForm: ContactForm,
   ctaBlock: CTABlockComponent,
-  heroBlockNoConfig: HeroNoCBlockComponent
+  heroBlockNoConfig: HeroNoCBlockComponent,
+  mediaAdvancedBlock: MediaBlockComponent,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

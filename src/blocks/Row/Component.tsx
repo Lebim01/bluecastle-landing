@@ -89,7 +89,7 @@ export function RowView(props: RowBlock) {
           {cells.map((cell) => {
             const spanClasses = spanToClasses(cell.span)
             return (
-              <div key={cell.id} className={clsx('h-full', spanClasses, cell.vAlign)}>
+              <div key={cell.id} className={clsx(spanClasses, cell.vAlign)}>
                 <RenderBlocks blocks={cell.blocks || []} className="h-full" />
               </div>
             )

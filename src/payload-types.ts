@@ -634,6 +634,7 @@ export interface Page {
                     blockType: 'contactForm';
                   }
                 | CTABlock
+                | MediaBlock
               )[];
               vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
               base?: number | null;
@@ -1076,10 +1077,55 @@ export interface ContentBlock {
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: number | Media;
+  /**
+   * Solo sirve para que tú identifiques este bloque dentro del editor. No se muestra en la página.
+   */
+  tituloInterno?: string | null;
+  tipoDeContenido: 'imagen' | 'video';
+  /**
+   * Elige si usarás un archivo de tu biblioteca de medios o un enlace externo (por ejemplo, YouTube, Vimeo o una imagen alojada en otro sitio).
+   */
+  origen: 'biblioteca' | 'url';
+  /**
+   * Selecciona un archivo de imagen o video que ya esté en tu biblioteca, o súbelo aquí.
+   */
+  media?: (number | null) | Media;
+  /**
+   * Pega aquí el enlace directo de la imagen o video. Puede ser un enlace de YouTube, Vimeo o un archivo (JPG, PNG, MP4, etc.).
+   */
+  mediaUrl?: string | null;
+  /**
+   * Define hacia qué lado se “acomoda” la imagen o el video dentro del contenido.
+   */
+  alineacion?: ('left' | 'center' | 'right') | null;
+  /**
+   * Controla qué tan grande se verá el contenido en la página.
+   */
+  tamaño?: ('auto' | 'small' | 'medium' | 'large' | 'fullWidth') | null;
+  /**
+   * Elige la forma del contenedor (por ejemplo, formato “pantalla”, “reel”, cuadrado, etc.).
+   */
+  proporcion?: ('auto' | '16-9' | '4-3' | '9-16' | '1-1') | null;
+  /**
+   * Describe brevemente lo que se ve en la imagen o lo que muestra el video. Ayuda a personas con lectores de pantalla y mejora el SEO.
+   */
+  textoAlternativo?: string | null;
+  /**
+   * Texto opcional que aparecerá debajo de la imagen o video, a modo de descripción o crédito.
+   */
+  pieDeFoto?: string | null;
+  /**
+   * Configura cómo se comportará el video cuando el usuario lo vea en la página.
+   */
+  ajustesVideo?: {
+    reproducirAutomatico?: boolean | null;
+    silenciar?: boolean | null;
+    mostrarControles?: boolean | null;
+    repetir?: boolean | null;
+  };
   id?: string | null;
   blockName?: string | null;
-  blockType: 'mediaBlock';
+  blockType: 'mediaAdvancedBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1208,6 +1254,7 @@ export interface SectionBlock {
                     blockType: 'contactForm';
                   }
                 | CTABlock
+                | MediaBlock
               )[];
               vAlign?: ('self-stretch' | 'self-start' | 'self-center' | 'self-end') | null;
               base?: number | null;
@@ -1943,6 +1990,7 @@ export interface PagesSelect<T extends boolean = true> {
                                 blockName?: T;
                               };
                           ctaBlock?: T | CTABlockSelect<T>;
+                          mediaAdvancedBlock?: T | MediaBlockSelect<T>;
                         };
                     vAlign?: T;
                     base?: T;
@@ -2120,7 +2168,24 @@ export interface ContentBlockSelect<T extends boolean = true> {
  * via the `definition` "MediaBlock_select".
  */
 export interface MediaBlockSelect<T extends boolean = true> {
+  tituloInterno?: T;
+  tipoDeContenido?: T;
+  origen?: T;
   media?: T;
+  mediaUrl?: T;
+  alineacion?: T;
+  tamaño?: T;
+  proporcion?: T;
+  textoAlternativo?: T;
+  pieDeFoto?: T;
+  ajustesVideo?:
+    | T
+    | {
+        reproducirAutomatico?: T;
+        silenciar?: T;
+        mostrarControles?: T;
+        repetir?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -2261,6 +2326,7 @@ export interface SectionBlockSelect<T extends boolean = true> {
                                 blockName?: T;
                               };
                           ctaBlock?: T | CTABlockSelect<T>;
+                          mediaAdvancedBlock?: T | MediaBlockSelect<T>;
                         };
                     vAlign?: T;
                     base?: T;
