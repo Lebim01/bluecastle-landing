@@ -33,6 +33,10 @@ import { RichText } from '@/blocks/RichText/config'
 import { ContactForm } from '@/blocks/ContactForm/config'
 import { CTABlock } from '@/blocks/CTAButton/config'
 import HeroBlockNoC from '@/blocks/HeroNoConfig/config'
+import { CorporateStructure } from '@/blocks/CorporateStructure/config'
+import { RegulatoryStanding } from '@/blocks/RegulatoryStanding/config'
+import { BusinessModel } from '@/blocks/BusinessModel/config'
+import { LegalMatters } from '@/blocks/LegalMatters/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -110,6 +114,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 RichText,
                 ContactForm,
                 CTABlock,
+                CorporateStructure,
+                RegulatoryStanding,
+                BusinessModel,
+                LegalMatters,
               ],
               required: true,
               admin: {

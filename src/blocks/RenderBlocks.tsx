@@ -23,6 +23,10 @@ import ContactForm from './ContactForm/Component'
 import CTABlockComponent from './CTAButton/Component'
 import HeroNoCBlockComponent from './HeroNoConfig/Component'
 import MediaBlockComponent from './MediaBlockAdvanced/Component'
+import CorporateStructureBlock from './CorporateStructure/Component'
+import RegulatoryStandingBlock from './RegulatoryStanding/Component'
+import BusinessModelBlock from './BusinessModel/Component'
+import LegalMattersBlock from './LegalMatters/Component'
 
 type LayoutBlock = Page['layout'][number]
 
@@ -46,7 +50,11 @@ const blockComponents: Record<
   | 'contactForm'
   | 'ctaBlock'
   | 'heroBlockNoConfig'
-  | 'mediaAdvancedBlock',
+  | 'mediaAdvancedBlock'
+  | 'corporateStructure'
+  | 'regulatoryStanding'
+  | 'businessModel'
+  | 'legalMatters',
   any
 > = {
   content: ContentBlock,
@@ -69,6 +77,10 @@ const blockComponents: Record<
   ctaBlock: CTABlockComponent,
   heroBlockNoConfig: HeroNoCBlockComponent,
   mediaAdvancedBlock: MediaBlockComponent,
+  corporateStructure: CorporateStructureBlock,
+  regulatoryStanding: RegulatoryStandingBlock,
+  businessModel: BusinessModelBlock,
+  legalMatters: LegalMattersBlock,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {

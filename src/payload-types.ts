@@ -399,7 +399,10 @@ export interface Page {
         blockType: 'heroBlock';
       }
     | {
-        title?: string | null;
+        sectionTag?: string | null;
+        title: string;
+        description?: string | null;
+        image?: (number | null) | Media;
         items?:
           | {
               question: string;
@@ -407,6 +410,16 @@ export interface Page {
               id?: string | null;
             }[]
           | null;
+        cta?: {
+          enable?: boolean | null;
+          smallTitle?: string | null;
+          titlePart1?: string | null;
+          titlePart2?: string | null;
+          button1Label?: string | null;
+          button1Url?: string | null;
+          button2Label?: string | null;
+          button2Url?: string | null;
+        };
         id?: string | null;
         blockName?: string | null;
         blockType: 'faq';
@@ -675,6 +688,140 @@ export interface Page {
         blockType: 'contactForm';
       }
     | CTABlock
+    | {
+        title: string;
+        description: string;
+        image: number | Media;
+        entities?:
+          | {
+              tag: string;
+              name: string;
+              details: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              footer?: string | null;
+              footerLink?: string | null;
+              footerUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'corporateStructure';
+      }
+    | {
+        title: string;
+        description: string;
+        image: number | Media;
+        items?:
+          | {
+              title: string;
+              badge: string;
+              content: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              linkText?: string | null;
+              linkUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'regulatoryStanding';
+      }
+    | {
+        title: string;
+        description: string;
+        image: number | Media;
+        items?:
+          | {
+              number: string;
+              title: string;
+              content: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              badges?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'businessModel';
+      }
+    | {
+        title: string;
+        description: string;
+        image: number | Media;
+        subSectionTitle: string;
+        subSectionContent: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        boxTitle: string;
+        boxItems?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        ctaText?: string | null;
+        ctaUrl?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'legalMatters';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1772,13 +1919,28 @@ export interface PagesSelect<T extends boolean = true> {
         faq?:
           | T
           | {
+              sectionTag?: T;
               title?: T;
+              description?: T;
+              image?: T;
               items?:
                 | T
                 | {
                     question?: T;
                     answer?: T;
                     id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    enable?: T;
+                    smallTitle?: T;
+                    titlePart1?: T;
+                    titlePart2?: T;
+                    button1Label?: T;
+                    button1Url?: T;
+                    button2Label?: T;
+                    button2Url?: T;
                   };
               id?: T;
               blockName?: T;
@@ -2017,6 +2179,88 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         ctaBlock?: T | CTABlockSelect<T>;
+        corporateStructure?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              entities?:
+                | T
+                | {
+                    tag?: T;
+                    name?: T;
+                    details?: T;
+                    footer?: T;
+                    footerLink?: T;
+                    footerUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        regulatoryStanding?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    badge?: T;
+                    content?: T;
+                    linkText?: T;
+                    linkUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        businessModel?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              items?:
+                | T
+                | {
+                    number?: T;
+                    title?: T;
+                    content?: T;
+                    badges?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        legalMatters?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              subSectionTitle?: T;
+              subSectionContent?: T;
+              boxTitle?: T;
+              boxItems?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              ctaText?: T;
+              ctaUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T

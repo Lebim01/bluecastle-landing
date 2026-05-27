@@ -22,7 +22,9 @@ type Props = {
 export default function HeroNoCBlockComponent(props: Props) {
   return (
     <div
-      className={clsx(`w-full bg-no-repeat bg-center bg-cover relative text-white hero-text-shadow`)}
+      className={clsx(
+        `w-full bg-no-repeat bg-center bg-cover relative text-white hero-text-shadow`,
+      )}
       style={{
         backgroundImage: `url(${props.bg.url!})`,
         height: props['height-aspect'] == 'full' ? '100dvh' : `${props.height!}dvh`,
