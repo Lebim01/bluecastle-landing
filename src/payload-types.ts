@@ -822,6 +822,60 @@ export interface Page {
         blockName?: string | null;
         blockType: 'legalMatters';
       }
+    | {
+        bg?: (number | null) | Media;
+        heading?: {
+          content?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        description?: {
+          content?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'transparentHero';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -2258,6 +2312,43 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               ctaText?: T;
               ctaUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
+        transparentHero?:
+          | T
+          | {
+              bg?: T;
+              heading?:
+                | T
+                | {
+                    content?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              description?:
+                | T
+                | {
+                    content?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
               id?: T;
               blockName?: T;
             };

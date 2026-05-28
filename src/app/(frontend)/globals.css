@@ -378,6 +378,37 @@
   }
 }
 
+/* Hero No Config Styles */
+.font-playfair h1,
+.font-playfair h2,
+.font-playfair h3,
+.font-playfair p {
+  font-family: var(--font-playfair), serif !important;
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.max-w-\[700px\] p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 300;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
 @layer base {
   * {
     @apply border-border;

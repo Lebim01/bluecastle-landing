@@ -37,6 +37,7 @@ import { CorporateStructure } from '@/blocks/CorporateStructure/config'
 import { RegulatoryStanding } from '@/blocks/RegulatoryStanding/config'
 import { BusinessModel } from '@/blocks/BusinessModel/config'
 import { LegalMatters } from '@/blocks/LegalMatters/config'
+import { TransparentHero } from '@/blocks/TransparentHero/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -118,6 +119,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 RegulatoryStanding,
                 BusinessModel,
                 LegalMatters,
+                TransparentHero,
               ],
               required: true,
               admin: {

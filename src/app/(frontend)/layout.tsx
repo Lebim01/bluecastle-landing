@@ -5,7 +5,7 @@ import React from 'react'
 
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
-import { inter } from './fonts'
+import { inter, playfair } from './fonts'
 import './globals.css'
 import RemoveDarkModeProvider from '@/providers/RemoveDarkModeProvider'
 import Footer from '@/Footer/Component'
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <Providers>
           <RemoveDarkModeProvider>
             <Header />

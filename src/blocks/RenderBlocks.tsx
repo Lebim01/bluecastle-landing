@@ -27,6 +27,7 @@ import CorporateStructureBlock from './CorporateStructure/Component'
 import RegulatoryStandingBlock from './RegulatoryStanding/Component'
 import BusinessModelBlock from './BusinessModel/Component'
 import LegalMattersBlock from './LegalMatters/Component'
+import TransparentHeroBlock from './TransparentHero/Component'
 
 type LayoutBlock = Page['layout'][number]
 
@@ -54,7 +55,8 @@ const blockComponents: Record<
   | 'corporateStructure'
   | 'regulatoryStanding'
   | 'businessModel'
-  | 'legalMatters',
+  | 'legalMatters'
+  | 'transparentHero',
   any
 > = {
   content: ContentBlock,
@@ -81,6 +83,7 @@ const blockComponents: Record<
   regulatoryStanding: RegulatoryStandingBlock,
   businessModel: BusinessModelBlock,
   legalMatters: LegalMattersBlock,
+  transparentHero: TransparentHeroBlock,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
