@@ -876,6 +876,319 @@ export interface Page {
         blockName?: string | null;
         blockType: 'transparentHero';
       }
+    | {
+        bg?: (number | null) | Media;
+        content?: {
+          heading?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+          description?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'productsHero';
+      }
+    | {
+        header?: {
+          tag?: string | null;
+          title?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+          description?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        cards?:
+          | {
+              badge?: string | null;
+              title?: string | null;
+              description?: string | null;
+              features?:
+                | {
+                    label?: string | null;
+                    value?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              buttonLabel?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'coreCollection';
+      }
+    | {
+        content?: {
+          title?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+          description?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        items?:
+          | {
+              neighborhood?: string | null;
+              productName?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'neighborhoodSection';
+      }
+    | {
+        header?: {
+          tag?: string | null;
+          title?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+          description?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        cards?:
+          | {
+              title?: string | null;
+              description?: string | null;
+              features?:
+                | {
+                    label?: string | null;
+                    value?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              buttonLabel?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'limitedEdition';
+      }
+    | {
+        header?: {
+          tag?: string | null;
+          title?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+        };
+        rows?:
+          | {
+              product?: string | null;
+              type?: string | null;
+              minimum?: string | null;
+              return?: string | null;
+              term?: string | null;
+              statuts?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          title?:
+            | {
+                content: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+                blockName?: string | null;
+                blockType: 'richText';
+              }[]
+            | null;
+          primaryButton?: string | null;
+          secondaryButton?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'comparisonBlock';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -2348,6 +2661,226 @@ export interface PagesSelect<T extends boolean = true> {
                                 blockName?: T;
                               };
                         };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        productsHero?:
+          | T
+          | {
+              bg?: T;
+              content?:
+                | T
+                | {
+                    heading?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    description?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        coreCollection?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    tag?: T;
+                    title?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    description?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              cards?:
+                | T
+                | {
+                    badge?: T;
+                    title?: T;
+                    description?: T;
+                    features?:
+                      | T
+                      | {
+                          label?: T;
+                          value?: T;
+                          id?: T;
+                        };
+                    buttonLabel?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        neighborhoodSection?:
+          | T
+          | {
+              content?:
+                | T
+                | {
+                    title?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    description?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              items?:
+                | T
+                | {
+                    neighborhood?: T;
+                    productName?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        limitedEdition?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    tag?: T;
+                    title?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    description?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    features?:
+                      | T
+                      | {
+                          label?: T;
+                          value?: T;
+                          id?: T;
+                        };
+                    buttonLabel?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        comparisonBlock?:
+          | T
+          | {
+              header?:
+                | T
+                | {
+                    tag?: T;
+                    title?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                  };
+              rows?:
+                | T
+                | {
+                    product?: T;
+                    type?: T;
+                    minimum?: T;
+                    return?: T;
+                    term?: T;
+                    statuts?: T;
+                    id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    title?:
+                      | T
+                      | {
+                          richText?:
+                            | T
+                            | {
+                                content?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    primaryButton?: T;
+                    secondaryButton?: T;
                   };
               id?: T;
               blockName?: T;

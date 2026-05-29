@@ -38,6 +38,11 @@ import { RegulatoryStanding } from '@/blocks/RegulatoryStanding/config'
 import { BusinessModel } from '@/blocks/BusinessModel/config'
 import { LegalMatters } from '@/blocks/LegalMatters/config'
 import { TransparentHero } from '@/blocks/TransparentHero/config'
+import { ProductsHero } from '@/blocks/ProductsHero/config'
+import { CoreCollection } from '@/blocks/CoreCollection/config'
+import { NeighborhoodSection } from '@/blocks/NeighborhoodSection/config'
+import { LimitedEdition } from '@/blocks/LimitedEdition/config'
+import { ComparisonBlock } from '@/blocks/ComparisonBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -120,6 +125,11 @@ export const Pages: CollectionConfig<'pages'> = {
                 BusinessModel,
                 LegalMatters,
                 TransparentHero,
+                ProductsHero,
+                CoreCollection,
+                NeighborhoodSection,
+                LimitedEdition,
+                ComparisonBlock,
               ],
               required: true,
               admin: {

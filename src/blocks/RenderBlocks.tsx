@@ -28,6 +28,11 @@ import RegulatoryStandingBlock from './RegulatoryStanding/Component'
 import BusinessModelBlock from './BusinessModel/Component'
 import LegalMattersBlock from './LegalMatters/Component'
 import TransparentHeroBlock from './TransparentHero/Component'
+import ProductsHeroBlock from './ProductsHero/Component'
+import CoreCollectionBlock from './CoreCollection/Component'
+import NeighborhoodSectionBlock from './NeighborhoodSection/Component'
+import LimitedEditionBlock from './LimitedEdition/Component'
+import ComparisonBlock from './ComparisonBlock/Component'
 
 type LayoutBlock = Page['layout'][number]
 
@@ -56,7 +61,12 @@ const blockComponents: Record<
   | 'regulatoryStanding'
   | 'businessModel'
   | 'legalMatters'
-  | 'transparentHero',
+  | 'transparentHero'
+  | 'productsHero'
+  | 'coreCollection'
+  | 'neighborhoodSection'
+  | 'limitedEdition'
+  | 'comparisonBlock',
   any
 > = {
   content: ContentBlock,
@@ -84,6 +94,11 @@ const blockComponents: Record<
   businessModel: BusinessModelBlock,
   legalMatters: LegalMattersBlock,
   transparentHero: TransparentHeroBlock,
+  productsHero: ProductsHeroBlock,
+  coreCollection: CoreCollectionBlock,
+  neighborhoodSection: NeighborhoodSectionBlock,
+  limitedEdition: LimitedEditionBlock,
+  comparisonBlock: ComparisonBlock,
 }
 
 const gapYClass = (gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl') => {
